@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1.0",
+  "mode": "quick",
+  "commit": "fixture",
+  "policy_version": "0.1.0",
+  "overall": "human-review",
+  "summary": {
+    "pass": 1,
+    "warn": 0,
+    "fail": 0,
+    "not-applicable": 0,
+    "human-review": 1
+  },
+  "results": [
+    {
+      "rule_id": "RULE-001",
+      "status": "pass",
+      "message": "The fixture demonstrates a unique rule ID observation."
+    },
+    {
+      "rule_id": "RULE-002",
+      "status": "human-review",
+      "message": "The Phase 0 validator is not implemented."
+    }
+  ]
+}

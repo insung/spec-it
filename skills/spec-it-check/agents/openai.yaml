@@ -1,0 +1,4 @@
+interface:
+  display_name: "Spec It: Check"
+  short_description: "Report policy status without repairing project files"
+  default_prompt: "Use $spec-it-check to inspect this project in quick, full, or release mode."

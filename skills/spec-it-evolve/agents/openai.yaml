@@ -1,0 +1,4 @@
+interface:
+  display_name: "Spec It: Evolve"
+  short_description: "Evolve the shared policy source with evidence"
+  default_prompt: "Use $spec-it-evolve to assess and apply this change to the shared policy SSOT."

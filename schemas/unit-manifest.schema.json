@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-it.example/schemas/unit-manifest.schema.json",
+  "title": "spec-it monorepo unit manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "extends", "unit", "profiles_add", "profiles_remove", "parameters", "exceptions"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "extends": {"type": "string", "minLength": 1},
+    "unit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "path"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+        "path": {"type": "string", "minLength": 1}
+      }
+    },
+    "profiles_add": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^(risk|project-kind|language|runtime|deployment|capability)/[a-z0-9-]+$"}},
+    "profiles_remove": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^(risk|project-kind|language|runtime|deployment|capability)/[a-z0-9-]+$"}},
+    "parameters": {"type": "object"},
+    "exceptions": {"type": "array", "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"}}
+  }
+}

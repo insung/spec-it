@@ -1,0 +1,8 @@
+schema_version: 0.1.0
+id: old-speculative-port
+rule_id: ARCH-003
+reason: The fixture demonstrates an exception that is no longer valid.
+impact: The speculative abstraction remains and adds maintenance cost.
+approvers:
+  - architecture-owner
+expires_on: "2020-01-01"

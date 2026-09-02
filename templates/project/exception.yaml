@@ -1,0 +1,8 @@
+schema_version: 0.1.0
+id: example-exception
+rule_id: ARCH-003
+reason: A concrete temporary reason long enough to be reviewed.
+impact: The affected boundary and maintenance cost are recorded here.
+approvers:
+  - architecture-owner
+review_trigger: Remove when the second implementation is retired.

@@ -1,0 +1,21 @@
+schema_version: 0.1.0
+policy:
+  source: https://example.invalid/spec-it.git
+  version: 0.1.0
+project:
+  id: python-backend
+  name: Python Backend Fixture
+  kind: backend-service
+  risk: standard
+profiles:
+  - risk/standard
+  - project-kind/backend-service
+  - language/python
+owners:
+  intent-owner: fixture-owner
+  architecture-owner: fixture-owner
+  security-owner: fixture-owner
+  data-owner: fixture-owner
+parameters: {}
+exceptions: []
+units: []

@@ -1,0 +1,20 @@
+schema_version: 0.1.0
+policy:
+  source: https://example.invalid/spec-it.git
+  version: 0.1.0
+project:
+  id: example-project
+  name: Example Project
+  kind: backend-service
+  risk: standard
+profiles:
+  - risk/standard
+  - project-kind/backend-service
+owners:
+  intent-owner: owner
+  architecture-owner: owner
+  security-owner: owner
+  data-owner: owner
+parameters: {}
+exceptions: []
+units: []

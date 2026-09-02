@@ -1,0 +1,6 @@
+schema_version: 0.1.0
+id: REF-0004
+type: official-standard
+uri: https://docs.github.com/en/code-security/concepts/secret-security/command-line-push-protection
+accessed_on: "2026-09-02"
+note: Background for blocking supported secret patterns during command-line pushes.

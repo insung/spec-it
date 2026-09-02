@@ -1,0 +1,6 @@
+schema_version: 0.1.0
+id: REF-0003
+type: official-standard
+uri: https://opentelemetry.io/docs/specs/
+accessed_on: "2026-09-02"
+note: Primary specification index for telemetry signals and context.

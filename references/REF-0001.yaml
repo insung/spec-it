@@ -1,0 +1,6 @@
+schema_version: 0.1.0
+id: REF-0001
+type: official-standard
+uri: https://www.12factor.net/config
+accessed_on: "2026-09-02"
+note: Background for separating deploy-varying configuration from source.

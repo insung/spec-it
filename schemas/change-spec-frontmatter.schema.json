@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-it.example/schemas/change-spec-frontmatter.schema.json",
+  "title": "spec-it change spec front matter",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "scope", "status", "owners", "created_on", "affects"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[0-9]{8}-[a-z0-9]+(?:-[a-z0-9]+)*(?:-[0-9]+)?$"},
+    "scope": {"enum": ["project", "change"]},
+    "status": {"enum": ["draft", "clarifying", "converged", "implementing", "verifying", "accepted", "superseded"]},
+    "owners": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "created_on": {"type": "string", "format": "date"},
+    "affects": {"type": "array", "uniqueItems": true, "items": {"enum": ["behavior", "public-contract", "security", "data", "cost", "infrastructure", "deployment", "architecture", "none"]}}
+  }
+}

@@ -1,0 +1,38 @@
+schema_version: 0.1.0
+profile_id: risk/low
+axis: risk
+version: 0.1.0
+status: active
+description: Low-impact, reversible project with no sensitive durable state.
+applies_when:
+  - Failure impact is local and recovery is simple.
+rules:
+  - GOV-001
+  - GOV-002
+  - GOV-003
+  - GOV-004
+  - COST-001
+  - COST-002
+  - DATA-005
+  - DATA-006
+  - HITL-001
+  - HITL-002
+  - HITL-003
+  - SEC-001
+  - SEC-002
+  - RULE-001
+  - RULE-002
+  - RULE-003
+  - TOOL-001
+  - TOOL-002
+  - TOOL-003
+  - TOOL-004
+  - PROJ-001
+parameters:
+  evidence_review: change-triggered
+  sbom: exempt-with-reason
+evidence:
+  freshness:
+    security_scan: dependency-or-permission-change
+    load_test: not-applicable-unless-triggered
+conflicts: []

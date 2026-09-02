@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-it.example/schemas/external-reference.schema.json",
+  "title": "spec-it external reference",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "type", "uri", "accessed_on", "note"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "id": {"type": "string", "pattern": "^REF-[0-9]{4}$"},
+    "type": {"enum": ["official-standard", "measurement", "incident", "enforcement-change", "disputed-rule", "other"]},
+    "uri": {"type": "string", "format": "uri"},
+    "accessed_on": {"type": "string", "format": "date"},
+    "note": {"type": "string", "minLength": 1}
+  }
+}

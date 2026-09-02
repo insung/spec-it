@@ -1,0 +1,6 @@
+schema_version: 0.1.0
+id: REF-0002
+type: official-standard
+uri: https://developer.hashicorp.com/terraform/language/modules/develop/composition
+accessed_on: "2026-09-02"
+note: Background for shallow module composition and explicit dependencies.

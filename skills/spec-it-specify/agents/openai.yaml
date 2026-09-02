@@ -1,0 +1,4 @@
+interface:
+  display_name: "Spec It: Specify"
+  short_description: "Capture project or change intent before implementation"
+  default_prompt: "Use $spec-it-specify to create a bounded specification for this project or change."

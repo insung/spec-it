@@ -1,0 +1,51 @@
+schema_version: 0.1.0
+profile_id: risk/high
+axis: risk
+version: 0.1.0
+status: active
+description: High-impact service with sensitive data, strict SLO, or difficult recovery.
+applies_when:
+  - Failure can cause material security, legal, financial, or data harm.
+rules:
+  - GOV-001
+  - GOV-002
+  - GOV-003
+  - GOV-004
+  - COST-001
+  - COST-002
+  - DATA-005
+  - DATA-006
+  - HITL-001
+  - HITL-002
+  - HITL-003
+  - TST-001
+  - TST-002
+  - TST-003
+  - TST-004
+  - TST-005
+  - OBS-001
+  - OBS-002
+  - SEC-001
+  - SEC-002
+  - COMP-001
+  - REL-001
+  - DATA-004
+  - RULE-001
+  - RULE-002
+  - RULE-003
+  - TOOL-001
+  - TOOL-002
+  - TOOL-003
+  - TOOL-004
+  - PROJ-001
+parameters:
+  evidence_review: strict-risk-and-change-triggered
+  sbom: required
+  check_mode_before_release: release
+  independent_verifier: required
+evidence:
+  freshness:
+    security_scan: every-release-and-security-change
+    restore_test: scheduled-by-risk-owner-and-storage-change
+    load_test: every-material-capacity-or-critical-path-change
+conflicts: []

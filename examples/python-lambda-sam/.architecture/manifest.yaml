@@ -1,0 +1,23 @@
+schema_version: 0.1.0
+policy:
+  source: https://example.invalid/spec-it.git
+  version: 0.1.0
+project:
+  id: python-lambda-sam
+  name: Python Lambda SAM Fixture
+  kind: serverless-function
+  risk: standard
+profiles:
+  - risk/standard
+  - project-kind/serverless-function
+  - language/python
+  - runtime/aws-lambda
+  - deployment/sam
+owners:
+  intent-owner: fixture-owner
+  architecture-owner: fixture-owner
+  security-owner: fixture-owner
+  data-owner: fixture-owner
+parameters: {}
+exceptions: []
+units: []

@@ -1,0 +1,21 @@
+schema_version: 0.1.0
+policy:
+  source: https://example.invalid/spec-it.git
+  version: 0.1.0
+project:
+  id: expired-exception
+  name: Expired Exception Fixture
+  kind: backend-service
+  risk: low
+profiles:
+  - risk/low
+  - project-kind/backend-service
+owners:
+  intent-owner: fixture-owner
+  architecture-owner: fixture-owner
+  security-owner: fixture-owner
+  data-owner: fixture-owner
+parameters: {}
+exceptions:
+  - old-speculative-port
+units: []

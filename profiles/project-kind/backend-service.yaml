@@ -1,0 +1,26 @@
+schema_version: 0.1.0
+profile_id: project-kind/backend-service
+axis: project-kind
+version: 0.1.0
+status: active
+description: Long-running or request-driven backend service.
+applies_when:
+  - The deploy unit exposes an API or consumes long-running jobs or events.
+rules:
+  - ARCH-001
+  - ARCH-002
+  - ARCH-003
+  - ARCH-004
+  - TST-001
+  - TST-002
+  - TST-003
+  - OBS-001
+  - CODE-001
+  - CICD-001
+  - CICD-002
+parameters:
+  integration_boundary_trigger: required
+  module_style: feature-or-domain
+evidence:
+  integration: external-boundary-change
+conflicts: []

@@ -1,0 +1,9 @@
+# Data and storage
+
+관계, 트랜잭션, ad-hoc query가 중심이면 RDS를 기본 비교점으로 삼습니다. DynamoDB는 검증된 access pattern, 규모, 지연, 가용성, 비용 근거가 있을 때 선택합니다. Redis는 정본이 아닌 파생·임시 상태에 사용하고 손실과 stale 허용 범위를 선언합니다.
+
+저장소 선택은 제품의 사용자·회사·권한 같은 업무 데이터 모델과 읽기·쓰기 패턴을 먼저 정의한 뒤 프로젝트에서 확정합니다. OpenSearch는 검색·분석 요구가 정당화할 때, Kinesis와 Kafka는 소비자 모델·재생 기간·생태계·운영비를 비교해 프로필로 선택합니다.
+
+진단 로그는 구조화 JSON 또는 OpenTelemetry를 기본 비교점으로 두고, 장기 이벤트 계약은 Avro·Protobuf·JSON Schema 중 호환성 요구에 맞춰 선택합니다. CSV는 운영 이벤트 계약의 기본값이 아닙니다.
+
+정본 규칙: [DATA-001](../rules/data/DATA-001.md), [DATA-002](../rules/data/DATA-002.md), [DATA-003](../rules/data/DATA-003.md), [DATA-004](../rules/data/DATA-004.md), [DATA-005](../rules/data/DATA-005.md), [DATA-006](../rules/data/DATA-006.md).

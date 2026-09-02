@@ -1,0 +1,27 @@
+schema_version: 0.1.0
+profile_id: project-kind/serverless-function
+axis: project-kind
+version: 0.1.0
+status: active
+description: Independently deployable event or request function.
+applies_when:
+  - The deploy unit is a serverless function.
+rules:
+  - ARCH-001
+  - ARCH-002
+  - ARCH-003
+  - TST-001
+  - TST-002
+  - TST-003
+  - OBS-001
+  - CODE-001
+  - CICD-001
+  - CICD-002
+parameters:
+  integration_levels:
+    unit: fixtures-and-fakes
+    component: local-runtime-or-container
+    integration: ephemeral-cloud-stack
+evidence:
+  integration: external-boundary-change
+conflicts: []

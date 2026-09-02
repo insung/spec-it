@@ -1,0 +1,4 @@
+interface:
+  display_name: "Spec It: Clarify"
+  short_description: "Resolve decisions with a bounded visible interview"
+  default_prompt: "Use $spec-it-clarify to show the remaining decision frontier and resolve it with me."

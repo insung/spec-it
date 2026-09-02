@@ -1,0 +1,24 @@
+schema_version: 0.1.0
+profile_id: language/python
+axis: language
+version: 0.1.0
+status: active
+description: Python source and packaging conventions.
+applies_when:
+  - The deploy unit contains production Python code.
+rules:
+  - CODE-001
+  - SEC-002
+parameters:
+  public_contract_documentation: docstring
+  docstring_style: pep-257-compatible
+  document_public_modules: purpose-and-boundary
+  document_public_classes: responsibility-invariants-side-effects
+  document_public_functions: inputs-outputs-errors-side-effects
+  signature_detail: omit-types-already-expressed-by-type-hints
+  inline_comment_policy: reasons-constraints-non-obvious-branches-only
+  dependency_lock: required
+  type_checking: project-risk-defined
+evidence:
+  comments: public-module-class-function-contracts
+conflicts: []

@@ -1,0 +1,17 @@
+schema_version: 0.1.0
+profile_id: capability/otel
+axis: capability
+version: 0.1.0
+status: active
+description: OpenTelemetry mapping at application and adapter boundaries.
+applies_when:
+  - The project exports traces or metrics using OpenTelemetry.
+rules:
+  - OBS-001
+  - OBS-002
+parameters:
+  domain_sdk_dependency: forbidden
+  decision_reason_mapping: application-or-adapter
+evidence:
+  telemetry: representative-span-metric-log-fixture
+conflicts: []

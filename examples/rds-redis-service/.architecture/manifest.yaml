@@ -1,0 +1,26 @@
+schema_version: 0.1.0
+policy:
+  source: https://example.invalid/spec-it.git
+  version: 0.1.0
+project:
+  id: rds-redis-service
+  name: RDS Redis Service Fixture
+  kind: backend-service
+  risk: standard
+profiles:
+  - risk/standard
+  - project-kind/backend-service
+  - language/python
+  - capability/rds
+  - capability/redis
+  - capability/otel
+owners:
+  intent-owner: fixture-owner
+  architecture-owner: fixture-owner
+  security-owner: fixture-owner
+  data-owner: fixture-owner
+parameters:
+  redis_source_of_truth: rds
+  redis_stale_tolerance: explicit-per-keyspace
+exceptions: []
+units: []

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-it.example/schemas/profile.schema.json",
+  "title": "spec-it composable profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "profile_id", "axis", "version", "status", "description", "applies_when", "rules", "parameters", "evidence", "conflicts"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "profile_id": {"type": "string", "pattern": "^(risk|project-kind|language|runtime|deployment|capability)/[a-z0-9-]+$"},
+    "axis": {"enum": ["risk", "project-kind", "language", "runtime", "deployment", "capability"]},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "status": {"enum": ["draft", "active", "deprecated"]},
+    "description": {"type": "string", "minLength": 1},
+    "applies_when": {"type": "array", "items": {"type": "string"}},
+    "rules": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[A-Z][A-Z0-9-]*-[0-9]{3}$"}},
+    "parameters": {"type": "object"},
+    "evidence": {"type": "object"},
+    "conflicts": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^(risk|project-kind|language|runtime|deployment|capability)/[a-z0-9-]+$"}}
+  }
+}

@@ -1,0 +1,24 @@
+schema_version: 0.1.0
+profile_id: capability/rds
+axis: capability
+version: 0.1.0
+status: active
+description: Relational primary data storage capability.
+applies_when:
+  - The project stores relational or transactional business data.
+rules:
+  - DATA-001
+  - DATA-004
+  - REL-001
+  - TST-003
+  - TST-005
+parameters:
+  load_metrics:
+    - connections
+    - locks
+    - iops
+    - query-latency
+    - unit-cost
+evidence:
+  restore: risk-and-storage-change-triggered
+conflicts: []

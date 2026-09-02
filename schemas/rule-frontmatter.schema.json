@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-it.example/schemas/rule-frontmatter.schema.json",
+  "title": "spec-it rule front matter",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "status", "introduced", "scope", "condition", "statement", "forbidden", "evidence", "exception", "approver", "rationale", "origin", "enforcement"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[A-Z][A-Z0-9-]*-[0-9]{3}$"},
+    "title": {"type": "string", "minLength": 3},
+    "status": {"enum": ["draft", "active", "deprecated", "removed"]},
+    "introduced": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "deprecated": {"type": "string"},
+    "removed": {"type": "string"},
+    "replaced_by": {"type": "string", "pattern": "^[A-Z][A-Z0-9-]*-[0-9]{3}$"},
+    "scope": {"type": "string", "minLength": 1},
+    "condition": {"type": "string", "minLength": 1},
+    "statement": {"type": "string", "pattern": "^(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\\b"},
+    "forbidden": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "evidence": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "exception": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed", "requirements"],
+      "properties": {
+        "allowed": {"type": "boolean"},
+        "requirements": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "approver": {"type": "array", "minItems": 1, "items": {"enum": ["intent-owner", "architecture-owner", "security-owner", "data-owner"]}},
+    "rationale": {"type": "string", "minLength": 10},
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {"enum": ["design-interview", "clean-architecture-adaptation", "terraform-composition-guidance", "security-baseline", "external-standard", "measurement", "incident", "enforcement-change", "disputed-rule"]},
+        "reference": {"type": "string"}
+      }
+    },
+    "enforcement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "implementation"],
+      "properties": {
+        "mode": {"enum": ["manual", "validator", "ci", "runtime"]},
+        "implementation": {"enum": ["planned", "advisory", "implemented"]}
+      }
+    }
+  }
+}

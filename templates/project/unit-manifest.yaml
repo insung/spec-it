@@ -1,0 +1,13 @@
+schema_version: 0.1.0
+extends: ../../.architecture/manifest.yaml
+unit:
+  id: lambda-a
+  path: lambda-a
+profiles_add:
+  - project-kind/serverless-function
+  - language/python
+  - runtime/aws-lambda
+  - deployment/sam
+profiles_remove: []
+parameters: {}
+exceptions: []

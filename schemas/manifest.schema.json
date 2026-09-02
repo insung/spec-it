@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-it.example/schemas/manifest.schema.json",
+  "title": "spec-it project manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "policy", "project", "profiles", "owners", "parameters", "exceptions", "units"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "version"],
+      "properties": {
+        "source": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}
+      }
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "kind", "risk"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+        "name": {"type": "string", "minLength": 1},
+        "kind": {"type": "string", "minLength": 1},
+        "risk": {"enum": ["low", "standard", "high"]}
+      }
+    },
+    "profiles": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^(risk|project-kind|language|runtime|deployment|capability)/[a-z0-9-]+$"}},
+    "owners": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["intent-owner", "architecture-owner", "security-owner", "data-owner"],
+      "properties": {
+        "intent-owner": {"type": "string", "minLength": 1},
+        "architecture-owner": {"type": "string", "minLength": 1},
+        "security-owner": {"type": "string", "minLength": 1},
+        "data-owner": {"type": "string", "minLength": 1}
+      }
+    },
+    "parameters": {"type": "object"},
+    "exceptions": {"type": "array", "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"}},
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "path", "manifest"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+          "path": {"type": "string", "minLength": 1},
+          "manifest": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

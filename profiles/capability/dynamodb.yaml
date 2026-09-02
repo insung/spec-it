@@ -1,0 +1,24 @@
+schema_version: 0.1.0
+profile_id: capability/dynamodb
+axis: capability
+version: 0.1.0
+status: active
+description: DynamoDB primary or secondary data capability.
+applies_when:
+  - A validated key-value access pattern selects DynamoDB.
+rules:
+  - DATA-002
+  - DATA-004
+  - REL-001
+  - TST-003
+  - TST-005
+parameters:
+  load_metrics:
+    - consumed-capacity
+    - throttle
+    - hot-partition
+    - latency
+    - unit-cost
+evidence:
+  access_patterns: required
+conflicts: []

@@ -1,0 +1,22 @@
+schema_version: 0.1.0
+policy:
+  source: .
+  version: 0.1.0
+project:
+  id: spec-it
+  name: spec-it
+  kind: policy-ssot
+  risk: standard
+profiles:
+  - risk/standard
+owners:
+  intent-owner: maintainer
+  architecture-owner: maintainer
+  security-owner: maintainer
+  data-owner: maintainer
+parameters:
+  phase: 0
+  distribution: git-source-only
+  validator: not-implemented
+exceptions: []
+units: []

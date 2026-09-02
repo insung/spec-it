@@ -1,0 +1,22 @@
+schema_version: 0.1.0
+profile_id: capability/redis
+axis: capability
+version: 0.1.0
+status: active
+description: Derived or temporary in-memory data capability.
+applies_when:
+  - The project uses Redis for cache, lock, rate limit, or temporary state.
+rules:
+  - DATA-003
+  - TST-003
+  - TST-005
+parameters:
+  load_metrics:
+    - memory
+    - eviction
+    - hit-ratio
+    - latency
+    - unit-cost
+evidence:
+  data-policy: source-of-truth-ttl-eviction-recovery-staleness
+conflicts: []

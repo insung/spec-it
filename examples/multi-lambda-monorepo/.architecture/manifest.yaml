@@ -1,0 +1,25 @@
+schema_version: 0.1.0
+policy:
+  source: https://example.invalid/spec-it.git
+  version: 0.1.0
+project:
+  id: multi-lambda-monorepo
+  name: Multi Lambda Monorepo Fixture
+  kind: monorepo
+  risk: standard
+profiles:
+  - risk/standard
+owners:
+  intent-owner: fixture-owner
+  architecture-owner: fixture-owner
+  security-owner: fixture-owner
+  data-owner: fixture-owner
+parameters: {}
+exceptions: []
+units:
+  - id: lambda-a
+    path: lambda-a
+    manifest: lambda-a/.architecture/manifest.yaml
+  - id: lambda-b
+    path: lambda-b
+    manifest: lambda-b/.architecture/manifest.yaml

@@ -1,0 +1,106 @@
+# Generated view for policy version 0.1.0. Do not edit directly.
+# Phase 0 deterministic generation evidence: human-review.
+schema_version: 0.1.0
+generated: true
+policy:
+  source: .
+  version: 0.1.0
+manifest_digest: sha256:90cb8750202efd30d38a23824c9289c1a26ebf1b7a8559b85943455de690f7e8
+profiles:
+  - risk/standard
+rules:
+  - id: COMP-001
+    source: rules/compatibility/COMP-001.md
+    enforcement: {mode: ci, implementation: planned}
+  - id: COST-001
+    source: rules/cost/COST-001.md
+    enforcement: {mode: manual, implementation: implemented}
+  - id: COST-002
+    source: rules/cost/COST-002.md
+    enforcement: {mode: manual, implementation: implemented}
+  - id: DATA-004
+    source: rules/data/DATA-004.md
+    enforcement: {mode: validator, implementation: planned}
+  - id: DATA-005
+    source: rules/data/DATA-005.md
+    enforcement: {mode: validator, implementation: planned}
+  - id: DATA-006
+    source: rules/data/DATA-006.md
+    enforcement: {mode: manual, implementation: implemented}
+  - id: GOV-001
+    source: rules/governance/GOV-001.md
+    enforcement: {mode: manual, implementation: implemented}
+  - id: GOV-002
+    source: rules/governance/GOV-002.md
+    enforcement: {mode: manual, implementation: implemented}
+  - id: GOV-003
+    source: rules/governance/GOV-003.md
+    enforcement: {mode: validator, implementation: planned}
+  - id: GOV-004
+    source: rules/governance/GOV-004.md
+    enforcement: {mode: validator, implementation: planned}
+  - id: HITL-001
+    source: rules/hitl/HITL-001.md
+    enforcement: {mode: manual, implementation: implemented}
+  - id: HITL-002
+    source: rules/hitl/HITL-002.md
+    enforcement: {mode: manual, implementation: implemented}
+  - id: HITL-003
+    source: rules/hitl/HITL-003.md
+    enforcement: {mode: manual, implementation: implemented}
+  - id: OBS-001
+    source: rules/observability/OBS-001.md
+    enforcement: {mode: validator, implementation: planned}
+  - id: PROJ-001
+    source: rules/project/PROJ-001.md
+    enforcement: {mode: ci, implementation: planned}
+  - id: REL-001
+    source: rules/reliability/REL-001.md
+    enforcement: {mode: ci, implementation: planned}
+  - id: RULE-001
+    source: rules/rule-system/RULE-001.md
+    enforcement: {mode: ci, implementation: planned}
+  - id: RULE-002
+    source: rules/rule-system/RULE-002.md
+    enforcement: {mode: validator, implementation: planned}
+  - id: RULE-003
+    source: rules/rule-system/RULE-003.md
+    enforcement: {mode: validator, implementation: planned}
+  - id: SEC-001
+    source: rules/security/SEC-001.md
+    enforcement: {mode: ci, implementation: planned}
+  - id: SEC-002
+    source: rules/security/SEC-002.md
+    enforcement: {mode: ci, implementation: planned}
+  - id: TOOL-001
+    source: rules/tooling/TOOL-001.md
+    enforcement: {mode: validator, implementation: planned}
+  - id: TOOL-002
+    source: rules/tooling/TOOL-002.md
+    enforcement: {mode: validator, implementation: planned}
+  - id: TOOL-003
+    source: rules/tooling/TOOL-003.md
+    enforcement: {mode: ci, implementation: planned}
+  - id: TOOL-004
+    source: rules/tooling/TOOL-004.md
+    enforcement: {mode: manual, implementation: implemented}
+  - id: TST-001
+    source: rules/testing/TST-001.md
+    enforcement: {mode: manual, implementation: implemented}
+  - id: TST-002
+    source: rules/testing/TST-002.md
+    enforcement: {mode: manual, implementation: implemented}
+  - id: TST-003
+    source: rules/testing/TST-003.md
+    enforcement: {mode: ci, implementation: planned}
+  - id: TST-004
+    source: rules/testing/TST-004.md
+    enforcement: {mode: ci, implementation: planned}
+  - id: TST-005
+    source: rules/testing/TST-005.md
+    enforcement: {mode: validator, implementation: planned}
+parameters:
+  check_mode_before_release: full
+  evidence_review: risk-and-change-triggered
+  sbom: required
+exceptions: []

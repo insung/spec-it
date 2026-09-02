@@ -1,0 +1,4 @@
+interface:
+  display_name: "Spec It: Converge"
+  short_description: "Project approved decisions into architecture artifacts"
+  default_prompt: "Use $spec-it-converge to resolve the approved spec into pinned project artifacts."

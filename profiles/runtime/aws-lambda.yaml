@@ -1,0 +1,23 @@
+schema_version: 0.1.0
+profile_id: runtime/aws-lambda
+axis: runtime
+version: 0.1.0
+status: active
+description: AWS Lambda runtime profile without deployment-tool coupling.
+applies_when:
+  - The deploy unit runs on AWS Lambda.
+rules:
+  - PROJ-002
+  - OBS-001
+  - TST-003
+  - TST-005
+parameters:
+  load_metrics:
+    - duration
+    - concurrency
+    - cold-start
+    - throttle
+    - unit-cost
+evidence:
+  integration: ephemeral-aws-stack-when-boundary-triggered
+conflicts: []
