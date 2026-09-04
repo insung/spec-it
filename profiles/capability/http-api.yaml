@@ -1,0 +1,34 @@
+schema_version: 0.1.0
+profile_id: capability/http-api
+axis: capability
+version: 0.2.0
+status: draft
+description: Versioned HTTP API with a machine-readable contract and explicit audience.
+applies_when:
+  - A deploy unit exposes an HTTP request and response contract.
+rules:
+  - ARCH-001
+  - ARCH-006
+  - API-001
+  - API-002
+  - API-003
+  - API-004
+  - API-005
+  - COMP-001
+  - MSG-001
+  - MSG-002
+  - TST-003
+  - TST-006
+parameters:
+  path_version: major-v-integer
+  static_path_case: lower-kebab-case
+  collection_number: plural
+  path_variable_case: lower-snake-case
+  query_parameter_case: lower-snake-case
+  owned_json_field_case: lower-snake-case
+  state_transition_method: POST
+  public_reference_renderer: scalar-allowed
+evidence:
+  contract: canonical-machine-readable-contract
+  integration: boundary-and-negative-access-tests
+conflicts: []

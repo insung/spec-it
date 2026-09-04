@@ -1,0 +1,29 @@
+schema_version: 0.1.0
+profile_id: capability/shared-domain-library
+axis: capability
+version: 0.2.0
+status: draft
+description: Reusable domain policy package with independently deployed consumers.
+applies_when:
+  - A domain library is released independently or consumed by more than one deploy unit.
+rules:
+  - ARCH-001
+  - ARCH-003
+  - ARCH-004
+  - ARCH-006
+  - COMP-001
+  - COMP-002
+  - TST-001
+  - TST-002
+parameters:
+  dependency_version: exact-pin
+  consumer_impact_states:
+    - update-required
+    - update-planned
+    - not-required
+    - impact-unknown
+  completion_state: verified
+evidence:
+  release: behavior-and-compatibility-impact
+  consumer: use-lock-build-deploy-and-verification
+conflicts: []

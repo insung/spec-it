@@ -1,8 +1,8 @@
 schema_version: 0.1.0
 profile_id: project-kind/serverless-function
 axis: project-kind
-version: 0.1.0
-status: active
+version: 0.2.0
+status: draft
 description: Independently deployable event or request function.
 applies_when:
   - The deploy unit is a serverless function.
@@ -10,6 +10,9 @@ rules:
   - ARCH-001
   - ARCH-002
   - ARCH-003
+  - ARCH-005
+  - MSG-001
+  - MSG-002
   - TST-001
   - TST-002
   - TST-003

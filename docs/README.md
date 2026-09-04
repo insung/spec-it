@@ -27,3 +27,7 @@
 21. [로드맵과 완료 조건](roadmap.md)
 22. [추가 학습 자료](further-reading.md)
 23. [규칙 추적성](traceability.md)
+24. [사용자 메시지·오류 계약과 실제 코드 검증](user-messages-and-errors.md) — 미발행 0.2.0 초안
+25. [API 설계와 전송 계약](api-design-and-lifecycle.md) — 미발행 0.2.0 초안
+26. [API 공개·문서화·수명주기](api-exposure-and-documentation.md) — 미발행 0.2.0 초안
+27. [공유 도메인 코어 라이브러리](domain-core-libraries.md) — 미발행 0.2.0 초안

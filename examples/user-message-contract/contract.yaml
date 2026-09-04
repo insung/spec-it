@@ -1,0 +1,85 @@
+# 가상 내보내기 기능. 실제 제품 정책 또는 실행 테스트 결과가 아니다.
+schema_version: 0.1.0
+contract_id: example-export
+contract_version: 0.1.0
+status: draft
+source:
+  mode: contract-first
+  canonical_path: examples/user-message-contract/contract.yaml
+owners:
+  intent: example-intent-owner
+  contract: example-contract-owner
+  content: example-content-owner
+transport: http
+default_locale: ko
+supported_locales: [ko, en]
+catalogs:
+  ko:
+    export.limit_exceeded: "한 번에 최대 {limit}개까지 내보낼 수 있습니다."
+    common.unknown: "처리 결과를 확인하지 못했습니다. 다시 실행하기 전에 내보내기 내역을 확인해 주세요."
+  en:
+    export.limit_exceeded: "You can export up to {limit} items at a time."
+    common.unknown: "The outcome could not be confirmed. Check your export history before trying again."
+unknown_outcome:
+  message_key: common.unknown
+  retry: never
+  user_action: Check export history without resubmitting the request.
+outcomes:
+  - code: EXPORT_LIMIT_EXCEEDED
+    kind: rejection
+    http_status: 409
+    audience: Authenticated user allowed to export these items and view the limit.
+    public_params:
+      limit: {type: integer, description: Maximum items allowed in this request; safe to disclose to this user.}
+    message:
+      key: export.limit_exceeded
+      show_when: The server returns this code for the active request in the open export dialog.
+      hide_when: The dialog is closed, the request is superseded, or another outcome was received; ignore duplicate responses for the same request.
+      priority: 10
+      clear_when: Clear on a new submission or dialog close; authentication loss takes priority and suppresses this message. Equal-priority duplicates keep the first message for that request.
+      user_action: Select no more than the returned limit and explicitly submit a new request.
+    telemetry:
+      event: export.rejected
+      level: info
+      fields: [code, request_id]
+    follow_up:
+      action: none
+      delivery: none
+      retry: never
+      retry_safety: Retrying the unchanged rejected request cannot fix the limit. A corrected explicit submission is a new request, not automatic retry.
+acceptance_cases:
+  - id: over-limit-ko
+    outcome_code: EXPORT_LIMIT_EXCEEDED
+    locale: ko
+    given: An authorized user has an active dialog with 11 permitted items selected; the current limit is 10.
+    when: Submit the export request and receive the server rejection before any export is created.
+    expected: {visible: true, message_key: export.limit_exceeded, retry: never}
+    test_ref: "not-implemented:over-limit-ko"
+  - id: over-limit-en
+    outcome_code: EXPORT_LIMIT_EXCEEDED
+    locale: en
+    given: The same authorized over-limit request uses English.
+    when: Receive the same code with integer limit 10.
+    expected: {visible: true, message_key: export.limit_exceeded, retry: never}
+    test_ref: "not-implemented:over-limit-en"
+  - id: inactive-dialog
+    outcome_code: EXPORT_LIMIT_EXCEEDED
+    locale: ko
+    given: The export dialog was closed after submission.
+    when: A delayed rejection arrives for that inactive request.
+    expected: {visible: false, message_key: null, retry: never}
+    test_ref: "not-implemented:inactive-dialog"
+  - id: unknown-code
+    outcome_code: FUTURE_EXPORT_FAILURE
+    locale: ko
+    given: A deployed older consumer has an active request and does not recognize the new code.
+    when: Receive an unknown code without rendering the raw server error.
+    expected: {visible: true, message_key: common.unknown, retry: never}
+    test_ref: "not-implemented:unknown-code"
+  - id: unsupported-locale
+    outcome_code: EXPORT_LIMIT_EXCEEDED
+    locale: fr
+    given: The client requests an unsupported locale and has an active over-limit request.
+    when: Receive the known code; select the declared default locale ko.
+    expected: {visible: true, message_key: export.limit_exceeded, retry: never}
+    test_ref: "not-implemented:unsupported-locale"

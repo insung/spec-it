@@ -7,3 +7,9 @@
 사용자·회사·권한처럼 서비스가 소유하는 업무 정보는 telemetry metadata가 아니라 업무 데이터 저장소의 대상입니다.
 
 정본 규칙: [OBS-001](../rules/observability/OBS-001.md), [OBS-002](../rules/observability/OBS-002.md).
+
+## 사용자 안내와 진단의 분리 — 미발행 0.2.0 초안
+
+[MSG-001](../rules/messages/MSG-001.md), [MSG-002](../rules/messages/MSG-002.md)는 내부 원인과 공개 결과를 분리합니다. API는 안전한 code·parameter·요청 추적 식별자를, 표현 계층은 사용자 안내를, 운영 경계는 비밀정보가 제거된 진단을 담당합니다. 예상된 한도 거절은 반드시 error 로그나 운영 알림을 뜻하지 않습니다. 기록 수준·샘플링·알림 조건은 프로젝트의 위험과 비용에 따라 정합니다.
+
+후속 작업은 로그를 파싱해서 실행하지 않습니다. [ARCH-005](../rules/architecture/ARCH-005.md)의 전달·재시도 정책과 실제 작업 상태가 정본입니다. 자세한 계약과 검증 흐름은 [사용자 메시지와 오류](user-messages-and-errors.md)를 봅니다.

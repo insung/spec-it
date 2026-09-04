@@ -7,6 +7,10 @@ description: Change the shared spec-it policy SSOT, profiles, schemas, or enforc
 
 Evolve the public policy source without turning every local preference into a universal rule. Project policy upgrades belong to a new clarify-and-converge run.
 
+## Conversation intake
+
+When the source is a conversation, review, retrospective, or bundle of mixed ideas, read [references/document-routing.md](references/document-routing.md) before proposing edits. Classify facts, questions, proposals, and approved decisions separately; route public obligations, conditional profiles, project decisions, and private context to different targets. Show the routing proposal before mutation and do not turn an unanswered question or AI recommendation into policy.
+
 ## Change standard
 
 Identify the demonstrated need, affected rules and profiles, false-positive or maintenance impact, compatibility effect, and SemVer result. A new profile needs an actual project need, a unique rule, a repeating independent axis, or a separate template or validator.

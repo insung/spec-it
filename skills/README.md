@@ -11,3 +11,5 @@ Phase 0는 다음 instruction-only 스킬을 제공합니다.
 | `spec-it:evolve` | `spec-it-evolve` | 공통 SSOT 진화 |
 
 `spec-it:*` namespace는 향후 plugin packaging에서 사용할 논리 이름입니다. Phase 0는 plugin을 배포하지 않으므로 개별 설치 시 실제 skill name은 하이픈 형식입니다.
+
+`spec-it:evolve`는 대화를 곧바로 한 문서로 옮기지 않습니다. [conversation routing procedure](spec-it-evolve/references/document-routing.md)에 따라 질문·제안·확정 결정과 공개 공통·조건부 profile·project-local·private context를 먼저 나눈 뒤 기존 정본을 갱신합니다.

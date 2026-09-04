@@ -5,3 +5,12 @@
 - `project/`: AGENTS, project, manifest, lock, ADR, change, exception, environment
 - `testing/`: integration과 load test 계획
 - `benchmarks/`: 인프라 유형별 측정 항목
+
+## 미발행 0.2.0 추가
+
+- [사용자 메시지 계약](project/user-message-contract.yaml): [schema](../schemas/user-message-contract.schema.json), [설명과 검증 방법](../docs/user-messages-and-errors.md), [가상 fixture](../examples/user-message-contract/README.md).
+- [통합 테스트 계획](testing/integration-test-plan.md): 트랜잭션·프로시저·공개 결과·메시지의 적용 가능한 검사 항목.
+- [API 계약 결정](project/api-contract-decision.md): protocol, resource·command 분류, DTO mapping, audience, lifecycle과 검증 선택.
+- [공유 코어 영향 평가](project/core-library-impact.yaml): release가 한 consumer의 고정 버전·배포·검증에 미치는 영향과 진행 상태.
+
+`schema_version`은 파일 형식, `contract_version`은 프로젝트의 결과 계약, 정책 버전은 규칙 묶음의 버전입니다. 숫자가 같을 필요는 없습니다. 새 템플릿은 승인된 실제 업무 명세가 아니며 placeholder와 `not-implemented` 사례를 실제 프로젝트에서 구체화합니다.

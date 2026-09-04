@@ -11,6 +11,12 @@ Create the smallest durable statement of intent that can be clarified and verifi
 
 Read the project's `AGENTS.md`, `.architecture/project.md`, `manifest.yaml`, `lock.yaml`, and relevant accepted ADRs. Resolve policy rules from the exact `policy.version`; do not copy policy text into the project.
 
+## Minimal entry
+
+A short user intent is sufficient. Do not require the user to know profile names, rule IDs, or architecture vocabulary. Discover repository facts first, then explain the recommended scope and profiles in terms of their practical effect.
+
+Treat a request to add or change a route, controller, transport DTO, OpenAPI or protobuf schema, WebSocket or SSE message, public error, or other observable contract as a material `change` trigger even when the user did not explicitly ask to run spec-it. Before implementation, map the requested and touched surfaces to the pinned rule IDs. If the required capability is not selected, record that as a decision for `spec-it:clarify`; do not silently extend the project profile.
+
 ## Scope
 
 - Use `project` scope for a new baseline or a project-wide architecture change.

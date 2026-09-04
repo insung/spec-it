@@ -1,0 +1,32 @@
+schema_version: 0.1.0
+policy_version: 0.2.0
+library:
+  name: <library-name>
+  previous_version: <exact-version>
+  target_version: <exact-version>
+  release_reference: <release-or-commit>
+  changed_capabilities:
+    - <capability-and-observable-change>
+  compatibility: <compatible-or-breaking-with-reason>
+  security_data_support_impact: <impact-or-none-with-evidence>
+consumer:
+  name: <deploy-unit>
+  repository: <repository-reference>
+  current_pinned_version: <exact-version>
+  used_capabilities:
+    - <capability-and-use-evidence>
+assessment:
+  decision: <update-required|update-planned|not-required|impact-unknown>
+  rationale: <why>
+  owner: <responsible-human>
+  due_or_review_trigger: <risk-based-date-or-condition>
+  temporary_mitigation: <approved-exception-reference-or-not-applicable>
+progress:
+  state: <observed|assessed|update-planned|merged|deployed|verified>
+  consumer_commit_and_lock: <reference-or-not-yet>
+  build_artifact: <immutable-identity-or-not-yet>
+  deployment_environment_and_identity: <reference-or-not-yet>
+verification:
+  contract_and_regression_tests: <references-or-not-yet>
+  deployed_version_observation: <reference-or-not-yet>
+  verified_by: <human-or-independent-context-or-not-yet>

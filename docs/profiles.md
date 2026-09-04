@@ -14,6 +14,8 @@ profiles/
 
 예를 들어 Python Lambda는 `risk/standard + project-kind/serverless-function + language/python + runtime/aws-lambda + deployment/sam`으로 표현합니다. RDS, Redis, OpenTelemetry 같은 능력은 필요할 때 capability 축에서 추가합니다.
 
+HTTP API와 공유 domain library도 각각 `capability/http-api`, `capability/shared-domain-library`로 선택합니다. backend라는 이유만으로 HTTP 규칙을 적용하지 않습니다. protobuf·WebSocket profile은 실제 project에서 고유 규칙이나 validator가 필요해질 때 추가합니다.
+
 새 프로필은 실제 프로젝트의 필요, 고유 규칙, 반복되는 독립 축, 별도 템플릿·validator 중 적어도 하나가 있을 때 추가합니다. 프로필의 필수 규칙이 충돌하면 조용한 우선순위를 만들지 않고 `spec-it:clarify`가 사람 결정을 요청합니다.
 
 프로필은 규칙 본문을 복사하지 않고 규칙 ID, parameter default, evidence freshness, conflict declaration만 보유합니다. 형식은 [profile schema](../schemas/profile.schema.json)가 정합니다.

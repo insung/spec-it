@@ -11,3 +11,7 @@
 | `expired-exception` | fail because the exception is expired |
 | `profile-conflict` | human-review because two risk profiles are selected |
 | `check-report` | valid report that keeps a planned check at human-review |
+
+## 미발행 0.2.0 추가
+
+[user-message-contract](user-message-contract/README.md)는 가상 내보내기 한도 오류·번역·비노출·모르는 code/locale의 작은 계약 예입니다. schema 검사와 실제 동작 검증을 구분하며 실행 테스트는 없습니다. 기존 0.1.0 manifest fixture는 해당 기준선용으로 유지합니다. 수정된 draft 프로필로 자동 재해석하지 않습니다.

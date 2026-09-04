@@ -1,0 +1,474 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-it.example/schemas/user-message-contract.schema.json",
+  "title": "spec-it user message contract (unreleased policy 0.2.0 draft)",
+  "description": "Structure only; condition prose is not executable. Code/key/locale/parameter references and actual behavior require separate checks. Every declared public parameter is required; complex/optional parameters belong in the project's authoritative API schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_id",
+    "contract_version",
+    "status",
+    "source",
+    "owners",
+    "transport",
+    "default_locale",
+    "supported_locales",
+    "catalogs",
+    "unknown_outcome",
+    "outcomes",
+    "acceptance_cases"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "contract_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "contract_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "approved"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "canonical_path"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "contract-first",
+            "code-first"
+          ]
+        },
+        "canonical_path": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "owners": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "intent",
+        "contract",
+        "content"
+      ],
+      "properties": {
+        "intent": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contract": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "transport": {
+      "enum": [
+        "http",
+        "cli",
+        "event",
+        "notification",
+        "other"
+      ]
+    },
+    "default_locale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "supported_locales": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "catalogs": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "minProperties": 1,
+        "additionalProperties": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "unknown_outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "message_key",
+        "retry",
+        "user_action"
+      ],
+      "properties": {
+        "message_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retry": {
+          "const": "never"
+        },
+        "user_action": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "outcomes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/outcome"
+      }
+    },
+    "acceptance_cases": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "outcome_code",
+          "locale",
+          "given",
+          "when",
+          "expected",
+          "test_ref"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "outcome_code": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]*$"
+          },
+          "locale": {
+            "type": "string",
+            "minLength": 1
+          },
+          "given": {
+            "type": "string",
+            "minLength": 1
+          },
+          "when": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expected": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "visible",
+              "message_key",
+              "retry"
+            ],
+            "properties": {
+              "visible": {
+                "type": "boolean"
+              },
+              "message_key": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "retry": {
+                "enum": [
+                  "never",
+                  "manual",
+                  "automatic"
+                ]
+              }
+            }
+          },
+          "test_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "transport": {
+            "const": "http"
+          }
+        },
+        "required": [
+          "transport"
+        ]
+      },
+      "then": {
+        "properties": {
+          "outcomes": {
+            "items": {
+              "required": [
+                "http_status"
+              ]
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "outcomes": {
+            "items": {
+              "not": {
+                "required": [
+                  "http_status"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "kind",
+        "audience",
+        "public_params",
+        "message",
+        "telemetry",
+        "follow_up"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]*$"
+        },
+        "kind": {
+          "enum": [
+            "success",
+            "progress",
+            "rejection",
+            "failure"
+          ]
+        },
+        "http_status": {
+          "type": "integer",
+          "minimum": 200,
+          "maximum": 599
+        },
+        "audience": {
+          "type": "string",
+          "minLength": 1
+        },
+        "public_params": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "type",
+              "description"
+            ],
+            "properties": {
+              "type": {
+                "enum": [
+                  "string",
+                  "integer",
+                  "number",
+                  "boolean"
+                ]
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "message": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "key",
+            "show_when",
+            "hide_when",
+            "priority",
+            "clear_when",
+            "user_action"
+          ],
+          "properties": {
+            "key": {
+              "type": "string",
+              "minLength": 1
+            },
+            "show_when": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hide_when": {
+              "type": "string",
+              "minLength": 1
+            },
+            "priority": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "clear_when": {
+              "type": "string",
+              "minLength": 1
+            },
+            "user_action": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "telemetry": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "event",
+            "level",
+            "fields"
+          ],
+          "properties": {
+            "event": {
+              "type": "string",
+              "minLength": 1
+            },
+            "level": {
+              "enum": [
+                "none",
+                "debug",
+                "info",
+                "warn",
+                "error"
+              ]
+            },
+            "fields": {
+              "type": "array",
+              "minItems": 0,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          }
+        },
+        "follow_up": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "action",
+            "delivery",
+            "retry",
+            "retry_safety"
+          ],
+          "properties": {
+            "action": {
+              "type": "string",
+              "minLength": 1
+            },
+            "delivery": {
+              "enum": [
+                "none",
+                "best-effort",
+                "durable"
+              ]
+            },
+            "retry": {
+              "enum": [
+                "never",
+                "manual",
+                "automatic"
+              ]
+            },
+            "retry_safety": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "enum": [
+                  "rejection",
+                  "failure"
+                ]
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "http_status": {
+                "minimum": 400
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "enum": [
+                  "success",
+                  "progress"
+                ]
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "http_status": {
+                "maximum": 299
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

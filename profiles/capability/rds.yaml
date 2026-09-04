@@ -1,14 +1,16 @@
 schema_version: 0.1.0
 profile_id: capability/rds
 axis: capability
-version: 0.1.0
-status: active
+version: 0.2.0
+status: draft
 description: Relational primary data storage capability.
 applies_when:
   - The project stores relational or transactional business data.
 rules:
   - DATA-001
   - DATA-004
+  - DATA-007
+  - ARCH-005
   - REL-001
   - TST-003
   - TST-005
