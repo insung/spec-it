@@ -21,6 +21,8 @@ Create or update:
 - `.architecture/decisions/` for durable tradeoffs and revisit triggers;
 - the managed block of `AGENTS.md`, preserving the user-owned block.
 
+For executable source, project the repository-owned lint contract: tools or compiler evidence, configuration, commands, source scope, and CI target state. For infrastructure profiles, project approved guardrails and revisit thresholds into manifest parameters and keep evidence and tradeoffs in ADRs. Do not copy common profile prose or invent numeric defaults.
+
 In a monorepo keep shared choices in the root manifest and differences in deploy-unit manifests. Detect profile conflicts; never invent silent precedence.
 
-Because Phase 0 has no lock generator, label deterministic-lock evidence `human-review` and do not claim byte reproducibility was mechanically proved. Report every file changed and hand off to `spec-it:check`.
+Ensure the managed `AGENTS.md` block tells agents to perform task-start preflight, material-signal re-evaluation, and pre-completion diff checking. Because Phase 0 has no lock generator, label deterministic-lock evidence `human-review` and do not claim byte reproducibility was mechanically proved. Report every file changed and hand off to `spec-it:check`.

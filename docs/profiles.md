@@ -19,3 +19,20 @@ HTTP API와 공유 domain library도 각각 `capability/http-api`, `capability/s
 새 프로필은 실제 프로젝트의 필요, 고유 규칙, 반복되는 독립 축, 별도 템플릿·validator 중 적어도 하나가 있을 때 추가합니다. 프로필의 필수 규칙이 충돌하면 조용한 우선순위를 만들지 않고 `spec-it:clarify`가 사람 결정을 요청합니다.
 
 프로필은 규칙 본문을 복사하지 않고 규칙 ID, parameter default, evidence freshness, conflict declaration만 보유합니다. 형식은 [profile schema](../schemas/profile.schema.json)가 정합니다.
+
+## Infrastructure trait
+
+runtime·deployment·capability profile이 구체적인 인프라 판단을 제공하면 `traits: [infrastructure]`를 선언하고 다음 구조를 모두 제공합니다.
+
+- activation signals
+- required decisions
+- failure scenarios
+- cost drivers
+- measurements
+- guardrails
+- evidence stages
+- revisit triggers
+
+공통 프로필은 관찰할 항목을 정하고 숫자를 보편값으로 고정하지 않습니다. 프로젝트 manifest와 ADR이 risk, workload, SLO와 예산에 맞는 threshold를 승인합니다. 첫 reference는 `runtime/aws-lambda`와 `capability/redis`이며, 다른 인프라 프로필은 실제 적용 사례에서 이 구조가 필요해질 때 같은 계약으로 진화시킵니다.
+
+정본 규칙: [INFRA-001](../rules/infrastructure/INFRA-001.md), [INFRA-002](../rules/infrastructure/INFRA-002.md).

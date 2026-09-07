@@ -7,7 +7,9 @@
 | rule identity and enforcement | each `rules/<category>/<ID>.md` front matter |
 | document → rule | relative links in `docs/` |
 | profile → rule | each `profiles/<axis>/<name>.yaml` `rules` array |
+| infrastructure profile → decision and evidence shape | profile `traits` and `evaluation` block |
 | project → profile | `.architecture/manifest.yaml` |
+| project → thresholds and guardrails | manifest `parameters` and linked ADRs |
 | project → resolved rule | `.architecture/lock.yaml` |
 | rule → expected evidence | rule front matter `evidence` |
 | validator status | rule front matter `enforcement.implementation` |

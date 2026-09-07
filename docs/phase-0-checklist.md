@@ -19,3 +19,13 @@
 - [x] 링크와 목차가 완전하다.
 - [x] 회사·개인 비공개 정보가 없다.
 - [x] 애플리케이션 코드와 실행 validator가 없다.
+
+## Unreleased 0.2.0 delta
+
+이 절은 기존 `0.1.0` 완료 판정을 바꾸지 않습니다. `0.2.0` 후보를 릴리스하려면 별도의 종료 검토에서 다음 항목을 다시 증명합니다.
+
+- [ ] code 의미 규칙과 language profile의 syntax·tool 선택이 중복 없이 연결된다.
+- [ ] infrastructure trait profile이 완전한 evaluation block으로 schema validation을 통과한다.
+- [ ] 작업 시작·material signal·완료 전 diff·CI changed-file checkpoint가 스킬과 프로젝트 진입점에서 일치한다.
+- [ ] brownfield 기존 위반과 새 위반이 검사 결과에서 구분된다.
+- [ ] VERSION, migration, project reconvergence와 release 승인이 완료된다.

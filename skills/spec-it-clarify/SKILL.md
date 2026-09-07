@@ -23,10 +23,14 @@ Batch the whole current frontier. Number questions stably, give a recommended an
 
 Ask in the user's language, not in policy vocabulary. For every question explain why the decision is needed now, the recommended default, the cost or risk of each meaningful option, and which artifact or implementation boundary will change. Do not dump every applicable rule when a smaller decision package is sufficient.
 
+Validate discoverable technical claims before presenting a choice. If a human's rationale does not match the observed topology, platform behavior, or evidence, explain the mismatch and compare feasible alternatives instead of recording the rationale as fact. The human keeps the final choice, but do not converge a choice that violates an approved hard constraint or SLO.
+
+For an infrastructure profile, ask only missing required decisions and project-owned thresholds from its evaluation block. A revisit trigger that remains inside an approved guardrail is a reportable observation, not a new question.
+
 For a broad request such as “build a Lambda,” first discover available repository and environment facts. Ask only the unresolved choices needed to select profiles and make behavior, security, data, cost, deployment, and operational boundaries testable. A request to use the recommendations is valid only for the explicitly shown frontier; it is not blanket approval for later material decisions.
 
 ## Stop conditions
 
 Use the decision package required by `HITL-002` for material choices. Do not converge while observable behavior, security, data, or cost has an unresolved decision. Harmless details may be deferred only with reason and a review trigger.
 
-Finish with a decision ledger, zero-material-open confirmation, selected profiles pending human confirmation, and the next action `spec-it:converge`.
+Finish with a decision ledger, zero-material-open confirmation, selected profiles and infrastructure thresholds pending human confirmation, and the next action `spec-it:converge`.

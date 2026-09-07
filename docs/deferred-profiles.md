@@ -10,3 +10,5 @@
 | embedded | 실제 board·firmware 프로젝트가 정책을 채택할 때 | HAL, timing, memory, power, toolchain, board revision, SIL/HIL, safety level |
 
 상세 규칙은 실제 사용 사례 없이 미리 만들지 않습니다.
+
+frontend 전용 profile이 보류되어도 [공통 코드 의미 규칙](code-conventions.md)은 frontend의 project-owned identifier, component, hook, event handler, state와 collection에 적용할 수 있습니다. 실제 TypeScript·JavaScript·Kotlin 등 language profile이 추가될 때 해당 생태계의 casing, formatter, linter와 type checker를 연결합니다.

@@ -19,11 +19,16 @@ rules:
   - TST-003
   - OBS-001
   - CODE-001
+  - CODE-002
+  - CODE-003
+  - CODE-004
+  - REL-002
   - CICD-001
   - CICD-002
 parameters:
   integration_boundary_trigger: required
   module_style: feature-or-domain
+  availability_decision_before_platform: required
 evidence:
   integration: external-boundary-change
 conflicts: []

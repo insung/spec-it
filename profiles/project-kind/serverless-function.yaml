@@ -18,9 +18,14 @@ rules:
   - TST-003
   - OBS-001
   - CODE-001
+  - CODE-002
+  - CODE-003
+  - CODE-004
+  - REL-002
   - CICD-001
   - CICD-002
 parameters:
+  availability_decision_before_platform: required
   integration_levels:
     unit: fixtures-and-fakes
     component: local-runtime-or-container

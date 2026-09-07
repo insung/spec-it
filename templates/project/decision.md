@@ -13,6 +13,14 @@ review_triggers: []
 
 <Problem, evidence, and hard constraints>
 
+## Requirements and failure scenarios
+
+- Observable requirement or SLO: <target>
+- Allowed downtime or loss: <budget>
+- Traffic and workload assumptions: <shape and bounds>
+- Failure domains and scenarios: <host, zone, dependency, deployment, data>
+- Operations owner and recovery path: <owner and method>
+
 # Options
 
 | Option | Money | Human and AI time | Operations | Risk | Rollback |
@@ -31,5 +39,10 @@ review_triggers: []
 
 # Evidence and review
 
-- Evidence: <test, benchmark, incident, or source>
-- Review trigger: <traffic, SLO, operations, cost, or date>
+- Estimate: <workload and cost assumptions before implementation>
+- Development benchmark: <local or synthetic result, when applicable>
+- Non-production observation: <real metrics and cost, when applicable>
+- Pre-production risk test: <availability, load, or recovery evidence required by risk>
+- Operations evidence: <production signal or not-yet-available>
+- Guardrails: <approved thresholds and hard constraints>
+- Review trigger: <traffic, SLO, operations, cost, dependency, payload, topology, or date>

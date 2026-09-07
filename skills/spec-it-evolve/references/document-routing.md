@@ -26,7 +26,9 @@ Do not infer approval from agreement with a nearby statement, implementation pro
 5. Put reasoning, relationships, and choice guidance in `docs/`; it cannot create an obligation.
 6. Put machine-readable artifact shape in `schemas/` and a disposable starting copy in `templates/` only when a real repeated artifact needs it.
 7. Put one project's version, cost, endpoint inventory, LTS duration, and exception in that project's manifest, ADR, contract, or change spec rather than public defaults.
-8. Keep raw discussion, unsupported speculation, and duplicated summaries out of the SSOT.
+8. Put language-neutral identifier meaning and layer-boundary semantics in common code rules; put casing, formatter, linter, compiler, and type-checker choices in language profiles.
+9. Put technology-specific activation signals, decisions, failures, cost drivers, measurements, guardrails, evidence stages, and revisit triggers in an infrastructure profile. Put actual numeric thresholds and accepted risk in the project manifest or ADR.
+10. Keep raw discussion, unsupported speculation, and duplicated summaries out of the SSOT.
 
 If several topics appear in one conversation, route them independently. If one topic affects several canonical sources, identify one source of meaning and update only its projections and links.
 
@@ -51,3 +53,5 @@ When the human delegates ordinary remaining choices to recommendations, record t
 - “This service promises two years of LTS” is project-local even when lifecycle metadata is a common obligation.
 - “Our company once stored policy in procedures” is private context. A generalized approved boundary may become an architecture or data rule without copying the company case.
 - “A shared domain release changed approval calculation” routes release impact to compatibility policy and each consumer's assessment to project artifacts; it does not force unrelated consumers to update.
+- “A Python function was named with a non-English identifier” can demonstrate a common English-identifier need, while `snake_case` and Ruff remain Python-profile choices; the one function name is not copied as universal prose.
+- “An API service must never go down, so use platform X” is unresolved until availability, topology, failure, operations, and cost assumptions are checked; the provider name is not a common default.

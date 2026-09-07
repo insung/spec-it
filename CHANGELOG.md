@@ -14,6 +14,9 @@
 - 격리된 통합 환경과 production-derived data 안전 `TST-006`, 공유 core consumer update 추적 `COMP-002`.
 - API 설계·공개·수명주기, 공유 도메인 core library 문서와 `http-api`, `shared-domain-library` capability 초안.
 - API contract 결정과 core library consumer impact 시작 템플릿, 대화를 정본으로 분류하는 `spec-it:evolve` reference.
+- 영어 project identifier와 의미 중심 이름 `CODE-002`·`CODE-003`, 계층 경계의 이름 있는 계약 `CODE-004`, 언어별 lint contract `TOOL-005`.
+- 인프라 평가 구조와 bounded 재판정 `INFRA-001`·`INFRA-002`, 플랫폼 선택 전 가용성 계약 `REL-002`, 측정 기반 물리 저장 축약 `DATA-008`.
+- 공통 코딩 컨벤션과 AI agent 작업 주기 문서.
 
 ### Changed
 
@@ -21,6 +24,8 @@
 - 아키텍처·관측·호환성·프로필 설명과 통합 테스트 계획에 관련 경계와 검사 항목 추가.
 - README에 처음 쓰는 사용자의 최소 요청과 AI가 고정된 규칙을 발견하는 작업 흐름을 추가하고, Phase 0 checklist의 `0.1.0` 종료 증거 범위를 명확히 함.
 - `spec-it:specify`, `clarify`, `check`가 짧은 요청에서 변경 trigger를 찾고 규칙의 이유·영향·예외를 사용자에게 설명하도록 절차를 보완함.
+- Python을 Ruff 기반 lint contract와 공통 code 의미 규칙에 연결하고, Lambda·Redis를 첫 infrastructure trait reference profile로 확장함.
+- 다섯 instruction-only 스킬과 프로젝트 AGENTS template에 preflight, material-signal 재판정, 완료 전 diff 검사와 최소 human interruption 경계를 연결함.
 
 ### Compatibility and enforcement
 

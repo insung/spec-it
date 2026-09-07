@@ -17,7 +17,7 @@
 
 ### 미발행 작업 트리
 
-트랜잭션·프로시저·사용자 메시지·API 계약·전송 DTO·통합 환경·공유 도메인 library 규칙과 관련 프로필에 `0.2.0` draft가 추가되어 있습니다. `VERSION`과 기존 프로젝트 manifest/lock은 `0.1.0` 그대로이며 이번 작업은 릴리스나 프로젝트 업그레이드가 아닙니다. 이 작업 트리를 고정된 0.1.0 정책 원본으로 대신 사용하지 않습니다. 기존 기준선은 해당 Git revision에서 읽고, 새 정책 채택은 별도 승인과 재수렴을 거칩니다.
+트랜잭션·프로시저·사용자 메시지·API 계약·전송 DTO·통합 환경·공유 도메인 library와 함께 코드 의미·lint 계약·구현 중 인프라 재판정 규칙 및 관련 프로필에 `0.2.0` draft가 추가되어 있습니다. `VERSION`과 기존 프로젝트 manifest/lock은 `0.1.0` 그대로이며 이번 작업은 릴리스나 프로젝트 업그레이드가 아닙니다. 이 작업 트리를 고정된 0.1.0 정책 원본으로 대신 사용하지 않습니다. 기존 기준선은 해당 Git revision에서 읽고, 새 정책 채택은 별도 승인과 재수렴을 거칩니다.
 
 [사용자 메시지와 오류 계약](docs/user-messages-and-errors.md)의 「문서와 코드가 다르지 않은지 어떻게 확인하나」에서 실제 코드 검증 절차와 Phase 0의 한계를 확인할 수 있습니다. 새 schema의 구조 검사 성공은 실제 애플리케이션 준수 판정이 아닙니다.
 
@@ -48,14 +48,19 @@ spec-it은 AI의 기억이나 긴 프롬프트에 의존하지 않습니다. 프
   -> AGENTS.md
   -> .architecture/manifest.yaml
   -> .architecture/lock.yaml의 적용 규칙 ID
+  -> 작업 시작 profile preflight
   -> 활성 변경 명세와 결정 기록
   -> 구현
+  -> material signal이 있을 때만 profile 재판정
+  -> 완료 전 실제 diff 검사
   -> spec-it:check
 ```
 
 예를 들어 사용자가 단순히 “가입 승인 API 엔드포인트를 만들어줘”라고 요청해도 AI는 router/controller, 전송 DTO, OpenAPI 같은 공개 계약의 추가를 `change` 범위 trigger로 판정해야 합니다. 구현 전에 잠긴 `http-api` 관련 규칙을 읽고, 승인이라는 동작의 의미·접근 권한·멱등성·공개 범위처럼 코드에서 발견할 수 없는 결정만 `spec-it:clarify`로 돌려보냅니다. 결정이 수렴한 뒤 path·method·DTO 경계·계약 테스트를 구현하고, `spec-it:check`에서 실제 변경과 규칙을 대조합니다.
 
 `AGENTS.md`를 자동으로 읽지 않는 AI 도구에는 해당 파일부터 읽으라는 adapter 또는 시작 요청이 필요합니다. Phase 0은 이 절차를 문서와 instruction-only 스킬로 제공할 뿐 자동 차단하지 않습니다. validator와 CI가 구현되는 다음 단계부터 위반을 기계적으로 막을 수 있습니다.
+
+AI에게는 “이 프로젝트의 `AGENTS.md`와 연결된 spec-it 정책을 먼저 읽고, 적용 규칙과 필요한 인간 결정을 알려준 뒤 작업하며, 완료 전 `spec-it:check` 기준으로 검사해줘” 정도면 충분합니다. 프로젝트가 아직 정책을 채택하지 않았다면 먼저 읽기 전용 shadow assessment를 수행합니다. 자세한 checkpoint는 [agent work cycle](docs/agent-work-cycle.md)에 있습니다.
 
 ## 시작점
 
@@ -64,6 +69,7 @@ spec-it은 AI의 기억이나 긴 프롬프트에 의존하지 않습니다. 프
 3. [프로필](docs/profiles.md)에서 평평한 합성 모델을 선택합니다.
 4. [규칙 색인](rules/README.md)에서 적용 규칙을 확인합니다.
 5. [스킬](skills/README.md)로 명세·명확화·수렴·검사·진화를 수행합니다.
+6. [AI agent 작업 주기](docs/agent-work-cycle.md)에서 작업 전·중·후 재판정 경계를 확인합니다.
 
 ## 저장소 지도
 

@@ -1,16 +1,26 @@
 schema_version: 0.1.0
 profile_id: capability/redis
 axis: capability
-version: 0.1.0
-status: active
+version: 0.2.0
+status: draft
 description: Derived or temporary in-memory data capability.
+traits:
+  - infrastructure
 applies_when:
   - The project uses Redis for cache, lock, rate limit, or temporary state.
 rules:
   - DATA-003
+  - DATA-008
+  - INFRA-001
+  - INFRA-002
   - TST-003
   - TST-005
 parameters:
+  project_thresholds:
+    memory_budget: required
+    eviction_tolerance: required
+    hit_ratio_target: required-when-cache
+    stale_tolerance: required
   load_metrics:
     - memory
     - eviction
@@ -19,4 +29,39 @@ parameters:
     - unit-cost
 evidence:
   data-policy: source-of-truth-ttl-eviction-recovery-staleness
+evaluation:
+  activation_signals:
+    - Redis client, endpoint, key, value, TTL, lock, rate limit, or cache behavior is added or changed.
+    - Stored payload shape, cardinality, persistence, replication, or eviction policy changes.
+  required_decisions:
+    - why Redis is needed instead of process memory, database, queue, or direct computation
+    - source of truth, loss tolerance, stale tolerance, miss recovery, and ownership
+    - key cardinality, key and value size, TTL, eviction, and invalidation policy
+    - persistence, replication, failover, privacy, deletion, and unit-cost budgets
+  failure_scenarios:
+    - eviction, expiration, stale reads, or unavailable cache
+    - stampede, hot key, connection exhaustion, or failover reconnect
+    - lock loss, duplicate work, or rate-limit inconsistency
+    - durable business truth lost from an unsupported Redis-only design
+  cost_drivers:
+    - key and value bytes, object overhead, cardinality, replicas, and fragmentation
+    - network transfer, operations, persistence, backup, and recovery time
+  measurements:
+    - key and value size distribution, cardinality, used memory, and fragmentation
+    - hit and miss ratio, eviction, TTL distribution, latency, and connection count
+    - growth rate, failover recovery, unit cost, and operations time
+  guardrails:
+    - project-approved memory, cardinality, eviction, staleness, and unit-cost thresholds
+    - recoverable source of truth or an approved durable-state exception
+    - bounded TTL and deletion behavior for stored data
+  evidence_stages:
+    - estimate
+    - development-benchmark
+    - non-production-observation
+    - pre-production-risk-test
+    - operations
+  revisit_triggers:
+    - memory, cardinality, eviction, miss ratio, latency, or unit cost crosses a project threshold
+    - payload fields, TTL, persistence, replication, source of truth, or recovery path changes
+    - a cache becomes required for correctness or a temporary value becomes durable business state
 conflicts: []

@@ -12,6 +12,8 @@
 
 추가 의무가 있는 수정 프로필은 `0.2.0`의 `draft`입니다. 기존 `0.1.0` 프로젝트와 예제 manifest/lock은 그대로 둡니다. 정책 배포와 프로젝트별 재명확화·재수렴은 별도 승인 작업이며, 이 작업 트리를 `0.1.0` 정본으로 대신 사용하지 않습니다.
 
+코드 의미·lint·가용성·인프라 재판정 규칙을 연결한 `backend-service`, `serverless-function`, `python`, `aws-lambda`, `redis`도 0.2.0 draft 후보입니다. 프로젝트가 새 정책을 승인하기 전에는 기존 이름을 일괄 수정하거나 project-owned threshold를 공통 기본값으로 채우지 않습니다. 재수렴 시 lint contract, 관련 infrastructure evaluation, 실제 threshold와 brownfield remediation 경계를 별도로 결정합니다.
+
 ## 공유 core library — 미발행 0.2.0 초안
 
 [COMP-002](../rules/compatibility/COMP-002.md)는 새 release 자체를 모든 consumer의 update 명령으로 취급하지 않습니다. library가 바꾼 capability와 동작을 공개하고, 각 알려진 consumer는 `update-required`, `update-planned`, `not-required`, `impact-unknown` 중 하나와 근거·owner·위험 기반 기한을 기록합니다.

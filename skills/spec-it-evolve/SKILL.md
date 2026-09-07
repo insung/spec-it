@@ -15,6 +15,8 @@ When the source is a conversation, review, retrospective, or bundle of mixed ide
 
 Identify the demonstrated need, affected rules and profiles, false-positive or maintenance impact, compatibility effect, and SemVer result. A new profile needs an actual project need, a unique rule, a repeating independent axis, or a separate template or validator.
 
+Route language-neutral naming and boundary meaning to common code rules, language syntax and tool choice to language profiles, concrete infrastructure questions to infrastructure profile evaluation blocks, project thresholds to project manifests or ADRs, and observed project violations to check evidence. Do not create a universal rule from one identifier, provider, framework, or cost number.
+
 Keep one rule ID per Markdown file. Never reuse an ID or silently change its meaning. Every rule has a one-sentence rationale and `origin.type`; add a detailed external reference only for standards, measurements, incidents, enforcement changes, or disputed rules where evidence matters.
 
 Update linked profiles, schemas, examples, index links, changelog, and migration guidance in the same change. Enforcement may be promoted or demoted with evidence and approval. Security or data-loss prevention can become an immediate automation candidate; ordinary policy becomes an automation candidate after the same violation appears in at least two independent tasks.

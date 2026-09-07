@@ -1,15 +1,21 @@
 schema_version: 0.1.0
 profile_id: language/python
 axis: language
-version: 0.1.0
-status: active
+version: 0.2.0
+status: draft
 description: Python source and packaging conventions.
 applies_when:
   - The deploy unit contains production Python code.
 rules:
   - CODE-001
+  - CODE-002
+  - CODE-003
+  - CODE-004
   - SEC-002
+  - TOOL-005
 parameters:
+  identifier_language: english
+  naming_syntax: pep-8
   public_contract_documentation: docstring
   docstring_style: pep-257-compatible
   document_public_modules: purpose-and-boundary
@@ -17,8 +23,15 @@ parameters:
   document_public_functions: inputs-outputs-errors-side-effects
   signature_detail: omit-types-already-expressed-by-type-hints
   inline_comment_policy: reasons-constraints-non-obvious-branches-only
+  formatter: ruff-format
+  linter: ruff-check
+  lint_configuration: repository-owned
+  lint_scope: project-owned-python-source
+  lint_local_command: project-declared
+  lint_ci_target: required
   dependency_lock: required
   type_checking: project-risk-defined
 evidence:
   comments: public-module-class-function-contracts
+  lint: repository-command-and-configuration
 conflicts: []

@@ -1,7 +1,7 @@
 schema_version: 0.1.0
 policy:
   source: https://example.invalid/spec-it.git
-  version: 0.1.0
+  version: 0.2.0
 project:
   id: example-project
   name: Example Project
@@ -15,6 +15,12 @@ owners:
   architecture-owner: owner
   security-owner: owner
   data-owner: owner
-parameters: {}
+parameters:
+  lint:
+    configuration: <repository-owned-path>
+    local_commands: []
+    source_scope: []
+    ci_target: planned
+  infrastructure_revisit_thresholds: {}
 exceptions: []
 units: []

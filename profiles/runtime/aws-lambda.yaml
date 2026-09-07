@@ -1,17 +1,29 @@
 schema_version: 0.1.0
 profile_id: runtime/aws-lambda
 axis: runtime
-version: 0.1.0
-status: active
+version: 0.2.0
+status: draft
 description: AWS Lambda runtime profile without deployment-tool coupling.
+traits:
+  - infrastructure
 applies_when:
   - The deploy unit runs on AWS Lambda.
 rules:
+  - COST-001
+  - COST-002
+  - INFRA-001
+  - INFRA-002
   - PROJ-002
+  - REL-002
   - OBS-001
   - TST-003
   - TST-005
 parameters:
+  project_thresholds:
+    timeout_headroom: required
+    memory_headroom: required
+    concurrency_budget: required
+    unit_cost_budget: required
   load_metrics:
     - duration
     - concurrency
@@ -20,4 +32,41 @@ parameters:
     - unit-cost
 evidence:
   integration: ephemeral-aws-stack-when-boundary-triggered
+evaluation:
+  activation_signals:
+    - Lambda handler, runtime configuration, event source, or SAM resource is added or changed.
+    - Timeout, memory, concurrency, retry, VPC, log, or downstream behavior changes.
+  required_decisions:
+    - synchronous, asynchronous, or event-source invocation contract
+    - timeout chain and downstream deadline ownership
+    - retry, idempotency, dead-letter, and partial-failure behavior
+    - memory, CPU, concurrency, logging, and unit-cost budgets
+  failure_scenarios:
+    - timeout or retry amplification
+    - throttling or downstream saturation
+    - partial batch failure or duplicate delivery
+    - cold-start, VPC, secret, or configuration failure
+  cost_drivers:
+    - invocation count and billed duration
+    - allocated memory and resulting CPU
+    - event source, network transfer, logs, traces, and retries
+  measurements:
+    - duration distribution and timeout headroom
+    - allocated memory, maximum memory used, and memory headroom
+    - concurrency, throttle, retry, cold start, and downstream saturation
+    - request or event unit cost and operations time
+  guardrails:
+    - project-approved timeout, memory, concurrency, and unit-cost thresholds
+    - idempotency and bounded retry for repeatable events
+    - observability that does not expose secrets or uncontrolled high-cardinality data
+  evidence_stages:
+    - estimate
+    - development-benchmark
+    - non-production-observation
+    - pre-production-risk-test
+    - operations
+  revisit_triggers:
+    - duration approaches the project timeout-headroom threshold
+    - memory, concurrency, throttle, retry, or unit cost crosses a project threshold
+    - event source, payload bound, network topology, or downstream dependency changes
 conflicts: []

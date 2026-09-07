@@ -20,14 +20,16 @@
 14. [신뢰성·복구·운영](reliability-and-recovery.md)
 15. [데이터 수명주기](data-lifecycle.md)
 16. [코드 주석](comments.md)
-17. [프로필 합성](profiles.md)
-18. [프로젝트 투영](project-projection.md)
-19. [규칙과 강제의 생명주기](enforcement-lifecycle.md)
-20. [보류 프로필](deferred-profiles.md)
-21. [로드맵과 완료 조건](roadmap.md)
-22. [추가 학습 자료](further-reading.md)
-23. [규칙 추적성](traceability.md)
-24. [사용자 메시지·오류 계약과 실제 코드 검증](user-messages-and-errors.md) — 미발행 0.2.0 초안
-25. [API 설계와 전송 계약](api-design-and-lifecycle.md) — 미발행 0.2.0 초안
-26. [API 공개·문서화·수명주기](api-exposure-and-documentation.md) — 미발행 0.2.0 초안
-27. [공유 도메인 코어 라이브러리](domain-core-libraries.md) — 미발행 0.2.0 초안
+17. [코딩 컨벤션](code-conventions.md) — 미발행 0.2.0 초안
+18. [프로필 합성](profiles.md)
+19. [프로젝트 투영](project-projection.md)
+20. [규칙과 강제의 생명주기](enforcement-lifecycle.md)
+21. [AI agent 작업 주기](agent-work-cycle.md) — 미발행 0.2.0 초안
+22. [보류 프로필](deferred-profiles.md)
+23. [로드맵과 완료 조건](roadmap.md)
+24. [추가 학습 자료](further-reading.md)
+25. [규칙 추적성](traceability.md)
+26. [사용자 메시지·오류 계약과 실제 코드 검증](user-messages-and-errors.md) — 미발행 0.2.0 초안
+27. [API 설계와 전송 계약](api-design-and-lifecycle.md) — 미발행 0.2.0 초안
+28. [API 공개·문서화·수명주기](api-exposure-and-documentation.md) — 미발행 0.2.0 초안
+29. [공유 도메인 코어 라이브러리](domain-core-libraries.md) — 미발행 0.2.0 초안
