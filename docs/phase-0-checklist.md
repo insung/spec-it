@@ -7,7 +7,7 @@
 - 대상: Git에 고정된 `0.1.0` 정책 기준선
 - 의미: 문서·규칙·프로필·스키마·템플릿·instruction-only 스킬의 구조와 연결이 Phase 0 완료 조건을 충족함
 - 제외: 애플리케이션 동작 준수, 실행 validator, CI 강제, runtime enforcement
-- 후속 릴리스: `0.2.0`은 별도의 [release checklist](releases/0.2.0-checklist.md)를 사용함
+- 후속 릴리스: `0.2.0`과 `0.3.0`은 각각의 release checklist([0.2.0](releases/0.2.0-checklist.md), [0.3.0](releases/0.3.0-checklist.md))를 사용함
 
 - [x] 모든 합의가 규칙 ID 또는 명시 문서에 연결되어 있다.
 - [x] 각 규칙에 scope, condition, normative statement, forbidden, evidence, exception, approver, example이 있다.

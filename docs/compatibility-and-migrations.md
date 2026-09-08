@@ -10,6 +10,8 @@
 
 [DATA-007](../rules/data/DATA-007.md)에 따라 SQL migration과 구·신 호출자의 인수/반환 형태를 함께 검사합니다. DB DDL의 암묵적 commit과 이미 변한 데이터는 단순 rollback으로 복구되지 않을 수 있으므로 복원 또는 전진 수정 계획을 명시합니다. 프로시저 이름에 버전을 붙이는 것은 선택지이지 모든 DB에 강제할 이름 규칙이 아닙니다.
 
+[DATA-009](../rules/data/DATA-009.md)는 migration source, immutable release identity, application artifact compatibility, environment execution evidence와 recovery class를 연결합니다. application startup의 읽기 전용 compatibility check는 가능한 구현이지만 공통 의무는 아닙니다. 저장소와 실행 도구 선택은 [DB 변경 배포](database-change-delivery.md)에서 구분합니다.
+
 추가 의무가 있는 수정 프로필은 `0.2.0`에서 활성화되었습니다. 기존 `0.1.0` 프로젝트와 예제 manifest/lock은 그대로 유효하며 자동 업그레이드하지 않습니다. 정책 릴리스와 프로젝트별 재명확화·재수렴은 별도 승인 작업입니다.
 
 코드 의미·lint·가용성·인프라 재판정 규칙을 연결한 `backend-service`, `serverless-function`, `python`, `aws-lambda`, `redis`도 0.2.0에서 활성화되었습니다. 프로젝트가 새 정책을 승인하기 전에는 기존 이름을 일괄 수정하거나 project-owned threshold를 공통 기본값으로 채우지 않습니다. 재수렴 시 lint contract, 관련 infrastructure evaluation, 실제 threshold와 brownfield remediation 경계를 별도로 결정합니다.
@@ -17,6 +19,8 @@
 ## 공유 core library
 
 0.1.0에서 0.2.0으로 프로젝트를 옮기는 절차는 [migration guide](migrations/0.1.0-to-0.2.0.md)를 따릅니다.
+
+0.2.0에서 0.3.0으로 프로젝트를 옮기는 절차는 [migration guide](migrations/0.2.0-to-0.3.0.md)를 따릅니다.
 
 [COMP-002](../rules/compatibility/COMP-002.md)는 새 release 자체를 모든 consumer의 update 명령으로 취급하지 않습니다. library가 바꾼 capability와 동작을 공개하고, 각 알려진 consumer는 `update-required`, `update-planned`, `not-required`, `impact-unknown` 중 하나와 근거·owner·위험 기반 기한을 기록합니다.
 

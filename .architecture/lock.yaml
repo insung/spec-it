@@ -1,11 +1,11 @@
-# Generated view for policy version 0.2.0. Do not edit directly.
+# Generated view for policy version 0.3.0. Do not edit directly.
 # Phase 0 deterministic generation evidence: human-review.
 schema_version: 0.1.0
 generated: true
 policy:
   source: .
-  version: 0.2.0
-manifest_digest: sha256:890639872f2c577d091a29a08e0d5d6558325167b7b81075230947f8d93a8973
+  version: 0.3.0
+manifest_digest: sha256:4c6eb8b1d235a696fec6898d75d0312602dc25b845f7bcbcca4af439964ca903
 profiles:
   - risk/standard
 rules:

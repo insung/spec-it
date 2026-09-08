@@ -1,0 +1,30 @@
+schema_version: 0.1.0
+profile_id: capability/db-migration
+axis: capability
+version: 0.3.0
+status: active
+description: Versioned and auditable database change delivery capability.
+applies_when:
+  - The project authors, requests, or applies database schema, routine, reference-data, or backfill changes.
+rules:
+  - DATA-009
+  - DATA-007
+  - COMP-001
+  - ARCH-005
+  - REL-001
+  - CICD-001
+  - TST-003
+  - TST-006
+parameters:
+  execution_default: deployment-pipeline-single-activity
+  application_startup: compatibility-check-only
+  artifact_integrity: version-and-checksum
+  recovery_classes:
+    - reversible
+    - expand-contract-or-forward-fix
+    - replayable-data-change
+    - restore-dependent
+evidence:
+  release: per-release-and-environment
+  reconciliation: after-emergency-or-delegated-execution
+conflicts: []

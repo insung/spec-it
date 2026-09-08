@@ -2,6 +2,28 @@
 
 이 프로젝트는 [Semantic Versioning](https://semver.org/)을 사용합니다. 프로젝트는 정확한 정책 버전을 고정하며 자동 업그레이드하지 않습니다.
 
+## 0.3.0 - 2026-09-08
+
+### Added
+
+- DB 변경을 version·checksum·객체 소유권·application artifact compatibility·single-executor coordination·environment history·recovery class가 있는 release unit으로 관리하는 `DATA-009`.
+- 정기 data pipeline의 terminal output freshness·completeness·integrity·reconciliation, run ledger, accountable alert와 dependency-aware replay를 연결하는 `OBS-003`.
+- DB 변경 책임과 정기 데이터 생산 책임을 조건부로 선택하는 `capability/db-migration`, `capability/data-pipeline`.
+- 저장소 topology와 자동·위임 실행 lane, recovery class를 설명하는 DB 변경 배포 문서와 data pipeline 운영 문서.
+- 0.2.0 프로젝트의 명시적 재수렴 절차와 0.3.0 release checklist.
+
+### Changed
+
+- 규칙·profile·문서 색인, README, project template와 policy self-projection을 0.3.0 기준선에 맞춤.
+- compatibility, data, observability 설명이 새 규칙의 책임 경계를 연결하도록 갱신.
+
+### Compatibility and enforcement
+
+- 새 의무를 갖는 pre-1.0 minor release이며 0.2.0 project manifest와 lock은 자동 업그레이드하지 않는다.
+- migration runner, release bundle schema, DB connector, drift detector, runtime monitor, alert와 replay executor는 구현하지 않는다.
+- 신규 규칙의 enforcement target은 `ci` 또는 `runtime`이지만 implementation은 `planned`이며 Phase 0 판정은 `human-review`다.
+- 제품·edition·license, 저장소 위치, UI, project threshold와 MI private overlay는 프로젝트별 별도 결정이다.
+
 ## 0.2.0 - 2026-09-08
 
 ### Added

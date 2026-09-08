@@ -1,0 +1,27 @@
+schema_version: 0.1.0
+profile_id: capability/data-pipeline
+axis: capability
+version: 0.3.0
+status: active
+description: Scheduled data outcome monitoring and recovery capability.
+applies_when:
+  - The project produces scheduled or externally triggered data for product or downstream consumers.
+rules:
+  - OBS-001
+  - OBS-003
+  - ARCH-005
+  - DATA-004
+  - REL-001
+  - TST-003
+  - TST-006
+parameters:
+  terminal_outcome_dimensions:
+    - freshness
+    - completeness
+    - integrity
+    - reconciliation
+  manual_replay: audited-and-dependency-aware
+evidence:
+  operations: per-run-ledger-and-terminal-verification
+  recovery: risk-and-change-triggered-rehearsal
+conflicts: []

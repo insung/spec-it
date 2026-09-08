@@ -35,3 +35,7 @@
 29. [공유 도메인 코어 라이브러리](domain-core-libraries.md)
 30. [0.1.0 → 0.2.0 migration](migrations/0.1.0-to-0.2.0.md)
 31. [0.2.0 release checklist](releases/0.2.0-checklist.md)
+32. [DB 변경 배포](database-change-delivery.md)
+33. [데이터 파이프라인 운영](data-pipeline-operations.md)
+34. [0.2.0 → 0.3.0 migration](migrations/0.2.0-to-0.3.0.md)
+35. [0.3.0 release checklist](releases/0.3.0-checklist.md)

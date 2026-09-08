@@ -6,4 +6,6 @@
 
 진단 로그는 구조화 JSON 또는 OpenTelemetry를 기본 비교점으로 두고, 장기 이벤트 계약은 Avro·Protobuf·JSON Schema 중 호환성 요구에 맞춰 선택합니다. CSV는 운영 이벤트 계약의 기본값이 아닙니다.
 
-정본 규칙: [DATA-001](../rules/data/DATA-001.md), [DATA-002](../rules/data/DATA-002.md), [DATA-003](../rules/data/DATA-003.md), [DATA-004](../rules/data/DATA-004.md), [DATA-005](../rules/data/DATA-005.md), [DATA-006](../rules/data/DATA-006.md).
+DB schema·routine·reference data·backfill 변경은 [DATA-009](../rules/data/DATA-009.md)에 따라 versioned release unit으로 관리합니다. SQL 정본의 위치와 실행 도구는 프로젝트가 선택하지만 checksum, 소유권, application compatibility, environment history와 recovery class는 재현 가능해야 합니다. 자세한 적용 방법은 [DB 변경 배포](database-change-delivery.md)를 봅니다.
+
+정본 규칙: [DATA-001](../rules/data/DATA-001.md), [DATA-002](../rules/data/DATA-002.md), [DATA-003](../rules/data/DATA-003.md), [DATA-004](../rules/data/DATA-004.md), [DATA-005](../rules/data/DATA-005.md), [DATA-006](../rules/data/DATA-006.md), [DATA-009](../rules/data/DATA-009.md).

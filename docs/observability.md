@@ -6,7 +6,9 @@
 
 사용자·회사·권한처럼 서비스가 소유하는 업무 정보는 telemetry metadata가 아니라 업무 데이터 저장소의 대상입니다.
 
-정본 규칙: [OBS-001](../rules/observability/OBS-001.md), [OBS-002](../rules/observability/OBS-002.md).
+정기 data pipeline은 process log만이 아니라 terminal output의 freshness·completeness·integrity와 reconciliation을 관측합니다. [OBS-003](../rules/observability/OBS-003.md)은 run ledger, accountable alert와 dependency-aware replay evidence를 요구하며, 구체적인 threshold와 정상 빈 결과의 의미는 프로젝트가 정합니다. 자세한 적용 방법은 [데이터 파이프라인 운영](data-pipeline-operations.md)을 봅니다.
+
+정본 규칙: [OBS-001](../rules/observability/OBS-001.md), [OBS-002](../rules/observability/OBS-002.md), [OBS-003](../rules/observability/OBS-003.md).
 
 ## 사용자 안내와 진단의 분리
 
