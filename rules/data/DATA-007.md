@@ -1,7 +1,7 @@
 ---
 id: DATA-007
 title: Govern stored routines as deployable code
-status: draft
+status: active
 introduced: 0.2.0
 scope: stored-database-routines
 condition: "A project introduces or changes stored procedures, functions, or triggers used by the product."
@@ -17,7 +17,7 @@ enforcement: {mode: validator, implementation: planned}
 
 # DATA-007 — Stored-routine boundary
 
-미발행 0.2.0 초안입니다. 기본 업무 판단은 [ARCH-001](../architecture/ARCH-001.md)에 따라 도메인 코드가 소유합니다. SQL은 조회·조인·대량 집계·일괄 갱신에 사용할 수 있습니다. 프로시저 도입은 다음 중 해당 근거를 ADR에 남깁니다.
+0.2.0에 도입되었습니다. 기본 업무 판단은 [ARCH-001](../architecture/ARCH-001.md)에 따라 도메인 코드가 소유합니다. SQL은 조회·조인·대량 집계·일괄 갱신에 사용할 수 있습니다. 프로시저 도입은 다음 중 해당 근거를 ADR에 남깁니다.
 
 1. 집합 연산이나 왕복 감소의 성능·총비용 이점을 대표 데이터에서 측정했습니다.
 2. 테이블 직접 접근 대신 제한된 실행 권한을 제공하는 DB 인터페이스가 필요합니다.

@@ -1,7 +1,7 @@
 ---
 id: CODE-003
 title: Names communicate role and cardinality
-status: draft
+status: active
 introduced: 0.2.0
 scope: project-owned-source
 condition: "A project-owned callable, type, component, collection, boolean, event handler, or conversion identifier is added or changed."

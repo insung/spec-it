@@ -2,7 +2,7 @@
   "schema_version": "0.1.0",
   "mode": "quick",
   "commit": "fixture",
-  "policy_version": "0.1.0",
+  "policy_version": "0.2.0",
   "overall": "human-review",
   "summary": {
     "pass": 1,

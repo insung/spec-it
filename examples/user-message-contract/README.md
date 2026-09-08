@@ -1,6 +1,6 @@
 # User message contract fixture
 
-[contract.yaml](contract.yaml)은 한도 초과 거절 하나의 가상 예제입니다. 미발행 0.2.0 [MSG-001](../../rules/messages/MSG-001.md), [MSG-002](../../rules/messages/MSG-002.md)를 설명하며 정책/계약 승인이나 실제 실행 성공을 의미하지 않습니다. `test_ref: not-implemented:...`는 누락을 정직하게 드러내는 표시입니다.
+[contract.yaml](contract.yaml)은 한도 초과 거절 하나의 가상 예제입니다. 0.2.0 [MSG-001](../../rules/messages/MSG-001.md), [MSG-002](../../rules/messages/MSG-002.md)를 설명하며 프로젝트의 계약 승인이나 실제 실행 성공을 의미하지 않습니다. `test_ref: not-implemented:...`는 누락을 정직하게 드러내는 표시입니다.
 
 ## 확인할 연결
 

@@ -8,7 +8,7 @@
 
 정본 규칙: [OBS-001](../rules/observability/OBS-001.md), [OBS-002](../rules/observability/OBS-002.md).
 
-## 사용자 안내와 진단의 분리 — 미발행 0.2.0 초안
+## 사용자 안내와 진단의 분리
 
 [MSG-001](../rules/messages/MSG-001.md), [MSG-002](../rules/messages/MSG-002.md)는 내부 원인과 공개 결과를 분리합니다. API는 안전한 code·parameter·요청 추적 식별자를, 표현 계층은 사용자 안내를, 운영 경계는 비밀정보가 제거된 진단을 담당합니다. 예상된 한도 거절은 반드시 error 로그나 운영 알림을 뜻하지 않습니다. 기록 수준·샘플링·알림 조건은 프로젝트의 위험과 비용에 따라 정합니다.
 

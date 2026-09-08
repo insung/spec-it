@@ -2,7 +2,7 @@ schema_version: 0.1.0
 profile_id: capability/http-api
 axis: capability
 version: 0.2.0
-status: draft
+status: active
 description: Versioned HTTP API with a machine-readable contract and explicit audience.
 applies_when:
   - A deploy unit exposes an HTTP request and response contract.

@@ -2,7 +2,7 @@ schema_version: 0.1.0
 profile_id: runtime/aws-lambda
 axis: runtime
 version: 0.2.0
-status: draft
+status: active
 description: AWS Lambda runtime profile without deployment-tool coupling.
 traits:
   - infrastructure

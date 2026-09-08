@@ -2,7 +2,7 @@ schema_version: 0.1.0
 profile_id: capability/rds
 axis: capability
 version: 0.2.0
-status: draft
+status: active
 description: Relational primary data storage capability.
 applies_when:
   - The project stores relational or transactional business data.

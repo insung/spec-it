@@ -2,7 +2,7 @@ schema_version: 0.1.0
 profile_id: capability/shared-domain-library
 axis: capability
 version: 0.2.0
-status: draft
+status: active
 description: Reusable domain policy package with independently deployed consumers.
 applies_when:
   - A domain library is released independently or consumed by more than one deploy unit.

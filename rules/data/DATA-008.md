@@ -1,7 +1,7 @@
 ---
 id: DATA-008
 title: Compact physical storage only with evidence
-status: draft
+status: active
 introduced: 0.2.0
 scope: cost-sensitive-physical-storage
 condition: "A project proposes abbreviated field names or a compact physical representation for Redis or another cost-sensitive store."

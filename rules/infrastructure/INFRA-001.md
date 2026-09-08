@@ -1,7 +1,7 @@
 ---
 id: INFRA-001
 title: Infrastructure profiles expose decision evidence
-status: draft
+status: active
 introduced: 0.2.0
 scope: infrastructure-profiles
 condition: "A runtime, deployment, or capability profile declares the infrastructure trait."

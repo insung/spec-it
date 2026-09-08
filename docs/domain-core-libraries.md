@@ -1,4 +1,4 @@
-# Shared domain core libraries — 미발행 0.2.0 초안
+# Shared domain core libraries
 
 도메인 코어를 library로 분리하는 것은 Clean Architecture와 양립합니다. 별도 repository인지가 아니라 domain이 transport, framework, persistence, telemetry에 의존하지 않는지가 기준입니다. 실제 독립 consumer가 없거나 릴리스 조율 비용이 더 크면 같은 repository의 module boundary가 더 저렴할 수 있습니다.
 

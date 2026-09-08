@@ -1,7 +1,7 @@
 ---
 id: ARCH-006
 title: Explicit transport to application mapping
-status: draft
+status: active
 introduced: 0.2.0
 scope: application-boundaries
 condition: "A transport adapter accepts input or returns output across an application boundary."
@@ -17,7 +17,7 @@ enforcement: {mode: validator, implementation: planned}
 
 # ARCH-006 — Transport mapping boundary
 
-미발행 0.2.0 초안입니다. 구조가 같아도 같은 클래스나 schema 객체를 양쪽 경계에서 재사용하지 않습니다. 복사는 목적이 아니라 결합 방지가 목적이므로 mapper는 작게 유지하거나 계약에서 생성할 수 있습니다.
+0.2.0에 도입되었습니다. 구조가 같아도 같은 클래스나 schema 객체를 양쪽 경계에서 재사용하지 않습니다. 복사는 목적이 아니라 결합 방지가 목적이므로 mapper는 작게 유지하거나 계약에서 생성할 수 있습니다.
 
 transport DTO는 파싱·형식·전송 인증과 공개 필드를 소유합니다. application command/query는 유스케이스의 의도와 필요한 값만 표현합니다. domain value object와 entity는 업무 불변식을 소유합니다. `services/`라는 디렉터리 이름은 어느 경계인지 판정하는 근거가 아닙니다.
 

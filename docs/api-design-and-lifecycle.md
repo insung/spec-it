@@ -1,4 +1,4 @@
-# API design and lifecycle — 미발행 0.2.0 초안
+# API design and lifecycle
 
 API 설계는 이름을 즉석에서 정하는 일이 아니라 resource, query, command, aggregate, job 중 무엇을 제공하는지 분류하는 일에서 시작합니다. HTTP에만 해당하는 표기와 transport에 독립적인 계약 원칙을 구분합니다.
 

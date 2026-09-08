@@ -1,7 +1,7 @@
 ---
 id: ARCH-005
 title: Explicit transaction and follow-up ownership
-status: draft
+status: active
 introduced: 0.2.0
 scope: state-changing-use-cases
 condition: "A use case changes persistent state or schedules a consequential follow-up."
@@ -17,7 +17,7 @@ enforcement: {mode: validator, implementation: planned}
 
 # ARCH-005 — Transaction ownership
 
-미발행 0.2.0 초안입니다. 0.1.0 프로젝트의 적용 규칙은 바꾸지 않습니다.
+0.2.0에 도입되었습니다. 0.1.0에 고정된 프로젝트에는 자동 적용되지 않습니다.
 
 업무 판단은 [ARCH-001](ARCH-001.md)의 도메인 경계를 따릅니다. 애플리케이션은 트랜잭션을 조율하고 adapter가 같은 연결에서 DB 연산을 수행하는 것이 기본입니다. 기존 프로시저가 트랜잭션을 소유하는 경우 호출 계약에 명시하고 애플리케이션에서 중첩 트랜잭션처럼 취급하지 않습니다.
 

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://spec-it.example/schemas/user-message-contract.schema.json",
-  "title": "spec-it user message contract (unreleased policy 0.2.0 draft)",
+  "title": "spec-it 0.2.0 user message contract",
   "description": "Structure only; condition prose is not executable. Code/key/locale/parameter references and actual behavior require separate checks. Every declared public parameter is required; complex/optional parameters belong in the project's authoritative API schema.",
   "type": "object",
   "additionalProperties": false,

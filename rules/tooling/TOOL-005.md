@@ -1,7 +1,7 @@
 ---
 id: TOOL-005
 title: Executable source declares a lint contract
-status: draft
+status: active
 introduced: 0.2.0
 scope: executable-source-projects
 condition: "A deploy unit contains project-owned executable source code."

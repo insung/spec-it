@@ -6,7 +6,7 @@
 - `testing/`: integration과 load test 계획
 - `benchmarks/`: 인프라 유형별 측정 항목
 
-## 미발행 0.2.0 추가
+## 0.2.0 templates
 
 - [사용자 메시지 계약](project/user-message-contract.yaml): [schema](../schemas/user-message-contract.schema.json), [설명과 검증 방법](../docs/user-messages-and-errors.md), [가상 fixture](../examples/user-message-contract/README.md).
 - [통합 테스트 계획](testing/integration-test-plan.md): 트랜잭션·프로시저·공개 결과·메시지의 적용 가능한 검사 항목.

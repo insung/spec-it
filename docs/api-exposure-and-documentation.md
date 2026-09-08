@@ -1,4 +1,4 @@
-# API exposure and documentation — 미발행 0.2.0 초안
+# API exposure and documentation
 
 문서에 보이는가, 인터넷에서 도달 가능한가, 호출 권한이 있는가는 서로 다른 판단입니다. 같은 `internal`이라는 말로 세 가지를 대신하지 않습니다.
 

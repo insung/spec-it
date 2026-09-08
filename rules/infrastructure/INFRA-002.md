@@ -1,7 +1,7 @@
 ---
 id: INFRA-002
 title: Re-evaluate infrastructure on material change signals
-status: draft
+status: active
 introduced: 0.2.0
 scope: agent-assisted-implementation
 condition: "A task starts, a material infrastructure signal appears, implementation finishes, or changed files enter policy CI."

@@ -21,7 +21,7 @@
 
 ## 적용되는 경우에만 채우는 경계 검사
 
-미발행 0.2.0 초안의 [ARCH-005](../../rules/architecture/ARCH-005.md), [DATA-007](../../rules/data/DATA-007.md), [MSG-001](../../rules/messages/MSG-001.md), [MSG-002](../../rules/messages/MSG-002.md)를 위한 시작 항목입니다. 테스트 환경이나 예제 파일이 있다는 사실을 실행 성공으로 표시하지 않습니다.
+0.2.0의 [ARCH-005](../../rules/architecture/ARCH-005.md), [DATA-007](../../rules/data/DATA-007.md), [MSG-001](../../rules/messages/MSG-001.md), [MSG-002](../../rules/messages/MSG-002.md)를 위한 시작 항목입니다. 테스트 환경이나 예제 파일이 있다는 사실을 실행 성공으로 표시하지 않습니다.
 
 | 경계 | 확인할 항목 | 실제 증거 / 적용되지 않는 이유 |
 | --- | --- | --- |

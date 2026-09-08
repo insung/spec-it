@@ -1,7 +1,7 @@
 ---
 id: CODE-004
 title: Business results and layer boundaries use named data contracts
-status: draft
+status: active
 introduced: 0.2.0
 scope: project-owned-business-data
 condition: "A project-owned callable returns business data, or project-owned data crosses a layer, module, package, process, transport, persistence, or public callable boundary."

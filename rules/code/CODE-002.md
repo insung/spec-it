@@ -1,7 +1,7 @@
 ---
 id: CODE-002
 title: Project-owned identifiers use English
-status: draft
+status: active
 introduced: 0.2.0
 scope: project-owned-source
 condition: "A project-owned source identifier, source filename, package, test name, or structured log key is added or changed."

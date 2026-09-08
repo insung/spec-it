@@ -2,7 +2,7 @@ schema_version: 0.1.0
 profile_id: capability/redis
 axis: capability
 version: 0.2.0
-status: draft
+status: active
 description: Derived or temporary in-memory data capability.
 traits:
   - infrastructure

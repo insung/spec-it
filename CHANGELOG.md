@@ -2,7 +2,7 @@
 
 이 프로젝트는 [Semantic Versioning](https://semver.org/)을 사용합니다. 프로젝트는 정확한 정책 버전을 고정하며 자동 업그레이드하지 않습니다.
 
-## Unreleased — 0.2.0 draft
+## 0.2.0 - 2026-09-08
 
 ### Added
 
@@ -20,7 +20,7 @@
 
 ### Changed
 
-- backend-service, serverless-function, rds 프로필을 추가 규칙에 연결한 0.2.0 draft 후보로 변경.
+- backend-service, serverless-function, python, aws-lambda, rds, redis, http-api, shared-domain-library 프로필을 0.2.0 활성 정책으로 변경.
 - 아키텍처·관측·호환성·프로필 설명과 통합 테스트 계획에 관련 경계와 검사 항목 추가.
 - README에 처음 쓰는 사용자의 최소 요청과 AI가 고정된 규칙을 발견하는 작업 흐름을 추가하고, Phase 0 checklist의 `0.1.0` 종료 증거 범위를 명확히 함.
 - `spec-it:specify`, `clarify`, `check`가 짧은 요청에서 변경 trigger를 찾고 규칙의 이유·영향·예외를 사용자에게 설명하도록 절차를 보완함.
@@ -29,9 +29,9 @@
 
 ### Compatibility and enforcement
 
-- 추가 의무를 갖는 pre-1.0 정책 변경이므로 다음 minor 후보는 0.2.0이다. 0.1.0 patch 수정으로 취급하지 않는다.
-- 기존 규칙 ID의 규범 의미와 기존 0.1.0 프로젝트 manifest/lock, VERSION은 유지한다. draft 프로필은 기존 기준선을 대체하지 않는다.
-- 릴리스와 프로젝트별 clarify/converge는 별도 승인 대상이다. 새 규칙의 자동 검증은 planned이고 Phase 0 판정은 human-review다.
+- 추가 의무를 갖는 pre-1.0 정책 변경이므로 0.2.0 minor로 릴리스한다. 0.1.0 patch 수정으로 취급하지 않는다.
+- 기존 규칙 ID의 규범 의미는 유지한다. 0.1.0 프로젝트 manifest/lock은 자동 변경하지 않으며 migration과 재수렴이 필요하다.
+- 정책 릴리스와 프로젝트별 clarify/converge는 별도 승인 대상이다. 새 규칙의 자동 검증은 planned이고 Phase 0 판정은 human-review다.
 - 애플리케이션·검증기·생성기·CI·플러그인 구현/배포는 포함하지 않는다.
 
 ## 0.1.0 - 2026-09-02
