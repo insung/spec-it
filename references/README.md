@@ -6,3 +6,5 @@
 - [REF-0002](REF-0002.yaml) — Terraform module composition
 - [REF-0003](REF-0003.yaml) — OpenTelemetry specifications
 - [REF-0004](REF-0004.yaml) — GitHub push protection
+- [REF-0005](REF-0005.yaml) — OpenAPI 3.2 streaming and SSE contracts
+- [REF-0006](REF-0006.yaml) — WHATWG server-sent events

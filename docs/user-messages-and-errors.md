@@ -29,6 +29,12 @@ DB 예외를 그대로 외부 응답으로 전달하지 않습니다. 공개 결
 
 같은 정보가 이미 OpenAPI 등에 있다면 [YAML 템플릿](../templates/project/user-message-contract.yaml)에 또 손으로 복사하지 않습니다. 기존 계약을 정본으로 선택하고 메시지의 조건·번역·수용 사례처럼 부족한 책임만 연결합니다. 템플릿은 독립된 작은 정본으로 시작하는 예이며 통합 엔진이나 OpenAPI 생성기는 포함하지 않습니다.
 
+### HTTP stream의 오류 mapping
+
+SSE 같은 HTTP stream은 response가 열리기 전과 열린 뒤를 구분합니다. 입력·인증·한도처럼 stream 전에 확정한 오류는 의미에 맞는 HTTP status와 일반 오류 body로 반환합니다. stream이 열린 뒤의 실패나 결과 미확인은 이미 시작한 response의 status를 바꾸지 않고 canonical stream contract의 typed event로 전달합니다. 정상 완료 event, transport 단절, 재연결·resume, 중복 처리와 재시도 안전성도 별개 acceptance case로 검증합니다.
+
+`user-message-contract`의 `transport: http-stream`은 각 outcome에 `delivery_phase`를 요구합니다. `before-stream` outcome은 `http_status`를, `after-stream` outcome은 `stream_event`를 기록합니다. OpenAPI 3.2 `itemSchema`, 연결된 schema 또는 실행 가능한 provider-consumer 계약 중 프로젝트 toolchain이 실제로 보존하는 정본을 선택합니다.
+
 새 code나 parameter의 변경은 구버전 소비자를 고려합니다. 타입 생성은 실행 중인 구버전 앱을 바꾸지 않습니다. 소비자는 모르는 code에 안전한 일반 안내를 제공하고 자동 재시도하지 않으며, 운영에서는 진단할 수 있게 합니다. 동시에 배포해야만 작동하는 계약을 기본으로 만들지 않습니다.
 
 ## 다국어와 노출 조건

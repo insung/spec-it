@@ -12,7 +12,7 @@
       "additionalProperties": false,
       "required": ["source", "version"],
       "properties": {
-        "source": {"type": "string", "minLength": 1},
+        "source": {"type": "string", "minLength": 1, "description": "Canonical policy repository or immutable bundle locator; templates must replace placeholders before convergence."},
         "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}
       }
     },
@@ -36,7 +36,8 @@
         "intent-owner": {"type": "string", "minLength": 1},
         "architecture-owner": {"type": "string", "minLength": 1},
         "security-owner": {"type": "string", "minLength": 1},
-        "data-owner": {"type": "string", "minLength": 1}
+        "data-owner": {"type": "string", "minLength": 1},
+        "operations-owner": {"type": "string", "minLength": 1}
       }
     },
     "parameters": {"type": "object"},

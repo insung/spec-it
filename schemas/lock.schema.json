@@ -4,16 +4,21 @@
   "title": "spec-it resolved lock",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "generated", "policy", "manifest_digest", "profiles", "rules", "parameters", "exceptions"],
+  "required": ["schema_version", "generated", "policy", "policy_digest", "manifest_digest", "profiles", "rules", "parameters", "exceptions"],
   "properties": {
-    "schema_version": {"const": "0.1.0"},
+    "schema_version": {"const": "0.2.0"},
     "generated": {"const": true},
     "policy": {
       "type": "object",
       "additionalProperties": false,
       "required": ["source", "version"],
-      "properties": {"source": {"type": "string"}, "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}}
+      "properties": {
+        "source": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "revision": {"type": "string", "minLength": 1, "description": "Resolved immutable source revision when the distribution mechanism provides one."}
+      }
     },
+    "policy_digest": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
     "manifest_digest": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
     "profiles": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
     "rules": {

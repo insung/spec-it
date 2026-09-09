@@ -24,4 +24,4 @@
 
 ## Owners
 
-한 maintainer가 Phase 0의 `intent-owner`, `architecture-owner`, `security-owner`, `data-owner` 역할을 겸할 수 있다.
+한 maintainer가 Phase 0의 `intent-owner`, `architecture-owner`, `security-owner`, `data-owner`, `operations-owner` 역할을 겸할 수 있다.

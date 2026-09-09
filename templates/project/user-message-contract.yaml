@@ -1,9 +1,9 @@
-# 0.2.0 정책용 시작 템플릿. 실제 사용자 승인이 아니므로 contract status는 draft를 유지한다.
+# 0.4.0 정책용 시작 템플릿. 실제 사용자 승인이 아니므로 contract status는 draft를 유지한다.
 # MSG-001/MSG-002: ../../rules/messages/ 와 ../../schemas/user-message-contract.schema.json 참조.
 # 아래 값은 예시이며 복사 후 프로젝트가 조건·문구·권한·검증 사례를 승인한다.
 # 기존 OpenAPI 등에 같은 정의가 있으면 이 파일에 중복하지 않고 그 정본에 연결한다.
 # 이 최소 형식은 필수 primitive parameter만 다룬다. 복합/선택 parameter는 프로젝트 계약을 사용한다.
-schema_version: 0.1.0
+schema_version: 0.2.0
 contract_id: example-operation
 contract_version: 0.1.0
 status: draft

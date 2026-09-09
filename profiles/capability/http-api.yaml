@@ -1,7 +1,7 @@
 schema_version: 0.1.0
 profile_id: capability/http-api
 axis: capability
-version: 0.2.0
+version: 0.4.0
 status: active
 description: Versioned HTTP API with a machine-readable contract and explicit audience.
 applies_when:
@@ -28,6 +28,8 @@ parameters:
   owned_json_field_case: lower-snake-case
   state_transition_method: POST
   public_reference_renderer: scalar-allowed
+  stream_contract: required-when-streaming
+  stream_error_mapping: before-and-after-open
 evidence:
   contract: canonical-machine-readable-contract
   integration: boundary-and-negative-access-tests

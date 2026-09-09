@@ -1,7 +1,7 @@
 schema_version: 0.1.0
 policy:
   source: .
-  version: 0.3.0
+  version: 0.4.0
 project:
   id: spec-it
   name: spec-it
@@ -14,6 +14,7 @@ owners:
   architecture-owner: maintainer
   security-owner: maintainer
   data-owner: maintainer
+  operations-owner: maintainer
 parameters:
   phase: 0
   distribution: git-source-only

@@ -1,0 +1,72 @@
+schema_version: 0.1.0
+profile_id: runtime/aws-ec2
+axis: runtime
+version: 0.4.0
+status: active
+description: AWS EC2 host runtime profile independent of the deployment definition format.
+traits:
+  - infrastructure
+applies_when:
+  - One or more deploy units run on project-managed EC2 instances.
+rules:
+  - COST-001
+  - COST-002
+  - INFRA-001
+  - INFRA-002
+  - OBS-001
+  - REL-002
+  - SEC-001
+  - TST-004
+  - TST-006
+parameters:
+  project_thresholds:
+    capacity_headroom: required
+    allowed_downtime: required
+    restart_budget: required
+    unit_cost_budget: required
+  load_metrics:
+    - cpu
+    - memory
+    - disk
+    - network
+    - request-latency
+    - unit-cost
+evidence:
+  integration: representative-host-or-isolated-equivalent
+  operations: topology-health-recovery-and-cost-observation
+evaluation:
+  activation_signals:
+    - EC2 instance, image, launch template, network, storage, process supervisor, or host bootstrap is added or changed.
+    - Instance size, count, failure domain, traffic path, scaling, restart, patch, or recovery behavior changes.
+  required_decisions:
+    - instance topology, failure domains, traffic routing, and allowed downtime
+    - process supervision, startup ordering, health and readiness, drain, and restart behavior
+    - image, patch, secret, access, network, storage, backup, and recovery ownership
+    - capacity headroom, scaling signal, unit-cost budget, and operations owner
+  failure_scenarios:
+    - instance, availability zone, network, storage, or process failure
+    - unhealthy instance remains in service or healthy capacity is drained too quickly
+    - restart loop, failed bootstrap, patch regression, or configuration drift
+    - capacity exhaustion, traffic imbalance, recovery delay, or operator unavailability
+  cost_drivers:
+    - instance family, size, count, reservation, and uptime
+    - block storage, snapshots, network transfer, load balancing, logs, and operations time
+  measurements:
+    - CPU, memory, disk, network, request latency, saturation, and capacity headroom
+    - instance and process health, restart, drain, recovery time, and deployment loss
+    - request or workload unit cost and operations time
+  guardrails:
+    - project-approved capacity, downtime, restart, recovery, and unit-cost thresholds
+    - health-based traffic removal and bounded graceful shutdown
+    - least-privilege host access, secret delivery, patch ownership, and observable recovery
+  evidence_stages:
+    - estimate
+    - development-benchmark
+    - non-production-observation
+    - pre-production-risk-test
+    - operations
+  revisit_triggers:
+    - utilization, saturation, latency, downtime, restart, recovery, or unit cost crosses a project threshold
+    - topology, instance family, network, storage, traffic routing, or process supervision changes
+    - workload shape, availability objective, patch policy, or operations ownership changes
+conflicts: []

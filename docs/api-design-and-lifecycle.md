@@ -75,11 +75,12 @@ PUT의 전체는 DB row 전체가 아니라 계약이 공개한 writable represe
 | 방식 | 정본 예 | 이름 규칙 |
 | --- | --- | --- |
 | HTTP + JSON | OpenAPI 또는 승인된 code-first 위치 | 이 profile의 path와 snake_case 규칙 |
+| HTTP + SSE | OpenAPI 3.2 `itemSchema`, 연결된 schema 또는 승인된 실행 계약 | SSE field와 `data` payload 계약을 각각 적용 |
 | protobuf RPC | `.proto` | protobuf schema가 정한 이름과 generated API convention |
 | WebSocket + JSON | AsyncAPI·JSON Schema 등 선택한 계약 | JSON payload에는 승인된 JSON naming profile |
 | WebSocket + protobuf | `.proto`와 framing 계약 | protobuf 규칙 |
 
-WebSocket은 payload 형식이 아니므로 JSON 규칙을 자동으로 적용하지 않습니다. 실제 protobuf·WebSocket 프로젝트가 생기기 전에는 새 profile을 만들지 않고 이 공통 원칙으로 clarify합니다.
+SSE와 WebSocket은 payload 형식 자체가 아니므로 JSON 규칙을 자동으로 적용하지 않습니다. SSE는 handshake와 stream 시작 전·후 오류, event framing, 완료·재연결을 함께 계약합니다. 실제 protobuf·WebSocket 프로젝트가 생기기 전에는 새 profile을 만들지 않고 이 공통 원칙으로 clarify합니다.
 
 ## collection 밖의 형태
 

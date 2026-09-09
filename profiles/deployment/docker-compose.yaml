@@ -1,0 +1,71 @@
+schema_version: 0.1.0
+profile_id: deployment/docker-compose
+axis: deployment
+version: 0.4.0
+status: active
+description: Docker Compose deployment profile for a bounded deploy unit without assuming host redundancy.
+traits:
+  - infrastructure
+applies_when:
+  - Docker Compose owns the deploy unit definition and deployment coordination.
+rules:
+  - CICD-001
+  - CICD-002
+  - DEP-001
+  - DEP-002
+  - IAC-001
+  - IAC-002
+  - INFRA-001
+  - INFRA-002
+  - REL-002
+  - SEC-001
+  - TST-006
+parameters:
+  project_thresholds:
+    deployment_loss_budget: required
+    readiness_deadline: required
+    rollback_time_budget: required
+  deployment_contract:
+    immutable_image_reference: required
+    healthcheck: required
+    graceful_shutdown: required
+    rollback: required
+evidence:
+  deployment: rendered-compose-config-image-digests-and-pipeline-reference
+  recovery: risk-and-change-triggered-deploy-and-rollback-rehearsal
+evaluation:
+  activation_signals:
+    - Compose service, image, network, volume, healthcheck, dependency, secret, or configuration is added or changed.
+    - Deployment order, replacement, drain, rollback, persistence, or host placement changes.
+  required_decisions:
+    - deploy unit boundary, host topology, failure domains, and deployment coordinator
+    - immutable image identity, configuration and secret source, readiness, drain, and replacement order
+    - volume ownership, backup, restore, rollback, and application-data compatibility
+    - acceptable deployment loss, rollback time, single-host limitation, and operations owner
+  failure_scenarios:
+    - malformed rendered configuration or unavailable image digest
+    - dependency, readiness, drain, replacement, or rollback failure
+    - persistent volume loss, incompatible data, secret delivery failure, or configuration drift
+    - all services fail together because the runtime topology has one host or one failure domain
+  cost_drivers:
+    - host capacity, image storage and transfer, persistent volumes, network, logs, and operations time
+    - duplicate capacity during replacement, rollback retention, and recovery rehearsal
+  measurements:
+    - rendered configuration validity and immutable image resolution
+    - readiness time, graceful shutdown, deployment loss, rollback time, and service recovery
+    - host and volume capacity, transfer, unit cost, and operations time
+  guardrails:
+    - project-approved readiness, deployment-loss, rollback, and recovery thresholds
+    - immutable image digests, external secret delivery, healthchecks, and bounded shutdown
+    - explicit host-level redundancy decision; Compose configuration alone is not availability evidence
+  evidence_stages:
+    - estimate
+    - development-benchmark
+    - non-production-observation
+    - pre-production-risk-test
+    - operations
+  revisit_triggers:
+    - service count, dependency graph, volume, secret, network, image, or deployment sequence changes
+    - deployment loss, readiness, rollback, recovery, or unit cost crosses a project threshold
+    - host topology, availability objective, data compatibility, or operations ownership changes
+conflicts: []

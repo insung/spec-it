@@ -2,6 +2,28 @@
 
 이 프로젝트는 [Semantic Versioning](https://semver.org/)을 사용합니다. 프로젝트는 정확한 정책 버전을 고정하며 자동 업그레이드하지 않습니다.
 
+## 0.4.0 - Unreleased
+
+### Added
+
+- 공개 policy source를 content digest와 선택적 immutable revision으로 고정하는 lock schema 0.2.0 계약.
+- HTTP streaming wire contract와 stream open 전 HTTP status·open 후 typed event 오류 mapping.
+- generic SSE message contract fixture와 0.3.0 프로젝트의 명시적 재수렴 안내.
+- EC2 host runtime과 Docker Compose deployment를 분리 평가하는 infrastructure profile.
+- owned DB identifier convention과 외부 소유 identifier 보존을 연결하는 `DATA-010` 및 RDS profile parameter.
+- repository-scoped skill discovery와 기존 `.gitignore`를 보존하는 projection 절차.
+
+### Changed
+
+- HTTP API profile, 사용자 메시지 schema·template, governance·projection·reliability 설명과 policy self-projection을 0.4.0 초안에 맞춤.
+- 운영 판단 승인자를 구분할 수 있도록 manifest owner에 선택적 `operations-owner`를 추가.
+
+### Compatibility and enforcement
+
+- lock artifact 형식과 조건부 profile 의무가 바뀌는 pre-1.0 minor release이며 0.3.0 project manifest와 lock을 자동 업그레이드하지 않는다.
+- deterministic lock generator, policy bundle assembler, SSE runtime validator, EC2·Compose provision/deploy/rollback executor는 구현하지 않는다.
+- 별도 lifecycle 정책, project-specific 사례와 private overlay는 이 공개 공통 릴리스 범위에 포함하지 않는다.
+
 ## 0.3.0 - 2026-09-08
 
 ### Added

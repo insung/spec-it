@@ -8,14 +8,20 @@
 
 ## 현재 상태
 
-- 버전: `0.3.0`
+- 버전: `0.4.0` (unreleased draft)
 - 단계: Phase 0 — 문서·정책·프로필·스키마·템플릿·instruction-only 스킬
 - 배포: 공개 Git 저장소용 소스만 제공
 - 미구현: validator/CLI, CI 강제, runtime enforcement, 패키지·플러그인 배포
 
 현재 스킬은 판단 절차를 안내하고 `human-review` 또는 `not-implemented`를 정직하게 보고합니다. 결정적 검사를 수행한다고 주장하지 않습니다.
 
-### 0.3.0 정책 기준선
+### 0.4.0 정책 초안
+
+`0.4.0` 초안은 공개 정책 source의 불변 content digest, HTTP streaming의 stream open 전·후 오류 계약, `runtime/aws-ec2`와 `deployment/docker-compose`의 독립 인프라 평가를 추가합니다. `0.3.0`은 DB migration과 data pipeline 운영 계약의 마지막 공개 기준선이며, 0.4.0 초안은 tag가 생성되기 전까지 프로젝트 lock source로 사용할 수 없습니다.
+
+기존 프로젝트는 자동 업그레이드하지 않으며 [0.3.0 → 0.4.0 migration guide](docs/migrations/0.3.0-to-0.4.0.md)에 따라 별도로 재수렴합니다. 초안 검증과 known limits는 [0.4.0 release checklist](docs/releases/0.4.0-checklist.md)에 기록합니다.
+
+### 0.3.0 공개 기준선
 
 `0.3.0`은 `0.2.0`의 계약에 DB 변경 release unit과 정기 data pipeline outcome 운영을 추가합니다. DB 변경을 작성·요청·실행하는 프로젝트는 `capability/db-migration`, consumer용 정기 데이터를 생산하는 프로젝트는 `capability/data-pipeline`을 조건부로 선택합니다. 기존 프로젝트는 자동 업그레이드하지 않으며 [migration guide](docs/migrations/0.2.0-to-0.3.0.md)에 따라 별도로 재수렴합니다.
 

@@ -29,3 +29,4 @@
 - architecture-owner: <owner>
 - security-owner: <owner>
 - data-owner: <owner>
+- operations-owner: <owner-or-not-applicable-with-reason>

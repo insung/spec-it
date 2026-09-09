@@ -1,5 +1,5 @@
 # 가상 내보내기 기능. 실제 제품 정책 또는 실행 테스트 결과가 아니다.
-schema_version: 0.1.0
+schema_version: 0.2.0
 contract_id: example-export
 contract_version: 0.1.0
 status: draft

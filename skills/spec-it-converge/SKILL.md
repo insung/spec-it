@@ -21,6 +21,8 @@ Create or update:
 - `.architecture/decisions/` for durable tradeoffs and revisit triggers;
 - the managed block of `AGENTS.md`, preserving the user-owned block.
 
+Merge the generated-artifact entries from the project template's gitignore fragment into the repository `.gitignore`. Preserve every existing user entry and comment, avoid duplicates, and do not replace the whole file. At minimum, keep `.spec-it/reports/`, local environment files, caches, and generated check output out of version control unless the project explicitly approves them as evidence.
+
 For executable source, project the repository-owned lint contract: tools or compiler evidence, configuration, commands, source scope, and CI target state. For infrastructure profiles, project approved guardrails and revisit thresholds into manifest parameters and keep evidence and tradeoffs in ADRs. Do not copy common profile prose or invent numeric defaults.
 
 In a monorepo keep shared choices in the root manifest and differences in deploy-unit manifests. Detect profile conflicts; never invent silent precedence.

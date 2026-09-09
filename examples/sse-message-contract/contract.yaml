@@ -1,0 +1,91 @@
+# Generic SSE fixture. This is a structural example, not runtime conformance evidence.
+schema_version: 0.2.0
+contract_id: example-report-stream
+contract_version: 0.1.0
+status: draft
+source:
+  mode: contract-first
+  canonical_path: examples/sse-message-contract/contract.yaml
+owners:
+  intent: example-intent-owner
+  contract: example-contract-owner
+  content: example-content-owner
+transport: http-stream
+default_locale: en
+supported_locales: [en]
+catalogs:
+  en:
+    report.input_invalid: "Check the report request and submit it again."
+    report.stream_failed: "The report stream stopped before completion. Check its status before retrying."
+    common.unknown: "The outcome could not be confirmed. Check the report status before trying again."
+unknown_outcome:
+  message_key: common.unknown
+  retry: never
+  user_action: Check the report status without blindly resubmitting the request.
+outcomes:
+  - code: REPORT_INPUT_INVALID
+    kind: rejection
+    delivery_phase: before-stream
+    http_status: 422
+    audience: Authenticated requester allowed to see validation guidance for this report.
+    public_params: {}
+    message:
+      key: report.input_invalid
+      show_when: Validation rejects the request before the event stream is opened.
+      hide_when: The request is superseded or the user leaves the report form.
+      priority: 10
+      clear_when: Clear after the requester edits the input or closes the form.
+      user_action: Correct the input and explicitly submit a new request.
+    telemetry:
+      event: report.stream.rejected
+      level: info
+      fields: [code, request_id]
+    follow_up:
+      action: none
+      delivery: none
+      retry: never
+      retry_safety: Invalid input requires an explicit corrected request.
+  - code: REPORT_STREAM_FAILED
+    kind: failure
+    delivery_phase: after-stream
+    stream_event: error
+    audience: Authenticated requester observing the active report stream.
+    public_params: {}
+    message:
+      key: report.stream_failed
+      show_when: A typed error event terminates an already-open report stream.
+      hide_when: A terminal success event was already accepted or the stream belongs to a superseded request.
+      priority: 20
+      clear_when: Clear after the report status is reconciled or a new explicit attempt starts.
+      user_action: Check report status before deciding whether to retry.
+    telemetry:
+      event: report.stream.failed
+      level: error
+      fields: [code, request_id, stream_id]
+    follow_up:
+      action: reconcile-status
+      delivery: durable
+      retry: manual
+      retry_safety: Retry only after status reconciliation shows that no completed report already exists.
+acceptance_cases:
+  - id: invalid-before-open
+    outcome_code: REPORT_INPUT_INVALID
+    locale: en
+    given: An authenticated requester submits an invalid report range.
+    when: Validation fails before response headers open the event stream.
+    expected: {visible: true, message_key: report.input_invalid, retry: never}
+    test_ref: "not-implemented:invalid-before-open"
+  - id: failure-after-open
+    outcome_code: REPORT_STREAM_FAILED
+    locale: en
+    given: The event stream is open and no terminal success has been accepted.
+    when: The server emits the typed error event and closes the stream.
+    expected: {visible: true, message_key: report.stream_failed, retry: manual}
+    test_ref: "not-implemented:failure-after-open"
+  - id: superseded-stream
+    outcome_code: REPORT_STREAM_FAILED
+    locale: en
+    given: A newer report request has superseded the stream.
+    when: A delayed error event arrives for the old stream.
+    expected: {visible: false, message_key: null, retry: never}
+    test_ref: "not-implemented:superseded-stream"

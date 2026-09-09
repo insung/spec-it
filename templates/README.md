@@ -17,3 +17,11 @@
 - [Lambda benchmark](benchmarks/lambda.md), [Redis benchmark](benchmarks/redis.md): 기술별 구현 질문과 비용·운영 측정 항목.
 
 `schema_version`은 파일 형식, `contract_version`은 프로젝트의 결과 계약, 정책 버전은 규칙 묶음의 버전입니다. 숫자가 같을 필요는 없습니다. 새 템플릿은 승인된 실제 업무 명세가 아니며 placeholder와 `not-implemented` 사례를 실제 프로젝트에서 구체화합니다.
+
+## 0.4.0 templates
+
+- [프로젝트 lock](project/lock.yaml): released policy source의 `policy_digest`와 선택적 immutable `revision`을 기록하는 schema 0.2.0 시작점.
+- [사용자 메시지 계약](project/user-message-contract.yaml): HTTP stream의 before/after-open 오류 mapping을 표현할 수 있는 schema 0.2.0 시작점.
+- [프로젝트 manifest](project/manifest.yaml): 배포·복구·비용 판단의 승인자를 구분할 때 사용할 선택적 `operations-owner` 시작점.
+
+템플릿의 zero digest와 placeholder revision은 수렴 완료 값이 아닙니다. 실제 공개 release artifact와 현재 manifest bytes에서 다시 계산해야 합니다.

@@ -1,7 +1,7 @@
 schema_version: 0.1.0
 profile_id: capability/rds
 axis: capability
-version: 0.2.0
+version: 0.4.0
 status: active
 description: Relational primary data storage capability.
 applies_when:
@@ -10,11 +10,18 @@ rules:
   - DATA-001
   - DATA-004
   - DATA-007
+  - DATA-010
   - ARCH-005
   - REL-001
   - TST-003
   - TST-005
 parameters:
+  database_identifier_convention:
+    owned_schema: required-when-created
+    owned_table: required
+    owned_column: required
+    other_owned_objects: required-when-created
+    externally_owned: preserve-owner-contract
   load_metrics:
     - connections
     - locks

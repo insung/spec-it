@@ -1,7 +1,8 @@
 schema_version: 0.1.0
 policy:
+  # Replace this non-resolving placeholder before convergence.
   source: https://example.invalid/spec-it.git
-  version: 0.3.0
+  version: 0.4.0
 project:
   id: example-project
   name: Example Project
@@ -15,6 +16,7 @@ owners:
   architecture-owner: owner
   security-owner: owner
   data-owner: owner
+  operations-owner: owner
 parameters:
   lint:
     configuration: <repository-owned-path>

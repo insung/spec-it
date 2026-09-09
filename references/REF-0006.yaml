@@ -1,0 +1,6 @@
+schema_version: 0.1.0
+id: REF-0006
+type: official-standard
+uri: https://html.spec.whatwg.org/multipage/server-sent-events.html
+accessed_on: "2026-09-09"
+note: Canonical EventSource response, text/event-stream framing, reconnection, and parsing behavior.

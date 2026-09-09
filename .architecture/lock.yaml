@@ -1,11 +1,12 @@
-# Generated view for policy version 0.3.0. Do not edit directly.
+# Generated self-view for the unreleased policy version 0.4.0 draft. Do not use as a released project lock.
 # Phase 0 deterministic generation evidence: human-review.
-schema_version: 0.1.0
+schema_version: 0.2.0
 generated: true
 policy:
   source: .
-  version: 0.3.0
-manifest_digest: sha256:4c6eb8b1d235a696fec6898d75d0312602dc25b845f7bcbcca4af439964ca903
+  version: 0.4.0
+policy_digest: sha256:f0f97d693823d14eee1559e8b891bd61190d42f2dc367f5f0ecfcb58375d6c00
+manifest_digest: sha256:33970ecf52950c1cf9826ff5b02cef7b34996a37eaeb2fd5c0d55c2deb60fffd
 profiles:
   - risk/standard
 rules:
