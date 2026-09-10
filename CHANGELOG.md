@@ -2,7 +2,7 @@
 
 이 프로젝트는 [Semantic Versioning](https://semver.org/)을 사용합니다. 프로젝트는 정확한 정책 버전을 고정하며 자동 업그레이드하지 않습니다.
 
-## 0.4.0 - Unreleased
+## 0.4.0 - 2026-09-10
 
 ### Added
 
@@ -17,7 +17,7 @@
 
 ### Changed
 
-- HTTP API profile, 사용자 메시지 schema·template, governance·projection·reliability 설명과 policy self-projection을 0.4.0 초안에 맞춤.
+- HTTP API profile, 사용자 메시지 schema·template, governance·projection·reliability 설명과 policy self-projection을 0.4.0 기준선에 맞춤.
 - 운영 판단 승인자를 구분할 수 있도록 manifest owner에 선택적 `operations-owner`를 추가.
 - `DATA-009`와 `capability/db-migration`이 object decision owner, definition authority와 executor를 구분하고, immutable DB release definition과 그 digest를 참조하는 environment history를 분리하도록 정밀화.
 - baseline·desired schema 같은 current-state projection의 authority와 release chain 대조, historical·emergency reconciliation의 증거 한계를 명시하고 특정 migration 제품의 명명법을 공통 기본값에서 제외.

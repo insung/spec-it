@@ -40,4 +40,4 @@
 34. [0.2.0 → 0.3.0 migration](migrations/0.2.0-to-0.3.0.md)
 35. [0.3.0 release checklist](releases/0.3.0-checklist.md)
 36. [0.3.0 → 0.4.0 migration](migrations/0.3.0-to-0.4.0.md)
-37. [0.4.0 draft release checklist](releases/0.4.0-checklist.md)
+37. [0.4.0 release checklist](releases/0.4.0-checklist.md)

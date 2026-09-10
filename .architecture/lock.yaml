@@ -1,4 +1,4 @@
-# Generated self-view for the unreleased policy version 0.4.0 draft. Do not use as a released project lock.
+# Generated self-view for policy version 0.4.0. Release identity is the annotated Git tag.
 # Phase 0 deterministic generation evidence: human-review.
 schema_version: 0.2.0
 generated: true
