@@ -23,6 +23,8 @@ parameters:
     capacity_headroom: required
     allowed_downtime: required
     restart_budget: required
+    replacement_time_budget: required
+    interruptible_capacity_tolerance: required-when-used
     unit_cost_budget: required
   load_metrics:
     - cpu
@@ -37,26 +39,29 @@ evidence:
 evaluation:
   activation_signals:
     - EC2 instance, image, launch template, network, storage, process supervisor, or host bootstrap is added or changed.
-    - Instance size, count, failure domain, traffic path, scaling, restart, patch, or recovery behavior changes.
+    - Instance size, count, failure domain, traffic path, scaling, purchase option, capacity pool, restart, patch, or recovery behavior changes.
   required_decisions:
     - instance topology, failure domains, traffic routing, and allowed downtime
+    - On-Demand, Spot, or mixed capacity acquisition, minimum stable capacity, pool diversity, and interruption handling
     - process supervision, startup ordering, health and readiness, drain, and restart behavior
     - image, patch, secret, access, network, storage, backup, and recovery ownership
-    - capacity headroom, scaling signal, unit-cost budget, and operations owner
+    - capacity headroom, scaling signal, replacement-time and unit-cost budgets, and operations owner
   failure_scenarios:
     - instance, availability zone, network, storage, or process failure
+    - Spot interruption, insufficient capacity, exhausted capacity pool, or replacement launch failure
     - unhealthy instance remains in service or healthy capacity is drained too quickly
     - restart loop, failed bootstrap, patch regression, or configuration drift
     - capacity exhaustion, traffic imbalance, recovery delay, or operator unavailability
   cost_drivers:
-    - instance family, size, count, reservation, and uptime
+    - instance family, size, count, purchase option, interruption rate, replacement capacity, and uptime
     - block storage, snapshots, network transfer, load balancing, logs, and operations time
   measurements:
     - CPU, memory, disk, network, request latency, saturation, and capacity headroom
-    - instance and process health, restart, drain, recovery time, and deployment loss
+    - instance and process health, interruption handling, replacement success and time, restart, drain, recovery time, and deployment loss
     - request or workload unit cost and operations time
   guardrails:
     - project-approved capacity, downtime, restart, recovery, and unit-cost thresholds
+    - project-approved minimum stable capacity and fallback when interruptible capacity is unavailable
     - health-based traffic removal and bounded graceful shutdown
     - least-privilege host access, secret delivery, patch ownership, and observable recovery
   evidence_stages:
@@ -67,6 +72,7 @@ evaluation:
     - operations
   revisit_triggers:
     - utilization, saturation, latency, downtime, restart, recovery, or unit cost crosses a project threshold
-    - topology, instance family, network, storage, traffic routing, or process supervision changes
+    - topology, instance family, purchase option, capacity pool, network, storage, traffic routing, or process supervision changes
+    - interruption frequency or replacement success no longer satisfies the approved capacity and recovery assumptions
     - workload shape, availability objective, patch policy, or operations ownership changes
 conflicts: []

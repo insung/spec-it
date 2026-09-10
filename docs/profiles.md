@@ -33,6 +33,6 @@ runtime·deployment·capability profile이 구체적인 인프라 판단을 제�
 - evidence stages
 - revisit triggers
 
-공통 프로필은 관찰할 항목을 정하고 숫자를 보편값으로 고정하지 않습니다. 프로젝트 manifest와 ADR이 risk, workload, SLO와 예산에 맞는 threshold를 승인합니다. `runtime/aws-lambda`, `runtime/aws-ec2`, `deployment/docker-compose`, `capability/redis`가 같은 평가 구조를 사용합니다. runtime profile은 실행 host와 failure domain을, deployment profile은 artifact와 교체 절차를 소유하므로 도구 이름만으로 서로를 자동 선택하지 않습니다.
+공통 프로필은 관찰할 항목을 정하고 숫자를 보편값으로 고정하지 않습니다. 프로젝트 manifest와 ADR이 risk, workload, SLO와 예산에 맞는 threshold를 승인합니다. `runtime/aws-lambda`, `runtime/aws-ec2`, `deployment/docker-compose`, `capability/redis`, `capability/rds`가 같은 평가 구조를 사용합니다. runtime profile은 실행 host와 failure domain을, deployment profile은 artifact와 교체 절차를 소유하므로 도구 이름만으로 서로를 자동 선택하지 않습니다. RDS profile은 DB 제품 이름만으로 복구 가능성이나 운영 책임을 가정하지 않고 topology, capacity, recovery와 소유 경계를 함께 평가합니다.
 
 정본 규칙: [INFRA-001](../rules/infrastructure/INFRA-001.md), [INFRA-002](../rules/infrastructure/INFRA-002.md).

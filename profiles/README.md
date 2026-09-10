@@ -27,6 +27,6 @@ HTTP endpoint가 있다는 이유만으로 backend-service 전체에 API 규칙�
 
 ## 0.4.0 profiles
 
-`runtime/aws-ec2`는 프로젝트가 관리하는 EC2 host의 topology, capacity, process supervision, patch와 recovery 책임을 평가합니다. `deployment/docker-compose`는 Compose 파일과 배포 조정, immutable image, healthcheck, drain, volume, rollback 계약을 평가합니다. 둘은 독립 축입니다. Compose를 쓴다는 사실만으로 EC2를 선택하지 않으며, 한 host의 Compose 구성만으로 고가용성을 입증하지 않습니다.
+`runtime/aws-ec2`는 프로젝트가 관리하는 EC2 host의 topology, capacity acquisition, interruptible capacity, process supervision, patch와 recovery 책임을 평가합니다. `deployment/docker-compose`는 Compose 파일과 배포 조정, immutable image, healthcheck, drain, volume, rollback 계약을 평가합니다. 둘은 독립 축입니다. Compose를 쓴다는 사실만으로 EC2를 선택하지 않으며, 한 host의 Compose 구성만으로 고가용성을 입증하지 않습니다.
 
-`capability/http-api`는 HTTP streaming의 wire contract와 스트림이 열리기 전·후의 오류 mapping을 조건부 결정으로 추가합니다. 기존 비스트리밍 HTTP 프로젝트는 해당 결정을 자동 적용하지 않습니다. `capability/rds`는 새로 소유하는 DB identifier category별 convention과 외부 소유 identifier 보존을 선언하며, 모든 engine에 하나의 casing을 강제하지 않습니다.
+`capability/http-api`는 HTTP streaming의 wire contract와 스트림이 열리기 전·후의 오류 mapping을 조건부 결정으로 추가합니다. 기존 비스트리밍 HTTP 프로젝트는 해당 결정을 자동 적용하지 않습니다. `capability/rds`는 새로 소유하는 DB identifier category별 convention과 외부 소유 identifier 보존을 선언하며, 모든 engine에 하나의 casing을 강제하지 않습니다. 또한 topology, capacity, connection, failover, backup·PITR, restore, maintenance와 운영 소유권을 공통 infrastructure evaluation 구조로 평가합니다.

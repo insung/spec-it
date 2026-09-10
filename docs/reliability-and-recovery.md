@@ -8,6 +8,10 @@ API 서버처럼 요청 시점을 통제할 수 없는 시스템도 플랫폼 �
 
 EC2 위 Docker Compose는 runtime과 deployment의 두 판단입니다. EC2 profile은 host 수, failure domain, traffic removal, process supervision과 patch·recovery 책임을 다루고, Compose profile은 immutable image, rendered config, healthcheck, drain, volume과 rollback을 다룹니다. Compose 파일이 유효하다는 증거는 host 장애를 견디는 topology의 증거가 아닙니다.
 
+EC2의 비용 최적화도 Spot 비율만으로 결정하지 않습니다. interruptible capacity를 사용하면 project가 minimum stable capacity, capacity pool 다양성, interruption 처리, 대체 instance 기동과 traffic 재편입 시간을 정하고 관찰합니다. 공통 profile은 특정 비율을 고정하지 않고 availability와 recovery guardrail 안에서 On-Demand·Spot 또는 혼합 방식을 비교하게 합니다.
+
+RDS는 backup 설정만으로 복구 가능하다고 보지 않습니다. infrastructure·operations·data·schema object·migration execution의 소유 경계를 구분하고, topology와 failover, connection·lock·storage·IOPS, maintenance, heavy DDL, PITR와 restore rehearsal을 함께 평가합니다. 외부 소유 DB를 사용하는 project는 자기 권한과 consumer 책임을 기록하되 provider의 운영 책임을 가져왔다고 주장하지 않습니다.
+
 사람이 플랫폼을 선택해도 AI는 선택 이유가 실제 topology와 맞는지 검토하고, 불일치하면 반론과 대안을 제시합니다. 최종 선택은 사람이 하지만 승인된 hard constraint나 SLO를 만족하지 못한 상태는 수렴으로 기록하지 않습니다.
 
 정본 규칙: [REL-001](../rules/reliability/REL-001.md), [REL-002](../rules/reliability/REL-002.md), [RULE-003](../rules/rule-system/RULE-003.md).

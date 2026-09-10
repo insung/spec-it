@@ -4,17 +4,26 @@ axis: capability
 version: 0.4.0
 status: active
 description: Relational primary data storage capability.
+traits:
+  - infrastructure
 applies_when:
   - The project stores relational or transactional business data.
 rules:
+  - ARCH-005
+  - COST-001
+  - COST-002
   - DATA-001
   - DATA-004
   - DATA-007
   - DATA-010
-  - ARCH-005
+  - IAC-001
+  - INFRA-001
+  - INFRA-002
   - REL-001
+  - SEC-001
   - TST-003
   - TST-005
+  - TST-006
 parameters:
   database_identifier_convention:
     owned_schema: required-when-created
@@ -22,6 +31,13 @@ parameters:
     owned_column: required
     other_owned_objects: required-when-created
     externally_owned: preserve-owner-contract
+  project_thresholds:
+    connection_headroom: required
+    storage_headroom: required-when-capacity-owned
+    query_latency_budget: required
+    recovery_point_budget: required-when-durable-state-owned
+    recovery_time_budget: required-when-durable-state-owned
+    unit_cost_budget: required-when-cost-controlled
   load_metrics:
     - connections
     - locks
@@ -30,4 +46,46 @@ parameters:
     - unit-cost
 evidence:
   restore: risk-and-storage-change-triggered
+  integration: target-engine-isolated-environment
+  operations: topology-capacity-backup-restore-and-cost-observation
+evaluation:
+  activation_signals:
+    - Database engine, version, instance or cluster topology, parameter group, network, storage, credential, backup, or replica is added or changed.
+    - Schema, routine, migration, query, transaction, connection pool, failover, restore, or maintenance behavior changes.
+  required_decisions:
+    - infrastructure, operations, data, schema-object, migration-execution, and consumer ownership boundaries
+    - engine and version support, topology, failure domains, replicas, failover, and maintenance strategy
+    - transaction, timeout, connection-pool, privilege, schema compatibility, and migration behavior
+    - RPO, RTO, backup, PITR, retention, restore rehearsal, and recovery ownership
+    - storage and IOPS capacity, heavy-DDL controls, query and lock budgets, unit-cost budget, and operations owner
+  failure_scenarios:
+    - instance, cluster, availability zone, network, DNS, credential, or certificate failure
+    - connection exhaustion, lock wait, deadlock, long transaction, slow query, storage exhaustion, or replica lag
+    - backup, PITR, restore, replica promotion, or failover does not meet the approved recovery objective
+    - migration, heavy DDL, insufficient privilege, schema drift, or old and new application incompatibility
+    - maintenance, engine upgrade, parameter change, or secret rotation causes unavailable or incorrect behavior
+  cost_drivers:
+    - engine, instance or cluster size, topology, replicas, uptime, and reserved capacity
+    - storage, IOPS, backup retention, snapshots, data transfer, monitoring, and proxy or connection management
+    - migration rehearsal, restore testing, incident recovery, DBA work, and application operations time
+  measurements:
+    - connection and pool saturation, lock wait, deadlock, transaction duration, query latency, and error rate
+    - CPU, memory, storage headroom, IOPS, replication lag, failover time, and service recovery time
+    - backup success, recovery point, restore duration, restored-definition verification, and data-loss observation
+    - request or workload unit cost and operations time
+  guardrails:
+    - project-approved connection, storage, latency, lock, recovery, availability, and unit-cost thresholds
+    - least-privilege and separated runtime and migration access, bounded transactions, and controlled heavy DDL
+    - backup or PITR plus restore rehearsal that proves the approved RPO and RTO within required freshness
+    - explicit ownership for infrastructure, operations, data, schema objects, migration execution, and external contracts
+  evidence_stages:
+    - estimate
+    - development-benchmark
+    - non-production-observation
+    - pre-production-risk-test
+    - operations
+  revisit_triggers:
+    - connection, lock, latency, storage, IOPS, replication, recovery, availability, or unit cost crosses a project threshold
+    - engine, version, topology, replica, parameter, network, credential, backup, restore, or maintenance strategy changes
+    - schema, routine, migration, heavy DDL, transaction, query, workload shape, compatibility, or ownership boundary changes
 conflicts: []
