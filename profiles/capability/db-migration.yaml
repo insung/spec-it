@@ -1,7 +1,7 @@
 schema_version: 0.1.0
 profile_id: capability/db-migration
 axis: capability
-version: 0.3.0
+version: 0.4.0
 status: active
 description: Versioned and auditable database change delivery capability.
 applies_when:
@@ -16,15 +16,23 @@ rules:
   - TST-003
   - TST-006
 parameters:
+  responsibility_roles:
+    - object-decision-owner
+    - definition-authority
+    - executor
   execution_default: deployment-pipeline-single-activity
   application_startup: compatibility-check-only
-  artifact_integrity: version-and-checksum
+  release_definition: immutable-version-and-checksum
+  environment_history: references-release-digest
+  current_state_projection: optional-declared-and-reconciled
+  historical_change: explicitly-reconciled
   recovery_classes:
     - reversible
     - expand-contract-or-forward-fix
     - replayable-data-change
     - restore-dependent
 evidence:
-  release: per-release-and-environment
+  release: immutable-definition
+  environment: per-release-digest-and-environment
   reconciliation: after-emergency-or-delegated-execution
 conflicts: []

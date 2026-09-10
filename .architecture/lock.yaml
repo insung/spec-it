@@ -5,7 +5,7 @@ generated: true
 policy:
   source: .
   version: 0.4.0
-policy_digest: sha256:3056ad720b9c3f806209a103dbd4ac77876b2b273b3555f78e9cabd70278f5ee
+policy_digest: sha256:2e54ebfe90ee889af1cc581ee209936b387ee5f913f9504a3ac83611f69b6b4f
 manifest_digest: sha256:33970ecf52950c1cf9826ff5b02cef7b34996a37eaeb2fd5c0d55c2deb60fffd
 profiles:
   - risk/standard

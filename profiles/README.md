@@ -29,4 +29,6 @@ HTTP endpoint가 있다는 이유만으로 backend-service 전체에 API 규칙�
 
 `runtime/aws-ec2`는 프로젝트가 관리하는 EC2 host의 topology, capacity acquisition, interruptible capacity, process supervision, patch와 recovery 책임을 평가합니다. `deployment/docker-compose`는 Compose 파일과 배포 조정, immutable image, healthcheck, drain, volume, rollback 계약을 평가합니다. 둘은 독립 축입니다. Compose를 쓴다는 사실만으로 EC2를 선택하지 않으며, 한 host의 Compose 구성만으로 고가용성을 입증하지 않습니다.
 
-`capability/http-api`는 HTTP streaming의 wire contract와 스트림이 열리기 전·후의 오류 mapping을 조건부 결정으로 추가합니다. 기존 비스트리밍 HTTP 프로젝트는 해당 결정을 자동 적용하지 않습니다. `capability/rds`는 새로 소유하는 DB identifier category별 convention과 외부 소유 identifier 보존을 선언하며, 모든 engine에 하나의 casing을 강제하지 않습니다. 또한 topology, capacity, connection, failover, backup·PITR, restore, maintenance와 운영 소유권을 공통 infrastructure evaluation 구조로 평가합니다.
+`capability/http-api`는 HTTP streaming의 wire contract와 스트림이 열리기 전·후의 오류 mapping을 조건부 결정으로 추가합니다. 기존 비스트리밍 HTTP 프로젝트는 해당 결정을 자동 적용하지 않습니다. `capability/rds`는 새 project-owned table과 column에 `lower-snake-case` 기본값을 제공하고, 다른 convention의 명시적 project override와 legacy·외부 소유 identifier 보존을 함께 요구합니다. 이 조건부 기본값을 모든 engine의 공통 casing 규칙으로 확대하지 않습니다. 또한 topology, capacity, connection, failover, backup·PITR, restore, maintenance와 운영 소유권을 공통 infrastructure evaluation 구조로 평가합니다.
+
+`capability/db-migration`은 object decision owner, definition authority와 executor를 구분하고, 승인된 release definition과 그 digest를 참조하는 environment history를 분리합니다. baseline이나 current-state projection은 선택 사항이며 사용할 때 authority와 release chain 대조 방법을 선언합니다. 특정 migration 제품이나 파일 이름 규칙은 profile 기본값이 아닙니다.

@@ -10,7 +10,7 @@
 
 [DATA-007](../rules/data/DATA-007.md)에 따라 SQL migration과 구·신 호출자의 인수/반환 형태를 함께 검사합니다. DB DDL의 암묵적 commit과 이미 변한 데이터는 단순 rollback으로 복구되지 않을 수 있으므로 복원 또는 전진 수정 계획을 명시합니다. 프로시저 이름에 버전을 붙이는 것은 선택지이지 모든 DB에 강제할 이름 규칙이 아닙니다.
 
-[DATA-009](../rules/data/DATA-009.md)는 migration source, immutable release identity, application artifact compatibility, environment execution evidence와 recovery class를 연결합니다. application startup의 읽기 전용 compatibility check는 가능한 구현이지만 공통 의무는 아닙니다. 저장소와 실행 도구 선택은 [DB 변경 배포](database-change-delivery.md)에서 구분합니다.
+[DATA-009](../rules/data/DATA-009.md)는 object decision owner, authoritative migration source, executor, immutable release identity, application artifact compatibility, release digest를 참조하는 environment execution evidence와 recovery class를 연결합니다. application startup의 읽기 전용 compatibility check는 가능한 구현이지만 공통 의무는 아닙니다. 저장소와 실행 도구, 선택적인 current-state projection은 [DB 변경 배포](database-change-delivery.md)에서 구분합니다.
 
 추가 의무가 있는 수정 프로필은 `0.2.0`에서 활성화되었습니다. 기존 `0.1.0` 프로젝트와 예제 manifest/lock은 그대로 유효하며 자동 업그레이드하지 않습니다. 정책 릴리스와 프로젝트별 재명확화·재수렴은 별도 승인 작업입니다.
 

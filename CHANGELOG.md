@@ -11,7 +11,7 @@
 - generic SSE message contract fixture와 0.3.0 프로젝트의 명시적 재수렴 안내.
 - EC2 host runtime과 Docker Compose deployment를 분리 평가하는 infrastructure profile.
 - EC2의 interruptible capacity, capacity shortage와 replacement recovery를 project threshold 안에서 평가하는 계약.
-- owned DB identifier convention과 외부 소유 identifier 보존을 연결하는 `DATA-010` 및 RDS profile parameter.
+- 새 project-owned table·column의 `lower-snake-case` 기본값, 명시적 project override와 legacy·외부 소유 identifier 보존을 연결하는 `DATA-010` 및 RDS profile parameter.
 - RDS topology, capacity, failover, backup·PITR, restore, maintenance, heavy DDL와 ownership boundary를 다루는 infrastructure evaluation.
 - repository-scoped skill discovery와 기존 `.gitignore`를 보존하는 projection 절차.
 
@@ -19,11 +19,13 @@
 
 - HTTP API profile, 사용자 메시지 schema·template, governance·projection·reliability 설명과 policy self-projection을 0.4.0 초안에 맞춤.
 - 운영 판단 승인자를 구분할 수 있도록 manifest owner에 선택적 `operations-owner`를 추가.
+- `DATA-009`와 `capability/db-migration`이 object decision owner, definition authority와 executor를 구분하고, immutable DB release definition과 그 digest를 참조하는 environment history를 분리하도록 정밀화.
+- baseline·desired schema 같은 current-state projection의 authority와 release chain 대조, historical·emergency reconciliation의 증거 한계를 명시하고 특정 migration 제품의 명명법을 공통 기본값에서 제외.
 
 ### Compatibility and enforcement
 
 - lock artifact 형식과 조건부 profile 의무가 바뀌는 pre-1.0 minor release이며 0.3.0 project manifest와 lock을 자동 업그레이드하지 않는다.
-- deterministic lock generator, policy bundle assembler, SSE runtime validator, EC2·Compose provision/deploy/rollback executor는 구현하지 않는다.
+- deterministic lock generator, policy bundle assembler, DB release·environment evidence schema와 runner, SSE runtime validator, EC2·Compose provision/deploy/rollback executor는 구현하지 않는다.
 - 별도 lifecycle 정책, project-specific 사례와 private overlay는 이 공개 공통 릴리스 범위에 포함하지 않는다.
 
 ## 0.3.0 - 2026-09-08

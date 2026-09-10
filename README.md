@@ -17,7 +17,7 @@
 
 ### 0.4.0 정책 초안
 
-`0.4.0` 초안은 공개 정책 source의 불변 content digest, HTTP streaming의 stream open 전·후 오류 계약, `runtime/aws-ec2`와 `deployment/docker-compose`의 독립 인프라 평가, RDS의 topology·capacity·recovery 평가를 추가합니다. `0.3.0`은 DB migration과 data pipeline 운영 계약의 마지막 공개 기준선이며, 0.4.0 초안은 tag가 생성되기 전까지 프로젝트 lock source로 사용할 수 없습니다.
+`0.4.0` 초안은 공개 정책 source의 불변 content digest, DB release의 소유·정본·실행 책임과 환경 증거 경계, HTTP streaming의 stream open 전·후 오류 계약, `runtime/aws-ec2`와 `deployment/docker-compose`의 독립 인프라 평가, RDS의 topology·capacity·recovery 평가를 추가하거나 정밀화합니다. `0.3.0`은 DB migration과 data pipeline 운영 계약의 마지막 공개 기준선이며, 0.4.0 초안은 tag가 생성되기 전까지 프로젝트 lock source로 사용할 수 없습니다.
 
 기존 프로젝트는 자동 업그레이드하지 않으며 [0.3.0 → 0.4.0 migration guide](docs/migrations/0.3.0-to-0.4.0.md)에 따라 별도로 재수렴합니다. 초안 검증과 known limits는 [0.4.0 release checklist](docs/releases/0.4.0-checklist.md)에 기록합니다.
 
