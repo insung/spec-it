@@ -25,3 +25,11 @@
 - [프로젝트 manifest](project/manifest.yaml): 배포·복구·비용 판단의 승인자를 구분할 때 사용할 선택적 `operations-owner` 시작점.
 
 템플릿의 zero digest와 placeholder revision은 수렴 완료 값이 아닙니다. 실제 공개 release artifact와 현재 manifest bytes에서 다시 계산해야 합니다.
+
+## 미발행 후보 — 선택적 의도·검증 기록
+
+- [변경 명세](project/change-spec.md): 최소 의도 되읽기·원본·경로·검증 연결. 전 항목을 사전 설문으로 요구하지 않습니다.
+- [영향 기록](project/change-impact.md): 확인 시각, revision/dirty 상태, 미변경 소비자와 재검토 조건. 읽기 전용 조사 결과의 저장은 호출자 권한입니다.
+- [수용 사례](testing/acceptance-case.md), [실행 기록](testing/verification-run.md): Case revision과 Run ID, 외부 QA repo·증거·실패/수정/재검증 연결.
+
+새 schema나 공통 필수 폴더가 아닙니다. 기존 문서/QA 도구의 동등한 항목으로 대체할 수 있고 구현 저장소에 QA 코드가 없어도 됩니다. [설명](../docs/intent-and-verification.md), [분리 저장소 예제](../examples/intent-verification/README.md)를 참고합니다.

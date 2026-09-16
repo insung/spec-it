@@ -2,6 +2,16 @@
 
 이 프로젝트는 [Semantic Versioning](https://semver.org/)을 사용합니다. 프로젝트는 정확한 정책 버전을 고정하며 자동 업그레이드하지 않습니다.
 
+## 0.5.0 - 2026-09-16
+
+- 읽기 전용 `spec-it-impact`와 기존 스킬의 되읽기·사용자 정정·조사 신선도·원문 기반 검증 인계 안내.
+- 선택적 영향/Case/Run template, 분리 QA 저장소 합성 예제와 기획 적합성·고객 목적·탐색 구분.
+- 기존 GOV/TST 규칙을 재사용하며 새 규칙·risk profile·schema 변경과 QA 폴더/도구 강제는 없음.
+- [후보 안내](docs/migrations/0.4.0-to-0.5.0.md)에 0.4.0 self lock의 전역/그룹 정렬 digest 불일치와 후속 처리 기록.
+- 고정 합성 사례 24개에서 기준선 22/24와 최종 후보 24/24를 관찰하고, 네 차례 독립 감사에서 발견한 IV-01·F-1·BEH-001을 수정·재검증. 이는 일반 성공률이나 실제 제품 QA 통과가 아님.
+- `VERSION`·self projection과 lock digest를 `0.5.0` bytes에 맞춰 재수렴하고 annotated tag 기반 release gate를 완료.
+- watcher, QA runner, 자동 validator/CI enforcement, 전역 설치와 프로젝트 자동 업그레이드는 제공하지 않음. 기존 다섯 설치 스킬이 live symlink인 환경에서는 worktree 내용이 보일 수 있음.
+
 ## 0.4.0 - 2026-09-10
 
 ### Added

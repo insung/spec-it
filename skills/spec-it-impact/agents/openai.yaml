@@ -1,0 +1,4 @@
+interface:
+  display_name: "spec-it:impact"
+  short_description: "Inspect change scope and revision-bound impact evidence"
+  default_prompt: "Use $spec-it-impact to inspect this change and return its affected paths, unknowns, and refresh conditions without editing files."

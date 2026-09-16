@@ -41,3 +41,6 @@
 35. [0.3.0 release checklist](releases/0.3.0-checklist.md)
 36. [0.3.0 → 0.4.0 migration](migrations/0.3.0-to-0.4.0.md)
 37. [0.4.0 release checklist](releases/0.4.0-checklist.md)
+38. [의도·영향·검증의 연결](intent-and-verification.md)
+39. [0.4.0 → 0.5.0 migration](migrations/0.4.0-to-0.5.0.md)
+40. [0.5.0 release checklist](releases/0.5.0-checklist.md)

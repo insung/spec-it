@@ -1,0 +1,293 @@
+# Project-local pilot artifact; not a public spec-it schema or generated policy lock.
+artifact_version: 1
+change_id: 20260912-intent-impact-verification
+status: released
+progress:
+  total_stages: 6
+  completed_stages: [1, 2, 3, 4, 5, 6]
+  last_completed_stage: 6
+  current_stage: null
+  next_stage: null
+  next_action: project-pilot-or-explicit-project-reconvergence
+spec: spec.md
+acceptance: acceptance-cases.md
+verification: verification.md
+baseline:
+  policy_version: 0.4.0
+  tag: v0.4.0
+  revision: 6a4ea01eb09bfb116ff24fd2d5253889086f9a77
+  policy_digest: sha256:2e54ebfe90ee889af1cc581ee209936b387ee5f913f9504a3ac83611f69b6b4f
+  policy_digest_meaning: value-recorded-in-released-lock-not-verified-content
+  observed_policy_digest: sha256:3360e1545cf9fe85469f484e3cbd2ba1ebc2ffbdfe4ded2f72255a5bc4c3a5b1
+  integrity: mismatch
+  integrity_finding: BASE-ISSUE-001
+  experiment_identification: exact-tag-commit-and-observed-policy-digest
+  lock_repair: resolved-in-local-0.5.0-candidate
+  manifest_digest: sha256:33970ecf52950c1cf9826ff5b02cef7b34996a37eaeb2fd5c0d55c2deb60fffd
+  initial_worktree: clean
+  observed_on: "2026-09-12"
+  current_authority: released-policy-and-approved-project-input
+  candidate_version: 0.5.0
+  candidate_version_status: released-as-v0.5.0
+design:
+  selected_in: stage-4-DEC-009-after-baseline
+  new_rules: []
+  new_skill: spec-it-impact
+  profile_changes: none
+  initial_enforcement: instruction-only-no-new-policy-obligation
+  public_schema_changes: none
+  qa_repository_layout: project-owned
+  relations_artifact: optional
+  behavior_case_revision: 1
+  behavior_case_status: baseline-ready
+  execution_packets: [PK-01, PK-02, PK-03, PK-04, PK-05, PK-06, PK-07]
+  reassessment: DEC-009-reuse-existing-rules-and-optional-evidence-shapes
+evaluation:
+  completed_on: "2026-09-13"
+  results: baseline/results.md
+  run_manifest: baseline/run-manifest.json
+  cases: {met: 22, unmet: 2, blocked: 0}
+  independent_execution_contexts: 7
+  raw_responses: 8
+  grading: parent-manual-synthetic-case-evaluation
+  gaps: [GAP-001, GAP-002]
+  candidate_execution: completed
+  candidate_protocol: candidate/protocol.md
+  candidate_id: CAND-STAGE5-20260915-04
+  candidate_results: candidate/results.md
+  candidate_run_manifest: candidate/run-manifest.json
+  candidate_cases: {met: 24, unmet: 0, blocked: 0}
+  independent_reviews: 4
+  resolved_findings: [IV-01, F-1, BEH-001]
+discovery:
+  implementation_inspected_at: "2026-09-13T01:43:51Z"
+  implementation_baseline: 6a4ea01eb09bfb116ff24fd2d5253889086f9a77
+  dirty_identification: implementation-snapshot.json
+  source_tree_sha256: 8508df644e996e4f0f7d8916876acc18f721fe3785835e33f5bc46f61edbd0a5
+  snapshot_scope: public-candidate-source-excludes-evaluator-change-directory
+  roots: [spec-it]
+  inspected:
+    - AGENTS.md
+    - .architecture/project.md
+    - .architecture/manifest.yaml
+    - .architecture/lock.yaml
+    - .architecture/decisions/ADR-0001.md
+    - schemas/change-spec-frontmatter.schema.json
+    - templates/project/change-spec.md
+    - skills/spec-it-specify/SKILL.md
+    - skills/spec-it-clarify/SKILL.md
+    - skills/spec-it-converge/SKILL.md
+    - skills/spec-it-check/SKILL.md
+    - skills/spec-it-evolve/SKILL.md
+    - skills/spec-it-evolve/references/document-routing.md
+    - docs/agent-work-cycle.md
+    - docs/traceability.md
+    - docs/tdd-and-verification.md
+    - docs/releases/0.4.0-checklist.md
+    - rules/governance/
+    - rules/hitl/
+    - rules/testing/
+    - rules/rule-system/
+    - rules/tooling/TOOL-002.md
+  granularity: relevant-files-and-rules-not-an-exhaustive-repository-audit
+  source_visibility:
+    conversation: available-user-messages-and-selections
+    private_incident: reviewed-as-historical-record-not-live-code
+    original_planning_and_design: not-refetched
+    application_repositories: not-inspected
+    remote_tools_and_qa_runs: not-accessed
+    other_sessions: not-inspected
+  limits:
+    - No background watcher or cross-session memory guarantee.
+    - A declared relation is evidence to investigate, not proof of current completeness.
+    - Unknown external sources cannot be reported as unchanged or not applicable.
+current_write_scope:
+  - spec.md
+  - impact.yaml
+  - verification.md
+  - implementation.md
+  - principle-handoff.md
+  - implementation-snapshot.json
+  - candidate/
+  - skills/README.md
+  - skills/spec-it-specify/SKILL.md
+  - skills/spec-it-clarify/SKILL.md
+  - skills/spec-it-converge/SKILL.md
+  - skills/spec-it-check/SKILL.md
+  - skills/spec-it-evolve/SKILL.md
+  - skills/spec-it-impact/SKILL.md
+  - skills/spec-it-impact/agents/openai.yaml
+  - templates/project/change-spec.md
+  - templates/project/change-impact.md
+  - templates/project/AGENTS.md
+  - templates/testing/acceptance-case.md
+  - templates/testing/verification-run.md
+  - templates/README.md
+  - docs/intent-and-verification.md
+  - docs/agent-work-cycle.md
+  - docs/tdd-and-verification.md
+  - docs/traceability.md
+  - docs/project-projection.md
+  - docs/migrations/0.4.0-to-0.5.0.md
+  - docs/README.md
+  - examples/intent-verification/README.md
+  - examples/README.md
+  - CHANGELOG.md
+  - VERSION
+  - README.md
+  - AGENTS.md
+  - .architecture/manifest.yaml
+  - .architecture/lock.yaml
+  - docs/roadmap.md
+  - docs/releases/0.5.0-checklist.md
+  - release-snapshot.json
+surfaces:
+  - id: IMP-001
+    target: current-change-package
+    state: applies
+    evidence: user-authorized-draft-and-next-design-stage
+    requirements: [REQ-002, REQ-004, REQ-011, REQ-022, REQ-023, REQ-024]
+    paths: [spec.md, acceptance-cases.md, impact.yaml, verification.md]
+    action: specify-design-and-verify-local-structure
+  - id: IMP-002
+    target: intent-procedure
+    state: applies
+    evidence: GOV-001-and-GOV-002-already-cover-authority-and-human-decisions
+    requirements: [REQ-009, REQ-013, REQ-014, REQ-015, REQ-016]
+    paths: [rules/governance/GOV-001.md, rules/governance/GOV-002.md]
+    action: reuse-authority-and-approval-with-specify-clarify-guidance-no-new-rule
+    decision: DEC-009
+  - id: IMP-003
+    target: scenario-and-evidence-contract
+    state: applies
+    evidence: TST-002-has-independent-verification-but-no-explicit-variant-path-run-shape
+    requirements: [REQ-001, REQ-003, REQ-005, REQ-006, REQ-007, REQ-010, REQ-012, REQ-013]
+    paths: [rules/testing/TST-001.md, rules/testing/TST-002.md, rules/testing/TST-003.md, rules/testing/TST-006.md]
+    action: optional-case-and-run-templates-no-new-rule-or-profile-change
+    decision: DEC-009
+  - id: IMP-004
+    target: impact-discovery-skill
+    state: applies
+    evidence: current-skills-share-preflight-signals-without-durable-impact-artifact
+    requirements: [REQ-001, REQ-018, REQ-019, REQ-020, REQ-021]
+    proposed_new_path: skills/spec-it-impact/SKILL.md
+    action: implement-read-only-discovery-and-caller-owned-persistence
+    modes: [preflight, delta, completion, brownfield, late-entry]
+    decision: DEC-009
+  - id: IMP-005
+    target: existing-skill-handoffs
+    state: applies
+    evidence: inspected-current-instruction-entrypoints
+    requirements: [REQ-003, REQ-013, REQ-014, REQ-015, REQ-016, REQ-017, REQ-018, REQ-019, REQ-020, REQ-021]
+    paths: [skills/spec-it-specify/SKILL.md, skills/spec-it-clarify/SKILL.md, skills/spec-it-converge/SKILL.md, skills/spec-it-check/SKILL.md, skills/spec-it-evolve/SKILL.md]
+    action: implement-readback-freshness-and-source-first-completion-review
+    boundary: check-remains-read-only-and-does-not-repair-impact-artifacts
+  - id: IMP-006
+    target: templates-and-artifact-shapes
+    state: applies
+    evidence: current-change-template-has-outcomes-and-decisions-without-source-case-path-links
+    requirements: [REQ-005, REQ-008, REQ-009, REQ-010, REQ-013, REQ-014, REQ-020, REQ-023]
+    paths: [templates/project/change-spec.md]
+    candidate_artifacts: [change-impact, acceptance-case, verification-run]
+    relations_decision: reuse-impact-relationship-table-no-separate-duplicate-artifact
+    action: minimal-fields-and-optional-templates-without-public-schema-change
+    decision: DEC-006
+  - id: IMP-007
+    target: profiles-and-lock-projection
+    state: excluded
+    evidence: risk-standard-currently-selects-TST-001-through-TST-005
+    requirements: [REQ-004, REQ-010, REQ-017, REQ-021]
+    paths: [profiles/risk/low.yaml, profiles/risk/standard.yaml, profiles/risk/high.yaml]
+    action: preserve-all-risk-profiles
+    reason: no-demonstrated-new-obligation-needed-in-stage-4
+    decision: DEC-009
+  - id: IMP-008
+    target: explanation-and-synthetic-fixtures
+    state: applies
+    evidence: current-docs-describe-work-cycle-and-independent-verification
+    requirements: [REQ-001, REQ-002, REQ-005, REQ-006, REQ-007, REQ-008, REQ-009, REQ-010, REQ-012, REQ-017, REQ-018, REQ-019, REQ-020, REQ-021, REQ-022]
+    paths: [docs/agent-work-cycle.md, docs/tdd-and-verification.md, docs/traceability.md, docs/project-projection.md, examples/README.md]
+    action: candidate-explanations-and-private-free-fixtures-after-spec-review
+  - id: IMP-009
+    target: release-projections
+    state: applies
+    evidence: 0.4.0-is-the-released-baseline
+    requirements: [REQ-004, REQ-021, REQ-022, REQ-023]
+    paths: [README.md, VERSION, CHANGELOG.md, rules/README.md, skills/README.md, templates/README.md, docs/README.md, .architecture/manifest.yaml, .architecture/lock.yaml, AGENTS.md]
+    candidate_artifacts: [migration-guide, release-checklist]
+    action: inspect-and-update-only-affected-projections-at-release-stage
+    decision: DEC-004
+  - id: IMP-010
+    target: integrated-qa-product
+    state: excluded
+    reason: execution-tools-and-integrated-ui-are-outside-this-phase-0-pilot
+    requirements: [REQ-005, REQ-008, REQ-010]
+    retained_requirement: minimum-reference-and-status-contract
+    owner: intent-owner
+    revisit: after-a-real-multi-repository-qa-pilot-shows-unmet-workflow-needs
+  - id: IMP-011
+    target: system-book-manuscript
+    state: excluded
+    reason: separate-writing-work-with-candidate-and-real-project-evidence-still-pending
+    requirements: [REQ-011]
+    retained_requirement: evidence-and-counterexample-handoff
+    owner: intent-owner
+    revisit: after-pilot-results-and-latest-manuscript-check
+    baseline_gap: GAP-002-optional-handoff-counterexamples-public-boundary-and-manuscript-freshness
+  - id: IMP-012
+    target: existing-db-delivery-and-application-fixes
+    state: excluded
+    reason: already-scoped-prior-work-and-no-application-remediation-request-in-this-stage
+    requirements: [REQ-002, REQ-004, REQ-006]
+    paths: [rules/data/DATA-009.md, docs/database-change-delivery.md]
+    action: reference-existing-authority-only
+  - id: IMP-013
+    target: installed-skills-and-other-projects
+    state: excluded
+    reason: source-draft-does-not-authorize-global-installation-or-project-upgrades
+    requirements: [REQ-004, REQ-021, REQ-024]
+    action: no-auto-sync-or-policy-upgrade
+    observed_side_effect: existing-five-installed-symlinks-resolve-live-worktree-content
+    correction: no-install-command-or-link-edit-but-linked-skill-content-changed
+  - id: IMP-014
+    target: external-current-state
+    state: unknown
+    reason: no-live-planning-design-qa-or-application-repository-read-in-this-stage
+    requirements: [REQ-008, REQ-009, REQ-020]
+    action: do-not-claim-external-drift-detection-or-current-application-conformance
+  - id: IMP-015
+    target: baseline-lock-integrity
+    state: applies
+    evidence: BASE-ISSUE-001
+    requirements: [REQ-004, REQ-022, REQ-024]
+    paths: [rules/tooling/TOOL-002.md, .architecture/lock.yaml]
+    action: retained-known-baseline-defect-and-recomputed-local-candidate-lock-without-retagging
+    resolution: global-relative-path-sort-used-for-0.5.0-candidate
+    decision: DEC-007
+  - id: IMP-016
+    target: public-artifact-schemas
+    state: excluded
+    reason: existing-frontmatter-shape-is-sufficient-and-new-artifacts-remain-pilot-templates
+    requirements: [REQ-005, REQ-008, REQ-010, REQ-020]
+    paths: [schemas/change-spec-frontmatter.schema.json, schemas/check-report.schema.json]
+    action: preserve-schema-contracts-and-check-result-enum
+  - id: IMP-017
+    target: baseline-behavior-evidence
+    state: applies
+    evidence: seven-independent-execution-contexts-eight-verbatim-responses
+    requirements: [REQ-011, REQ-020, REQ-022, REQ-023, REQ-024]
+    paths: [baseline/inputs/, baseline/responses/, baseline/results.md, baseline/run-manifest.json]
+    action: preserve-frozen-inputs-and-raw-outputs-retest-observed-gaps-in-stage-5
+    decision: DEC-008
+refresh_triggers:
+  - Change of baseline HEAD or working-tree file content since recorded inspection.
+  - Added or discovered strategy, caller, consumer, configuration, stored field, or external contract.
+  - Source revision, intent decision, design state, scenario expectation, or test fixture change.
+  - New session or resumed work with an old discovery record.
+  - Changed permissions or availability of an external source.
+refresh_protocol:
+  - Read the active spec, baseline, changed files, declared relations, and prior unknowns.
+  - Compare available revisions and dirty-state evidence; record inaccessible comparisons.
+  - Reassess linked unchanged consumers as well as touched paths.
+  - Mark affected decisions and runs for review; preserve historical evidence.
+  - Ask only new material decisions; continue work covered by existing approval.

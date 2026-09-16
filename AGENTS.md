@@ -1,7 +1,7 @@
 # spec-it agent entry point
 
 <!-- spec-it:managed:start -->
-> Generated guidance block. Do not edit this block directly. Policy version: 0.4.0.
+> Generated guidance block. Do not edit this block directly. Policy version: 0.5.0.
 
 - Read [`.architecture/project.md`](.architecture/project.md) for purpose and non-goals.
 - Treat [`rules/`](rules/README.md) as the only normative rule source.

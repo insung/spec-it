@@ -14,6 +14,9 @@
 - Before work: map the request and expected changes to the rules in the resolved lock.
 - During work: re-evaluate only when a material dependency, infrastructure, data, security, or public-contract signal appears.
 - Before completion: map the actual diff to applicable rules and run the repository-declared checks.
+- For material intent: read back concrete examples, counterexamples, and unchanged behavior; ask only unresolved material differences.
+- For impact handoff: retain inspected source revisions, dirty state, observation time, unknowns, and refresh conditions in the authorized change record; use spec-it-impact when available.
+- At completion or resumption: revisit original sources and linked unchanged consumers; distinguish historical runs from evidence valid for the current scope. Existing external QA records are allowed.
 - Human interruption: ask only for an unresolved material decision, rule conflict, hard-constraint violation, or approved budget overrun.
 <!-- spec-it:managed:end -->
 

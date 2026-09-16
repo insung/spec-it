@@ -21,6 +21,8 @@ AGENTS.md
 - `decisions/`: architecture와 infrastructure 판단을 보존하는 ADR.
 - `changes/<YYYYMMDD-short-slug>/spec.md`: 활성 변경의 단일 명세. 완료 뒤 지속되는 내용만 정본·manifest·ADR로 옮깁니다.
 
+미발행 후보의 영향·사례·검증 기록은 이 구조에 새 필수 디렉터리를 추가하지 않습니다. 프로젝트가 선택한 상위 변경 기록과 외부 QA 저장소에서 정본을 유지할 수 있습니다. 필요할 때 [선택 템플릿](../templates/README.md)의 항목만 재사용합니다. read-only impact/check 호출 자체가 파일 생성이나 정책 업그레이드를 승인하지 않습니다.
+
 모노레포는 루트 manifest에 공통 선택을 두고 독립 배포 단위의 unit manifest에는 차이만 선언합니다.
 
 ## 정책 source와 release 고정

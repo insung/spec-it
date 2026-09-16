@@ -20,3 +20,7 @@
 ## 0.4.0 examples
 
 [sse-message-contract](sse-message-contract/README.md)는 generic SSE 응답에서 stream open 전 HTTP 오류와 open 후 typed error event를 구분합니다. schema 구조 예제일 뿐 실제 event framing·재연결·UI 동작을 검증하지 않습니다.
+
+## 미발행 후보 예제
+
+[intent-verification](intent-verification/README.md)은 기획·디자인·구현·별도 QA의 Case/Run revision과 영향 재검토를 연결하는 합성 예제입니다. 실제 QA 실행 결과가 아니며 특정 도구나 QA 폴더를 강제하지 않습니다.

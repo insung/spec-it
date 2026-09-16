@@ -1,0 +1,432 @@
+{
+  "artifact_version": 1,
+  "change_id": "20260912-intent-impact-verification",
+  "stage": 3,
+  "recorded_at_utc": "2026-09-12T14:22:12.114Z",
+  "evaluation_mode": "independent-forward-execution-with-parent-manual-scoring",
+  "source": {
+    "version": "0.4.0",
+    "tag": "v0.4.0",
+    "revision": "6a4ea01eb09bfb116ff24fd2d5253889086f9a77",
+    "recorded_policy_sha256": "2e54ebfe90ee889af1cc581ee209936b387ee5f913f9504a3ac83611f69b6b4f",
+    "global_path_policy_sha256": "3360e1545cf9fe85469f484e3cbd2ba1ebc2ffbdfe4ded2f72255a5bc4c3a5b1",
+    "snapshot_tree_sha256": "3de6f745a309a39b242476e1f88812e46f3123b24d74b13c548d274390ed76ce",
+    "tree_hash_contract": "All 213 exported tag paths sorted globally; each UTF-8 relative path + NUL + file bytes + NUL.",
+    "all_exported_tag_files_verified_unchanged": 213,
+    "policy_integrity": "known-global-vs-group-order-mismatch"
+  },
+  "case_set": {
+    "path": "../acceptance-cases.md",
+    "revision": 1,
+    "sha256": "4979d46c51f083a5f7470688e967db404603c794749097629e445467158bc929"
+  },
+  "model": {
+    "selection": "parent-inherited-no-override",
+    "resolved_serving_model_id": null,
+    "generation_parameters": null
+  },
+  "harness": {
+    "context_fork": "none-per-packet",
+    "allowed_resources": "packet raw inputs and released policy snapshot; PK-05 also reconstructed app source",
+    "excluded_resources": "parent conversation and workspace, memories, other packets, candidate designs, expected answers, external network",
+    "allowed_writes": "one response artifact per user turn in temporary workspace",
+    "context_isolation": "instruction-scoped; no separate OS sandbox",
+    "raw_answers_preserved": true,
+    "request_variation": "same common restrictions; task path and output path vary by packet",
+    "grading": "parent manual comparison to frozen cases; no exact-word matching"
+  },
+  "availability_events": [
+    {
+      "packet": "PK-04",
+      "attempt": 1,
+      "kind": "usage-limit-before-response",
+      "response_created": false,
+      "counted_as_behavior_failure": false,
+      "action": "resumed-same-input-after-user-continue"
+    }
+  ],
+  "timing": {
+    "session_observed_start_utc": "2026-09-12T09:58:08Z",
+    "output_timestamps": "temporary response file modification timestamps; include a paused availability interval",
+    "active_compute_seconds": null
+  },
+  "fixtures": {
+    "revision": 1,
+    "inputs": [
+      {
+        "path": "inputs/PK-01.md",
+        "sha256": "3483fe784722015fb0dbf1ac1c21ca68cf3cd89ce5cbde8efbd7f33e9ca32722",
+        "bytes": 2384
+      },
+      {
+        "path": "inputs/PK-02.md",
+        "sha256": "4c2688ade32bb304c7ae26bfa31c3e6e9fd92e99ea230bddfe58ad2ea63c99ce",
+        "bytes": 2348
+      },
+      {
+        "path": "inputs/PK-03.md",
+        "sha256": "8ad5161a0fc48716856b4889cd89c6bc4acf6bd7ec95a8babe4393784271abb7",
+        "bytes": 2259
+      },
+      {
+        "path": "inputs/PK-04-turn2.md",
+        "sha256": "150add1e3203e989beaff5d8f0a50b130401c0140fc8f9141a42f594b438eeec",
+        "bytes": 724
+      },
+      {
+        "path": "inputs/PK-04.md",
+        "sha256": "7d79455f6e7f3b5bdd78bb16d49c84f0285ca2e42e2ca0e647cdd7710bcd30e8",
+        "bytes": 1193
+      },
+      {
+        "path": "inputs/PK-05-source.md",
+        "sha256": "c1a4cf922f176862ef23f0408ed8e29140d73fb3c643ef48fe6bf143d1b7e6be",
+        "bytes": 1025
+      },
+      {
+        "path": "inputs/PK-05.md",
+        "sha256": "c7048ef36e64437c4d40a3d60478532dd987e9d3b405fb5d90f243a82cedc2ef",
+        "bytes": 2102
+      },
+      {
+        "path": "inputs/PK-06.md",
+        "sha256": "64eefe7bd38e871e7af0897c3463a78b39a6928dee78967fad1e5b06a1e6e71e",
+        "bytes": 1560
+      },
+      {
+        "path": "inputs/PK-07.md",
+        "sha256": "f067a22044da91ccabbeebb34b947be018afe9bd48a598a44a291008224fce01",
+        "bytes": 2072
+      }
+    ]
+  },
+  "responses": [
+    {
+      "path": "responses/PK-01.md",
+      "sha256": "f7ae7d4ceb0fc34e050e08b6479488d2374a1f8ac71772a836f12d05ef782679",
+      "bytes": 8812,
+      "written_at_utc": "2026-09-12T10:01:59.342Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-02.md",
+      "sha256": "124e9b28e090d83b124fb1c599d7573cfe7e8f9c28e6ac29da217f0015de8b76",
+      "bytes": 8933,
+      "written_at_utc": "2026-09-12T10:02:27.896Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-03.md",
+      "sha256": "b8b96877302429bef02192bef091e88892bd9834398700dfec3f70718405f08c",
+      "bytes": 9456,
+      "written_at_utc": "2026-09-12T10:02:32.994Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-04-turn1.md",
+      "sha256": "57eaf640ddf781e6586fef6c983144bc757899bc876828cc15e04635c3232481",
+      "bytes": 8271,
+      "written_at_utc": "2026-09-12T14:14:08.500Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-04-turn2.md",
+      "sha256": "aa2f5ad1ec194b3990fc090ea766caddf308d94100fb8ad216e06c713af05614",
+      "bytes": 5496,
+      "written_at_utc": "2026-09-12T14:15:59.334Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-05.md",
+      "sha256": "83a6be6bfdc7f18ce349550ca9bae4a0e6bdbe404948d810e89a07b16b8a75de",
+      "bytes": 13800,
+      "written_at_utc": "2026-09-12T14:13:56.310Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-06.md",
+      "sha256": "5e6012afd78490c5a137ba32da5c6083c37c69cd21657b9cae0c2dc2bd96d7c4",
+      "bytes": 15825,
+      "written_at_utc": "2026-09-12T14:13:49.681Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-07.md",
+      "sha256": "b8c7126c8583163e3099d77aa97f96fde1fa2ed678378ff685c6e3b45d980a0e",
+      "bytes": 14159,
+      "written_at_utc": "2026-09-12T14:17:36.440Z",
+      "verbatim": true
+    }
+  ],
+  "packets": [
+    {
+      "run_id": "BAS-20260912-PK-01-01",
+      "packet": "PK-01",
+      "agent_context": "baseline_pk01",
+      "input_paths": [
+        "inputs/PK-01.md"
+      ],
+      "response_paths": [
+        "responses/PK-01.md"
+      ],
+      "cases": [
+        "AC-001",
+        "AC-002",
+        "AC-007"
+      ],
+      "status": "completed",
+      "attempts": 1
+    },
+    {
+      "run_id": "BAS-20260912-PK-02-01",
+      "packet": "PK-02",
+      "agent_context": "baseline_pk02",
+      "input_paths": [
+        "inputs/PK-02.md"
+      ],
+      "response_paths": [
+        "responses/PK-02.md"
+      ],
+      "cases": [
+        "AC-003",
+        "AC-012",
+        "AC-013"
+      ],
+      "status": "completed",
+      "attempts": 1
+    },
+    {
+      "run_id": "BAS-20260912-PK-03-01",
+      "packet": "PK-03",
+      "agent_context": "baseline_pk03",
+      "input_paths": [
+        "inputs/PK-03.md"
+      ],
+      "response_paths": [
+        "responses/PK-03.md"
+      ],
+      "cases": [
+        "AC-005",
+        "AC-008",
+        "AC-009",
+        "AC-010"
+      ],
+      "status": "completed",
+      "attempts": 1
+    },
+    {
+      "run_id": "BAS-20260912-PK-04-01",
+      "packet": "PK-04",
+      "agent_context": "baseline_pk04",
+      "input_paths": [
+        "inputs/PK-04.md",
+        "inputs/PK-04-turn2.md"
+      ],
+      "response_paths": [
+        "responses/PK-04-turn1.md",
+        "responses/PK-04-turn2.md"
+      ],
+      "cases": [
+        "AC-014",
+        "AC-015",
+        "AC-016",
+        "AC-017"
+      ],
+      "status": "completed",
+      "attempts": 2
+    },
+    {
+      "run_id": "BAS-20260912-PK-05-01",
+      "packet": "PK-05",
+      "agent_context": "baseline_pk05",
+      "input_paths": [
+        "inputs/PK-05.md",
+        "inputs/PK-05-source.md"
+      ],
+      "response_paths": [
+        "responses/PK-05.md"
+      ],
+      "cases": [
+        "AC-018",
+        "AC-019",
+        "AC-020",
+        "AC-021"
+      ],
+      "status": "completed",
+      "attempts": 1
+    },
+    {
+      "run_id": "BAS-20260912-PK-06-01",
+      "packet": "PK-06",
+      "agent_context": "baseline_pk06",
+      "input_paths": [
+        "inputs/PK-06.md"
+      ],
+      "response_paths": [
+        "responses/PK-06.md"
+      ],
+      "cases": [
+        "AC-006"
+      ],
+      "status": "completed",
+      "attempts": 1
+    },
+    {
+      "run_id": "BAS-20260912-PK-07-01",
+      "packet": "PK-07",
+      "agent_context": "baseline_pk07",
+      "input_paths": [
+        "inputs/PK-07.md"
+      ],
+      "response_paths": [
+        "responses/PK-07.md"
+      ],
+      "cases": [
+        "AC-004",
+        "AC-011",
+        "AC-022",
+        "AC-023",
+        "AC-024"
+      ],
+      "status": "completed",
+      "attempts": 1
+    }
+  ],
+  "outcomes": [
+    {
+      "case_id": "AC-001",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-002",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-003",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-004",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-005",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-006",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-007",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-008",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-009",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-010",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-011",
+      "result": "unmet",
+      "finding": "GAP-002"
+    },
+    {
+      "case_id": "AC-012",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-013",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-014",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-015",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-016",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-017",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-018",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-019",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-020",
+      "result": "unmet",
+      "finding": "GAP-001"
+    },
+    {
+      "case_id": "AC-021",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-022",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-023",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-024",
+      "result": "met",
+      "finding": null
+    }
+  ],
+  "summary": {
+    "cases": 24,
+    "met": 22,
+    "unmet": 2,
+    "blocked": 0,
+    "completed_packet_contexts": 7,
+    "response_turns": 8
+  },
+  "limitations": [
+    "Single synthetic execution per packet; cases within a packet share context.",
+    "No no-skill control group; model skill contribution cannot be isolated.",
+    "Most user requests explicitly ask for review/planning; automatic workflow activation is not tested.",
+    "No production runtime, DB, live Notion/Figma or full repository conformance evaluated.",
+    "Independent actor contexts; scoring remains parent manual review."
+  ]
+}

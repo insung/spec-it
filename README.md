@@ -8,12 +8,18 @@
 
 ## 현재 상태
 
-- 버전: `0.4.0`
+- 버전: `0.5.0`
 - 단계: Phase 0 — 문서·정책·프로필·스키마·템플릿·instruction-only 스킬
 - 배포: 공개 Git 저장소용 소스만 제공
 - 미구현: validator/CLI, CI 강제, runtime enforcement, 패키지·플러그인 배포
 
 현재 스킬은 판단 절차를 안내하고 `human-review` 또는 `not-implemented`를 정직하게 보고합니다. 결정적 검사를 수행한다고 주장하지 않습니다.
+
+### 0.5.0 공개 기준선
+
+`0.5.0`은 사람의 원문 의도에서 영향 경로와 검증 증거까지 연결하는 instruction-only 절차를 추가합니다. 새 read-only `spec-it-impact`, 기존 스킬의 되읽기·정정·신선도 인계, 선택적 영향/Case/Run 템플릿과 합성 예제를 제공합니다. 새 규칙·risk profile·공개 schema나 통합 QA 도구를 강제하지 않습니다.
+
+공개 기준선은 annotated tag `v0.5.0`으로 식별합니다. 기존 프로젝트는 자동 업그레이드하지 않으며, 상세한 채택 경계는 [0.4.0 → 0.5.0 migration guide](docs/migrations/0.4.0-to-0.5.0.md), 릴리스 증거와 한계는 [0.5.0 release checklist](docs/releases/0.5.0-checklist.md)에 있습니다.
 
 ### 0.4.0 공개 기준선
 

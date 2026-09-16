@@ -1,0 +1,31 @@
+{
+  "artifact_version": 1,
+  "candidate_id": "CAND-STAGE5-20260915-04",
+  "status": "unreleased-instruction-candidate-after-independent-review-fix",
+  "recorded_at_utc": "2026-09-15T05:51:27.255Z",
+  "base_commit": "6a4ea01eb09bfb116ff24fd2d5253889086f9a77",
+  "candidate_version": "0.5.0",
+  "version_file": "0.4.0",
+  "source_tree_files": 221,
+  "source_tree_sha256": "699aed5164f3ae920c45c2f316aa6fb2b5da046f8ccb0bcd02e269a80a2fe963",
+  "tree_contract": "All tracked HEAD paths plus untracked public candidate files, excluding .architecture/changes; globally sorted UTF-8 relative path + NUL + bytes + NUL. Resolve untouched files from base_commit.",
+  "supersedes_for_final_evaluation": "../implementation-snapshot.json",
+  "reason": "Independent reviews found IV-01 and F-1; the candidate-3 dialogue regression additionally promoted an unobserved concurrency hypothesis to a material product decision.",
+  "delta_from_prior_candidate": [
+    {
+      "path": "skills/spec-it-check/SKILL.md",
+      "bytes": 5560,
+      "sha256": "492c028face2d55e03f3a32a5c1e8e16336bcc601b82fcc48c6011f3a3dc439d",
+      "change": "Separate schema-bound policy JSON from caller-owned advisory change or handoff records; forbid fabricated rule IDs and default QA directories."
+    },
+    {
+      "path": "skills/spec-it-clarify/SKILL.md",
+      "bytes": 4609,
+      "sha256": "73c64ee5e7020fc107f9f17e584c10d77647f6fa1a53b01c7f64d522d3aa565d",
+      "change": "Report actual approval state, and do not elevate hypothetical actors, concurrency, consumers, failures, or integrations without an observed trigger."
+    }
+  ],
+  "unchanged_files_from_stage4_candidate": 219,
+  "policy_inputs": "VERSION/rules/profiles/schemas unchanged from base_commit; known released lock mismatch retained",
+  "revalidation": "Re-run the two-turn clarification packet against candidate 4 and independently audit the new hypothetical-decision guard. Preserve candidate-3 responses as failed regression evidence."
+}

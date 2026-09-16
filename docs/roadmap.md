@@ -7,7 +7,7 @@
 - 공개 운영 문서와 저장소 자체 투영
 - 애플리케이션 코드와 실행 validator는 없음
 
-`0.1.0` 완료 판정은 [phase-0 checklist](phase-0-checklist.md), 이후 릴리스의 증분 판정은 각 release checklist([0.2.0](releases/0.2.0-checklist.md), [0.3.0](releases/0.3.0-checklist.md), [0.4.0](releases/0.4.0-checklist.md))를 사용합니다.
+`0.1.0` 완료 판정은 [phase-0 checklist](phase-0-checklist.md), 이후 릴리스의 증분 판정은 각 release checklist([0.2.0](releases/0.2.0-checklist.md), [0.3.0](releases/0.3.0-checklist.md), [0.4.0](releases/0.4.0-checklist.md), [0.5.0](releases/0.5.0-checklist.md))를 사용합니다.
 
 ## Phase 1 — minimal tooling
 

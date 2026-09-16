@@ -1,0 +1,526 @@
+{
+  "artifact_version": 1,
+  "change_id": "20260912-intent-impact-verification",
+  "stage": 5,
+  "recorded_at_utc": "2026-09-15T05:57:33Z",
+  "evaluation_mode": "iterative-independent-forward-execution-with-parent-manual-scoring-and-independent-intent-audit",
+  "source": {
+    "candidate_id": "CAND-STAGE5-20260915-04",
+    "candidate_version": "0.5.0",
+    "version_file": "0.4.0",
+    "base_revision": "6a4ea01eb09bfb116ff24fd2d5253889086f9a77",
+    "snapshot_path": "implementation-snapshot.json",
+    "source_tree_files": 221,
+    "source_tree_sha256": "699aed5164f3ae920c45c2f316aa6fb2b5da046f8ccb0bcd02e269a80a2fe963",
+    "released_baseline": "v0.4.0",
+    "policy_inputs_changed": false
+  },
+  "case_set": {
+    "path": "../acceptance-cases.md",
+    "revision": 1,
+    "sha256": "4979d46c51f083a5f7470688e967db404603c794749097629e445467158bc929"
+  },
+  "model": {
+    "selection": "independent-context-explicit-model-per-attempt",
+    "primary": "gpt-6-astra",
+    "availability_retry": "gpt-5.6-terra",
+    "resolved_serving_model_id": null,
+    "generation_parameters": null
+  },
+  "harness": {
+    "context_fork": "none-per-packet",
+    "allowed_resources": "packet raw inputs and frozen candidate source; PK-05 also reconstructed app source; PK-07 released v0.4.0 export",
+    "excluded_resources": "parent conversation and workspace, memories, other packets, expected answers, external network",
+    "allowed_writes": "one response artifact per turn in temporary workspace",
+    "context_isolation": "instruction-scoped; no separate OS sandbox",
+    "raw_answers_preserved": true,
+    "grading": "parent manual comparison to frozen cases; independent static intent reviews separated"
+  },
+  "availability_events": [
+    {
+      "packet": "PK-02/PK-03",
+      "kind": "usage-limit-before-initial-response",
+      "counted_as_behavior_failure": false,
+      "action": "resumed-same-input"
+    },
+    {
+      "packet": "PK-05",
+      "kind": "agent-finalization-usage-limit-after-response-file",
+      "response_created": true,
+      "counted_as_behavior_failure": false,
+      "action": "artifact-gate-and-parent-review"
+    },
+    {
+      "packet": "PK-04-candidate3-first-attempt",
+      "kind": "usage-limit-after-turn1-before-turn2",
+      "response_created": true,
+      "counted_as_behavior_failure": false,
+      "action": "preserved-partial-turn-and-retried-new-context"
+    },
+    {
+      "packet": "final-disposition-first-attempt",
+      "kind": "usage-limit-before-report",
+      "response_created": false,
+      "counted_as_behavior_failure": false,
+      "action": "retried-independent-context-on-available-model"
+    }
+  ],
+  "fixtures": {
+    "revision": 1,
+    "inputs": [
+      {
+        "path": "inputs/PK-01.md",
+        "sha256": "3483fe784722015fb0dbf1ac1c21ca68cf3cd89ce5cbde8efbd7f33e9ca32722",
+        "bytes": 2384
+      },
+      {
+        "path": "inputs/PK-02.md",
+        "sha256": "4c2688ade32bb304c7ae26bfa31c3e6e9fd92e99ea230bddfe58ad2ea63c99ce",
+        "bytes": 2348
+      },
+      {
+        "path": "inputs/PK-03.md",
+        "sha256": "8ad5161a0fc48716856b4889cd89c6bc4acf6bd7ec95a8babe4393784271abb7",
+        "bytes": 2259
+      },
+      {
+        "path": "inputs/PK-04-turn2.md",
+        "sha256": "150add1e3203e989beaff5d8f0a50b130401c0140fc8f9141a42f594b438eeec",
+        "bytes": 724
+      },
+      {
+        "path": "inputs/PK-04.md",
+        "sha256": "7d79455f6e7f3b5bdd78bb16d49c84f0285ca2e42e2ca0e647cdd7710bcd30e8",
+        "bytes": 1193
+      },
+      {
+        "path": "inputs/PK-05-source.md",
+        "sha256": "c1a4cf922f176862ef23f0408ed8e29140d73fb3c643ef48fe6bf143d1b7e6be",
+        "bytes": 1025
+      },
+      {
+        "path": "inputs/PK-05.md",
+        "sha256": "c7048ef36e64437c4d40a3d60478532dd987e9d3b405fb5d90f243a82cedc2ef",
+        "bytes": 2102
+      },
+      {
+        "path": "inputs/PK-06.md",
+        "sha256": "64eefe7bd38e871e7af0897c3463a78b39a6928dee78967fad1e5b06a1e6e71e",
+        "bytes": 1560
+      },
+      {
+        "path": "inputs/PK-07.md",
+        "sha256": "f067a22044da91ccabbeebb34b947be018afe9bd48a598a44a291008224fce01",
+        "bytes": 2072
+      }
+    ]
+  },
+  "responses": [
+    {
+      "path": "responses/PK-01.md",
+      "sha256": "916c1740c5d0d51e47fc25488fe8b63bbdb884fc268e8d75cdcec85cfbadb5f3",
+      "bytes": 13710,
+      "written_at_utc": "2026-09-13T13:31:19.276Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-02-r2.md",
+      "sha256": "fd96e634bd08cbba816d1ac92862c7c6724d3582023d39331eed22bed55f598c",
+      "bytes": 11388,
+      "written_at_utc": "2026-09-15T01:03:24.150Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-02.md",
+      "sha256": "c16bde0588cba23396796559e361d4944edfcf16801fc213604ac4fc1702a4ba",
+      "bytes": 13320,
+      "written_at_utc": "2026-09-13T13:34:18.911Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-03-r2.md",
+      "sha256": "eade3fa519b9d0e4bcc875d970de73e14811f375393b934e8da2259b48cb5077",
+      "bytes": 10740,
+      "written_at_utc": "2026-09-15T01:03:24.618Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-03.md",
+      "sha256": "79eee1db1902bd85e06384af0ddcbce55e01f109cb48d3069f8e917a42747dea",
+      "bytes": 16975,
+      "written_at_utc": "2026-09-13T13:35:15.375Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-04-r3-turn1.md",
+      "sha256": "caca7cc768a1cb347882237aa3caf75dfd6554a2088552020dc12e118203a86e",
+      "bytes": 11282,
+      "written_at_utc": "2026-09-15T05:55:28.822Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-04-r3b-turn1.md",
+      "sha256": "3abe9571b58ab851a6c746ab9dfe2f1716cdcccfc34a27142317aa17dd4dcdd6",
+      "bytes": 9267,
+      "written_at_utc": "2026-09-15T05:51:17.314Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-04-r3b-turn2.md",
+      "sha256": "8d676f0aea898bffc9dd980aa12fa61124c90e95d78e68e54b8a710eb2493b17",
+      "bytes": 8443,
+      "written_at_utc": "2026-09-15T05:51:17.508Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-04-r4-turn1.md",
+      "sha256": "1ce0c68c912ed6e12c17e392aedfab6e4a2b53a3f2c2e1774d8a8036f809da68",
+      "bytes": 9405,
+      "written_at_utc": "2026-09-15T05:55:11.596Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-04-r4-turn2.md",
+      "sha256": "c8709d01f637bc9aeaad46fdc5eadca2bf735a6b7c90cc843bdcc11b4cb8b4a9",
+      "bytes": 6558,
+      "written_at_utc": "2026-09-15T05:55:11.784Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-04-turn1.md",
+      "sha256": "98f0622ff8d556f08e6826c63e06316efedf86cbf4dd606609fe018b2c636a89",
+      "bytes": 12856,
+      "written_at_utc": "2026-09-13T13:35:15.500Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-04-turn2.md",
+      "sha256": "17bfcda4316382420280d9d2b645e48a30eeeefc0882f019a152475e54e85a08",
+      "bytes": 10066,
+      "written_at_utc": "2026-09-15T01:03:22.526Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-05-r2.md",
+      "sha256": "1b90824e686035ddd564a2cff09504c807b9047c2335d006661d38290f9d74f7",
+      "bytes": 12565,
+      "written_at_utc": "2026-09-15T01:03:24.927Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-05.md",
+      "sha256": "e13b2a13e28279c6f3c82c947c3962b70aa12cddf570cba9773740b122b39833",
+      "bytes": 20238,
+      "written_at_utc": "2026-09-15T01:03:23.036Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-06.md",
+      "sha256": "8d3a5e8f4998693778456dfea166683c00c44ccd043dbf140204c6318d3736e6",
+      "bytes": 16989,
+      "written_at_utc": "2026-09-15T01:03:23.436Z",
+      "verbatim": true
+    },
+    {
+      "path": "responses/PK-07.md",
+      "sha256": "9f7be2eb57525484f9cc851bfc863519ff6068a50ac6211fcbf9ead42a6f9d89",
+      "bytes": 11867,
+      "written_at_utc": "2026-09-15T01:03:23.810Z",
+      "verbatim": true
+    }
+  ],
+  "effective_response_paths": [
+    "responses/PK-01.md",
+    "responses/PK-02-r2.md",
+    "responses/PK-03-r2.md",
+    "responses/PK-04-r4-turn1.md",
+    "responses/PK-04-r4-turn2.md",
+    "responses/PK-05-r2.md",
+    "responses/PK-06.md",
+    "responses/PK-07.md"
+  ],
+  "packets": [
+    {
+      "run_id": "CAND4-20260915-PK-01-FINAL",
+      "packet": "PK-01",
+      "cases": [
+        "AC-001",
+        "AC-002",
+        "AC-007"
+      ],
+      "response_paths": [
+        "responses/PK-01.md"
+      ],
+      "status": "completed",
+      "model": "gpt-6-astra"
+    },
+    {
+      "run_id": "CAND4-20260915-PK-02-FINAL",
+      "packet": "PK-02",
+      "cases": [
+        "AC-003",
+        "AC-012",
+        "AC-013"
+      ],
+      "response_paths": [
+        "responses/PK-02-r2.md"
+      ],
+      "status": "completed",
+      "model": "gpt-6-astra"
+    },
+    {
+      "run_id": "CAND4-20260915-PK-03-FINAL",
+      "packet": "PK-03",
+      "cases": [
+        "AC-005",
+        "AC-008",
+        "AC-009",
+        "AC-010"
+      ],
+      "response_paths": [
+        "responses/PK-03-r2.md"
+      ],
+      "status": "completed",
+      "model": "gpt-6-astra"
+    },
+    {
+      "run_id": "CAND4-20260915-PK-04-FINAL",
+      "packet": "PK-04",
+      "cases": [
+        "AC-014",
+        "AC-015",
+        "AC-016",
+        "AC-017"
+      ],
+      "response_paths": [
+        "responses/PK-04-r4-turn1.md",
+        "responses/PK-04-r4-turn2.md"
+      ],
+      "status": "completed",
+      "model": "gpt-5.6-terra"
+    },
+    {
+      "run_id": "CAND4-20260915-PK-05-FINAL",
+      "packet": "PK-05",
+      "cases": [
+        "AC-018",
+        "AC-019",
+        "AC-020",
+        "AC-021"
+      ],
+      "response_paths": [
+        "responses/PK-05-r2.md"
+      ],
+      "status": "completed",
+      "model": "gpt-6-astra"
+    },
+    {
+      "run_id": "CAND4-20260915-PK-06-FINAL",
+      "packet": "PK-06",
+      "cases": [
+        "AC-006"
+      ],
+      "response_paths": [
+        "responses/PK-06.md"
+      ],
+      "status": "completed",
+      "model": "gpt-6-astra"
+    },
+    {
+      "run_id": "CAND4-20260915-PK-07-FINAL",
+      "packet": "PK-07",
+      "cases": [
+        "AC-004",
+        "AC-011",
+        "AC-022",
+        "AC-023",
+        "AC-024"
+      ],
+      "response_paths": [
+        "responses/PK-07.md"
+      ],
+      "status": "completed",
+      "model": "gpt-6-astra"
+    }
+  ],
+  "superseded_or_regression_runs": [
+    {
+      "candidate_id": "CAND-STAGE4-20260913-01",
+      "status": "superseded-after-IV-01"
+    },
+    {
+      "candidate_id": "CAND-STAGE5-20260915-02",
+      "status": "superseded-after-F-1"
+    },
+    {
+      "candidate_id": "CAND-STAGE5-20260915-03",
+      "status": "failed-regression",
+      "case_id": "AC-017",
+      "evidence": [
+        "responses/PK-04-r3b-turn1.md",
+        "responses/PK-04-r3b-turn2.md"
+      ]
+    },
+    {
+      "candidate_id": "CAND-STAGE5-20260915-04",
+      "status": "final-stage5-candidate"
+    }
+  ],
+  "independent_reviews": [
+    {
+      "path": "independent-review-initial.md",
+      "result": "P2-IV-01-found"
+    },
+    {
+      "path": "independent-review-second.md",
+      "result": "P2-F-1-found"
+    },
+    {
+      "path": "independent-disposition.md",
+      "result": "IV-01-F-1-resolved-no-new-P1-P2"
+    },
+    {
+      "path": "independent-guard-audit.md",
+      "result": "hypothetical-decision-guard-resolved-no-new-P1-P2"
+    }
+  ],
+  "outcomes": [
+    {
+      "case_id": "AC-001",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-002",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-003",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-004",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-005",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-006",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-007",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-008",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-009",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-010",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-011",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-012",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-013",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-014",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-015",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-016",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-017",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-018",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-019",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-020",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-021",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-022",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-023",
+      "result": "met",
+      "finding": null
+    },
+    {
+      "case_id": "AC-024",
+      "result": "met",
+      "finding": null
+    }
+  ],
+  "summary": {
+    "cases": 24,
+    "met": 24,
+    "unmet": 0,
+    "blocked": 0,
+    "final_packet_contexts": 7,
+    "final_response_turns": 8,
+    "preserved_response_artifacts": 16,
+    "independent_reviews": 4
+  },
+  "limitations": [
+    "Single synthetic final execution per packet; cases within a packet share context.",
+    "No no-skill control group and no repeated statistical trial; skill contribution and general success rate are not isolated.",
+    "Automatic skill activation in ordinary implementation requests is not tested.",
+    "No production runtime, DB, live Notion/Figma, original private incident corpus, or full repository conformance evaluated.",
+    "Scoring is parent manual; static intent audits are independent but do not execute product behavior."
+  ]
+}

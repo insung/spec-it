@@ -1,12 +1,12 @@
-# Generated self-view for policy version 0.4.0. Release identity is the annotated Git tag.
+# Generated self-view for policy version 0.5.0. Release identity is the annotated Git tag v0.5.0.
 # Phase 0 deterministic generation evidence: human-review.
 schema_version: 0.2.0
 generated: true
 policy:
   source: .
-  version: 0.4.0
-policy_digest: sha256:2e54ebfe90ee889af1cc581ee209936b387ee5f913f9504a3ac83611f69b6b4f
-manifest_digest: sha256:33970ecf52950c1cf9826ff5b02cef7b34996a37eaeb2fd5c0d55c2deb60fffd
+  version: 0.5.0
+policy_digest: sha256:a88fceb1272d3ddb47ebd08e35bacba70872f4dd5f67766eef5958fb69f316a5
+manifest_digest: sha256:2e670edf60788953e98326cfef5407045deb054f047891b991b3b3fb9904c341
 profiles:
   - risk/standard
 rules:

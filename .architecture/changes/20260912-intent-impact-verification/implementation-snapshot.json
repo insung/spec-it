@@ -1,0 +1,140 @@
+{
+  "artifact_version": 1,
+  "candidate_id": "CAND-STAGE4-20260913-01",
+  "status": "unreleased-instruction-candidate",
+  "recorded_at_utc": "2026-09-13T01:47:53.883Z",
+  "base_commit": "6a4ea01eb09bfb116ff24fd2d5253889086f9a77",
+  "candidate_version": "0.5.0",
+  "version_file": "0.4.0",
+  "source_tree_files": 221,
+  "source_tree_sha256": "8508df644e996e4f0f7d8916876acc18f721fe3785835e33f5bc46f61edbd0a5",
+  "tree_contract": "All tracked HEAD paths plus untracked public candidate files, excluding .architecture/changes; globally sorted UTF-8 relative path + NUL + bytes + NUL. Resolve untouched files from base_commit.",
+  "changed_source_files": [
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 7995,
+      "sha256": "6ddfd1e60c08908ea40701253570df62d3643cc320e8f8a869f94d7f38beff67"
+    },
+    {
+      "path": "docs/README.md",
+      "bytes": 2326,
+      "sha256": "14f16acf7b40cb193439f5ea737f65cca5bbd56f842f7e16893b3107504f650f"
+    },
+    {
+      "path": "docs/agent-work-cycle.md",
+      "bytes": 4172,
+      "sha256": "0a52ee776f6f9299cf0bc9af4d1d02a1ce050e0c05cd855e6ac76a0a92a37bc0"
+    },
+    {
+      "path": "docs/intent-and-verification.md",
+      "bytes": 7376,
+      "sha256": "17c80f4b76a3459c84ced4a7aeeeada79429962c441e5559cbbfd6ccdd100b5a"
+    },
+    {
+      "path": "docs/migrations/0.4.0-to-0.5.0.md",
+      "bytes": 2819,
+      "sha256": "5a4c1c14aac0d4a2493e2292ca7350841da60c52f8c1eb620176a351d4e12b6e"
+    },
+    {
+      "path": "docs/project-projection.md",
+      "bytes": 3307,
+      "sha256": "e4d9fdac06532b096569cb1925c4506b30642fa375c20cf197d94b0890ffbc0f"
+    },
+    {
+      "path": "docs/tdd-and-verification.md",
+      "bytes": 1880,
+      "sha256": "ccad2f73673041c431f3e234732b80af808dee71f14b530329bd21b970dfac71"
+    },
+    {
+      "path": "docs/traceability.md",
+      "bytes": 1848,
+      "sha256": "b0f2b4793b6fb1b685fcbacb93c935d5bd8b3a34456a444464e782ad8d95b10f"
+    },
+    {
+      "path": "examples/README.md",
+      "bytes": 1795,
+      "sha256": "2d99bd6b25b303889951887c75de9e994fbcc71166439e5561eaab154a2f2a1d"
+    },
+    {
+      "path": "examples/intent-verification/README.md",
+      "bytes": 2804,
+      "sha256": "9c439dc69b0202f09d03771f4e4496d256858269fbdf8500927324dbfdd9c8d2"
+    },
+    {
+      "path": "skills/README.md",
+      "bytes": 3796,
+      "sha256": "c117422781aae6005de62964d4123b4aafa16f9e32c79bdcd1cdb103334f2162"
+    },
+    {
+      "path": "skills/spec-it-check/SKILL.md",
+      "bytes": 4973,
+      "sha256": "c5e7efa23752d0d2c17237a2bb48c0c8ca22129132fe1cae85b5f378ce102f33"
+    },
+    {
+      "path": "skills/spec-it-clarify/SKILL.md",
+      "bytes": 4116,
+      "sha256": "98c8c8cc030dfc314331ab361995ed2dff52adeba283ee419928e9e175412da6"
+    },
+    {
+      "path": "skills/spec-it-converge/SKILL.md",
+      "bytes": 3358,
+      "sha256": "65e01fcf3f25fbc8ba0a2feef1dfe7d9d74dbe7068f68be44883f2e50be09082"
+    },
+    {
+      "path": "skills/spec-it-evolve/SKILL.md",
+      "bytes": 3404,
+      "sha256": "49cc57c79d9ed9b355d9b182ae382f88ae18fa3f539619d42a42bcb2bc113e68"
+    },
+    {
+      "path": "skills/spec-it-impact/SKILL.md",
+      "bytes": 5456,
+      "sha256": "cc1859c17a31bfb3dc48adb96242fb20712e64a5ecbb0e3d6c0819223f596c85"
+    },
+    {
+      "path": "skills/spec-it-impact/agents/openai.yaml",
+      "bytes": 273,
+      "sha256": "3a4b63626d4e47318a6302a43f395018d315e264b9ad7f89776ed3ae088677b9"
+    },
+    {
+      "path": "skills/spec-it-specify/SKILL.md",
+      "bytes": 5024,
+      "sha256": "034d72ff1f785f0305a24f6ecc0533b79e57a1d56e1dd400b242eb46fe36626d"
+    },
+    {
+      "path": "templates/README.md",
+      "bytes": 3391,
+      "sha256": "7234d560921457cb2a881dfa4febd2f93e9cd9a5cfe0ec970b3ebb1d109cf453"
+    },
+    {
+      "path": "templates/project/AGENTS.md",
+      "bytes": 1823,
+      "sha256": "a6d07e77123185afdef3ebca91cdeb01816821ed588d7fdf7ac157923cb724c9"
+    },
+    {
+      "path": "templates/project/change-impact.md",
+      "bytes": 2447,
+      "sha256": "08c1a50e9d6ae98d256c78c8539ff1d5758673bf327c0b1e4cec3912250b5e7f"
+    },
+    {
+      "path": "templates/project/change-spec.md",
+      "bytes": 2373,
+      "sha256": "dba44f7d042107a6499e5e82e24df90db075a1c59b1d8b6228de5d173f8a705b"
+    },
+    {
+      "path": "templates/testing/acceptance-case.md",
+      "bytes": 1618,
+      "sha256": "460f5b1d8abeb859381ab0d8475ce9416e82d540f5763bdad300e6bd9f617462"
+    },
+    {
+      "path": "templates/testing/verification-run.md",
+      "bytes": 2336,
+      "sha256": "be2119173e95bbf229d942319f619049b1dea147ecaff81f8ffa0c22e955597b"
+    }
+  ],
+  "exclusions": [
+    ".architecture/changes contains evaluator-only inputs, baseline answers, expectations, and implementation conclusions; do not supply it to forward agents."
+  ],
+  "behavioral_validation": "not-run",
+  "policy_inputs": "VERSION/rules/profiles/schemas unchanged from base_commit; known released lock mismatch retained",
+  "revalidation": "Before stage-5 export recompute the whole tree hash. On any difference use a new candidate identity and retain this record."
+}

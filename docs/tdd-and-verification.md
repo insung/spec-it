@@ -4,4 +4,8 @@
 
 같은 AI가 요구를 해석하고 테스트와 구현을 모두 만들면 오해가 자기 정당화될 수 있습니다. 사람 소유의 수용 기준과 구현 맥락에서 분리된 검증 단계를 결합해 이 위험을 줄입니다. 테스트와 명세가 충돌하고 관측 결과가 명확하지 않으면 사람이 결정합니다.
 
+비코드 instruction 작업에서는 고정된 입력과 수용 기준을 먼저 만들고, 기존 행동과 후보 행동의 실제 응답을 구분해 비교할 수 있습니다. 문서상의 지원, 실제 행동 실행, 구조 검사, 독립 의미 검토는 서로 다른 증거입니다. 사례를 먼저 적었다는 이유만으로 실패 테스트를 실행했다고 하거나, 기준선이 충족한 사례를 억지로 red로 만들지 않습니다. late-entry의 사후 테스트도 사전 TDD로 소급하지 않습니다.
+
+미발행 후보의 [의도와 검증](intent-and-verification.md)은 기획 적합성·고객 목적·탐색을 구분하고, 적용 유형/경로별 관찰과 외부 QA 실행 이력을 연결합니다. [사례](../templates/testing/acceptance-case.md)와 [run](../templates/testing/verification-run.md)은 선택 형식이며 QA 저장소 위치나 전체 suite를 강제하지 않습니다. 업데이트·회귀·DB 검사는 실제 위험과 적용 규칙에 따라 선정합니다.
+
 정본 규칙: [TST-001](../rules/testing/TST-001.md), [TST-002](../rules/testing/TST-002.md), [TST-003](../rules/testing/TST-003.md), [TST-004](../rules/testing/TST-004.md), [TST-005](../rules/testing/TST-005.md).

@@ -9,6 +9,7 @@ Phase 0는 다음 instruction-only 스킬을 제공합니다.
 | `spec-it:converge` | `spec-it-converge` | 승인된 결정을 프로젝트 산출물로 투영 |
 | `spec-it:check` | `spec-it-check` | 읽기 전용 정책 판정 |
 | `spec-it:evolve` | `spec-it-evolve` | 공통 SSOT 진화 |
+| `spec-it:impact` | `spec-it-impact` | revision·관계·신선도 한계를 남기는 읽기 전용 영향 조사 (미발행 후보) |
 
 `spec-it:*` namespace는 향후 plugin packaging에서 사용할 논리 이름입니다. Phase 0는 plugin을 배포하지 않으므로 개별 설치 시 실제 skill name은 하이픈 형식입니다.
 
@@ -21,3 +22,9 @@ Phase 0는 다음 instruction-only 스킬을 제공합니다.
 `spec-it:evolve`는 대화를 곧바로 한 문서로 옮기지 않습니다. [conversation routing procedure](spec-it-evolve/references/document-routing.md)에 따라 질문·제안·확정 결정과 공개 공통·조건부 profile·project-local·private context를 먼저 나눈 뒤 기존 정본을 갱신합니다.
 
 구현 작업에서는 `spec-it:specify`가 task-start profile preflight를 수행하고, material dependency·infrastructure·data·contract signal만 `spec-it:clarify`로 보냅니다. `spec-it:converge`는 승인된 lint contract와 infrastructure threshold를 투영하고, `spec-it:check`는 완료 전 실제 diff와 brownfield legacy finding을 구분해 읽기 전용으로 보고합니다. 상세 checkpoint는 [agent work cycle](../docs/agent-work-cycle.md)에 있습니다.
+
+## 미발행 후보의 인계
+
+[impact](spec-it-impact/SKILL.md)는 material change의 preflight/delta/completion과 brownfield/late-entry에서 조사한 범위, 원본·코드 revision, dirty 상태, 관측 시각과 재검토 조건을 반환합니다. 관계 파일이나 문서 허브가 없어도 조사할 수 있습니다. 승인·파일 저장·정책 채택은 하지 않습니다.
+
+specify/clarify는 예시·반례로 의도를 되읽고 정정된 시나리오를 갱신합니다. check는 원문에서 출발해 시나리오·경로·실행 증거를 대조합니다. [선택 절차](../docs/intent-and-verification.md)는 설치나 숨은 watcher를 제공하지 않습니다. 설치한 source에 없는 스킬은 호출했다고 주장하지 않고 필요한 조사/결정 내용을 인계합니다. 후보 source를 기존 설치된 0.4.0과 동일한 것으로 취급하지 않습니다.
