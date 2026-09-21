@@ -35,6 +35,6 @@ manifest와 lock이 없는 brownfield 저장소는 채택 전이므로 `shadow a
 
 후보의 완료 검토는 원문→해석→시나리오→유형/경로→관찰 증거를 양방향으로 확인합니다. 테스트 내부의 일관성이나 반복 횟수는 원문 누락이 없다는 증명이 아닙니다. 과거 실행은 유지하며 정정된 기획/환경의 재검증 필요를 별도로 표시합니다. 구체적인 선택 절차와 분산 도구 경계는 [의도와 검증](intent-and-verification.md)을 참고합니다. 이는 고정 규칙에 없는 의무를 만들어 판정하는 근거가 아닙니다.
 
-Phase 0의 스킬은 이 순서를 수행하는 instruction입니다. 숨은 hook, 상시 watcher, 실행 validator나 CI 차단 기능은 아직 제공하지 않습니다.
+공개 `0.5.0`의 스킬은 이 순서를 수행하는 instruction입니다. 개발 브랜치의 실험적 active policy loop는 명시적으로 local opt-in한 Claude Code 프로젝트에서 이 checkpoint를 자동 호출합니다. hook이 없는 프로젝트에는 영향을 주지 않으며, 상시 watcher·범용 validator·CI 차단 기능으로 간주하지 않습니다.
 
 정본 규칙: [INFRA-001](../rules/infrastructure/INFRA-001.md), [INFRA-002](../rules/infrastructure/INFRA-002.md), [HITL-001](../rules/hitl/HITL-001.md), [HITL-002](../rules/hitl/HITL-002.md), [TOOL-001](../rules/tooling/TOOL-001.md).

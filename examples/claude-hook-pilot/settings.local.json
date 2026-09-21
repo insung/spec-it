@@ -1,0 +1,61 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$SPEC_IT_ROOT/tools/spec_it_hook.py\" --enabled --project-root \"$CLAUDE_PROJECT_DIR\" --policy-root \"$SPEC_IT_ROOT\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$SPEC_IT_ROOT/tools/spec_it_hook.py\" --enabled --project-root \"$CLAUDE_PROJECT_DIR\" --policy-root \"$SPEC_IT_ROOT\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|NotebookEdit|MultiEdit|Bash|PowerShell|Read|Grep|Glob",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$SPEC_IT_ROOT/tools/spec_it_hook.py\" --enabled --project-root \"$CLAUDE_PROJECT_DIR\" --policy-root \"$SPEC_IT_ROOT\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|NotebookEdit|MultiEdit|Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$SPEC_IT_ROOT/tools/spec_it_hook.py\" --enabled --project-root \"$CLAUDE_PROJECT_DIR\" --policy-root \"$SPEC_IT_ROOT\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$SPEC_IT_ROOT/tools/spec_it_hook.py\" --enabled --project-root \"$CLAUDE_PROJECT_DIR\" --policy-root \"$SPEC_IT_ROOT\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

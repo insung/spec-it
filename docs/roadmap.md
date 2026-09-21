@@ -15,11 +15,15 @@
 - quick/full/release check와 JSON report
 - secret redaction과 종료 코드
 
+개발 중인 active policy loop 후보는 Phase 1의 첫 실행 실험이다. vendor-neutral core와 Claude adapter, Light/Hard 분류, 관련 rule card, ephemeral metric을 제공하지만 범용 schema validator·lock generator·CI enforcement를 구현한 것은 아니다. 따라서 공개 `0.5.0`의 Phase 0 상태를 소급 변경하지 않는다.
+
 ## Phase 2 — project pilot
 
 - 실제 Python backend 또는 Lambda/SAM 프로젝트 한 곳에 적용
 - false positive, 누락, 사람 개입 비용 측정
 - 반복 실패만 validator 후보로 승격
+
+최초 약식 파일럿은 한 고위험 Python HTTP API의 격리 worktree에서 수행했다. 이는 비용과 오탐의 초기 관측일 뿐 제품 성공이나 팀 전체 채택 증거가 아니다.
 
 ## Phase 3 — enforcement and overlays
 
