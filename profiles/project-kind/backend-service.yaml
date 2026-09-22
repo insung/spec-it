@@ -1,7 +1,7 @@
 schema_version: 0.1.0
 profile_id: project-kind/backend-service
 axis: project-kind
-version: 0.2.0
+version: 0.6.0
 status: active
 description: Long-running or request-driven backend service.
 applies_when:
@@ -22,6 +22,8 @@ rules:
   - CODE-002
   - CODE-003
   - CODE-004
+  - CODE-005
+  - CODE-006
   - REL-002
   - CICD-001
   - CICD-002

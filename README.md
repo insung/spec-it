@@ -8,12 +8,17 @@
 
 ## 현재 상태
 
-- 버전: `0.5.0`
+- 공개 기준선: `0.5.0`
+- 작업 후보: `0.6.0` (미발행)
 - 단계: Phase 0 — 문서·정책·프로필·스키마·템플릿·instruction-only 스킬
 - 배포: 공개 Git 저장소용 소스만 제공
 - 미구현: validator/CLI, CI 강제, runtime enforcement, 패키지·플러그인 배포
 
 현재 스킬은 판단 절차를 안내하고 `human-review` 또는 `not-implemented`를 정직하게 보고합니다. 결정적 검사를 수행한다고 주장하지 않습니다.
+
+### 0.6.0 미발행 후보
+
+`0.6.0` 후보는 설정 loader 밖의 경계에 이름 있고 typed된 설정 계약을 요구하는 `CODE-005`와 외부 정본의 변동 사실을 주석에 독립 사본으로 두지 않는 `CODE-006`을 추가합니다. 두 규칙은 manual human review이며 validator, Ruff rule 또는 CI action을 추가하지 않습니다. 현재 공개 권위는 여전히 `v0.5.0`이고, 기존 프로젝트는 [후보 migration guide](docs/migrations/0.5.0-to-0.6.0.md)에 따라 발행 뒤 별도로 재수렴해야 합니다.
 
 ### 0.5.0 공개 기준선
 

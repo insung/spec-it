@@ -20,7 +20,7 @@
 - Reliability: [REL-001](reliability/REL-001.md), [REL-002](reliability/REL-002.md)
 - Infrastructure: [INFRA-001](infrastructure/INFRA-001.md), [INFRA-002](infrastructure/INFRA-002.md)
 - Deployment: [DEP-001](deployment/DEP-001.md), [DEP-002](deployment/DEP-002.md)
-- Code: [CODE-001](code/CODE-001.md), [CODE-002](code/CODE-002.md), [CODE-003](code/CODE-003.md), [CODE-004](code/CODE-004.md)
+- Code: [CODE-001](code/CODE-001.md), [CODE-002](code/CODE-002.md), [CODE-003](code/CODE-003.md), [CODE-004](code/CODE-004.md), [CODE-005](code/CODE-005.md), [CODE-006](code/CODE-006.md)
 - Project: [PROJ-001](project/PROJ-001.md), [PROJ-002](project/PROJ-002.md), [PROJ-003](project/PROJ-003.md)
 - Rule system: [RULE-001](rule-system/RULE-001.md), [RULE-002](rule-system/RULE-002.md), [RULE-003](rule-system/RULE-003.md)
 - Tooling: [TOOL-001](tooling/TOOL-001.md), [TOOL-002](tooling/TOOL-002.md), [TOOL-003](tooling/TOOL-003.md), [TOOL-004](tooling/TOOL-004.md), [TOOL-005](tooling/TOOL-005.md)

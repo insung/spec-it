@@ -32,3 +32,7 @@ HTTP endpoint가 있다는 이유만으로 backend-service 전체에 API 규칙�
 `capability/http-api`는 HTTP streaming의 wire contract와 스트림이 열리기 전·후의 오류 mapping을 조건부 결정으로 추가합니다. 기존 비스트리밍 HTTP 프로젝트는 해당 결정을 자동 적용하지 않습니다. `capability/rds`는 새 project-owned table과 column에 `lower-snake-case` 기본값을 제공하고, 다른 convention의 명시적 project override와 legacy·외부 소유 identifier 보존을 함께 요구합니다. 이 조건부 기본값을 모든 engine의 공통 casing 규칙으로 확대하지 않습니다. 또한 topology, capacity, connection, failover, backup·PITR, restore, maintenance와 운영 소유권을 공통 infrastructure evaluation 구조로 평가합니다.
 
 `capability/db-migration`은 object decision owner, definition authority와 executor를 구분하고, 승인된 release definition과 그 digest를 참조하는 environment history를 분리합니다. baseline이나 current-state projection은 선택 사항이며 사용할 때 authority와 release chain 대조 방법을 선언합니다. 특정 migration 제품이나 파일 이름 규칙은 profile 기본값이 아닙니다.
+
+## 0.6.0 candidate profiles
+
+`backend-service`, `serverless-function`, `python`은 언어 중립 공통 규칙 `CODE-005`와 `CODE-006`을 연결합니다. Python에 설정 key 상수화 parameter나 특정 settings framework는 추가하지 않습니다. 두 규칙은 설정 경계와 외부 사실을 복제하는 주석의 의미를 정하며, 언어 문법이나 linter 선택을 바꾸지 않습니다.

@@ -1,7 +1,7 @@
 schema_version: 0.1.0
 profile_id: project-kind/serverless-function
 axis: project-kind
-version: 0.2.0
+version: 0.6.0
 status: active
 description: Independently deployable event or request function.
 applies_when:
@@ -21,6 +21,8 @@ rules:
   - CODE-002
   - CODE-003
   - CODE-004
+  - CODE-005
+  - CODE-006
   - REL-002
   - CICD-001
   - CICD-002
