@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import hashlib
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -26,10 +28,13 @@ exceptions: []
 """
 
 LOCK = """\
+schema_version: 0.2.0
 generated: true
 policy:
   source: https://github.com/example/spec-it.git
   version: 0.2.0
+policy_digest: sha256:{policy_digest}
+manifest_digest: sha256:{manifest_digest}
 rules:
 - enforcement:
     implementation: planned
@@ -46,7 +51,8 @@ rules:
     mode: manual
   id: HITL-001
   source: rules/hitl/HITL-001.md
-schema_version: 0.1.0
+parameters: {{}}
+exceptions: []
 """
 
 RULES = {
@@ -90,8 +96,8 @@ class PolicyLoopTest(unittest.TestCase):
         self.project = self.root / "project"
         self.policy = self.root / "policy"
         self.state = self.root / "state"
-        self._init_project()
         self._init_policy()
+        self._init_project()
 
     def tearDown(self) -> None:
         self.temp.cleanup()
@@ -112,7 +118,11 @@ class PolicyLoopTest(unittest.TestCase):
             MANIFEST, encoding="utf-8"
         )
         (self.project / ".architecture" / "lock.yaml").write_text(
-            LOCK, encoding="utf-8"
+            LOCK.format(
+                policy_digest=self._policy_digest(),
+                manifest_digest=hashlib.sha256(MANIFEST.encode()).hexdigest(),
+            ),
+            encoding="utf-8",
         )
         (self.project / "README.md").write_text("baseline\n", encoding="utf-8")
         self._git(self.project, "init", "-q")
@@ -123,6 +133,7 @@ class PolicyLoopTest(unittest.TestCase):
 
     def _init_policy(self) -> None:
         self.policy.mkdir()
+        (self.policy / "VERSION").write_text("0.2.0\n", encoding="utf-8")
         for relative, content in RULES.items():
             path = self.policy / relative
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -133,6 +144,44 @@ class PolicyLoopTest(unittest.TestCase):
         self._git(self.policy, "add", ".")
         self._git(self.policy, "commit", "-qm", "policy")
         self._git(self.policy, "tag", "v0.2.0")
+
+    def _policy_digest(self) -> str:
+        paths = self._git(
+            self.policy,
+            "ls-tree",
+            "-r",
+            "--name-only",
+            "v0.2.0",
+            "--",
+            "VERSION",
+            "rules",
+            "profiles",
+            "schemas",
+        ).splitlines()
+        digest = hashlib.sha256()
+        for path in sorted(paths):
+            content = subprocess.run(
+                ["git", "show", f"v0.2.0:{path}"],
+                cwd=self.policy,
+                check=True,
+                capture_output=True,
+            ).stdout
+            digest.update(path.encode())
+            digest.update(b"\0")
+            digest.update(content)
+            digest.update(b"\0")
+        return digest.hexdigest()
+
+    def _refresh_lock_policy_digest(self) -> None:
+        lock_path = self.project / ".architecture" / "lock.yaml"
+        lock_path.write_text(
+            re.sub(
+                r"(?m)^policy_digest:\s*sha256:[a-f0-9]{64}$",
+                f"policy_digest: sha256:{self._policy_digest()}",
+                lock_path.read_text(encoding="utf-8"),
+            ),
+            encoding="utf-8",
+        )
 
     def _loop(self) -> PolicyLoop:
         return PolicyLoop(
@@ -275,14 +324,15 @@ class PolicyLoopTest(unittest.TestCase):
         self._git(self.policy, "add", ".")
         self._git(self.policy, "commit", "-qm", "more api rules")
         self._git(self.policy, "tag", "-f", "v0.2.0")
+        self._refresh_lock_policy_digest()
 
         lock_path = self.project / ".architecture" / "lock.yaml"
         lock_path.write_text(
             lock_path.read_text(encoding="utf-8").replace(
-                "  source: rules/hitl/HITL-001.md\nschema_version: 0.1.0\n",
+                "  source: rules/hitl/HITL-001.md\nparameters: {}\n",
                 "  source: rules/hitl/HITL-001.md\n"
                 + "".join(extra_lock_entries)
-                + "schema_version: 0.1.0\n",
+                + "parameters: {}\n",
             ),
             encoding="utf-8",
         )
@@ -305,7 +355,7 @@ class PolicyLoopTest(unittest.TestCase):
             encoding="utf-8"
         )
         (self.project / ".architecture" / "lock.yaml").write_text(
-            lock.replace("version: 0.2.0", "version: 0.3.0", 1),
+            lock.replace("  version: 0.2.0", "  version: 0.3.0", 1),
             encoding="utf-8",
         )
 
@@ -341,6 +391,49 @@ class PolicyLoopTest(unittest.TestCase):
         self.assertNotIn(
             "permissionDecision", read_result.claude_output["hookSpecificOutput"]
         )
+
+    def test_policy_digest_mismatch_blocks_mutation(self) -> None:
+        lock_path = self.project / ".architecture" / "lock.yaml"
+        lock_path.write_text(
+            re.sub(
+                r"(?m)^policy_digest:.*$",
+                f"policy_digest: sha256:{'0' * 64}",
+                lock_path.read_text(encoding="utf-8"),
+            ),
+            encoding="utf-8",
+        )
+
+        result = self._hook().evaluate(
+            {
+                "hook_event_name": "PreToolUse",
+                "session_id": "policy-digest-session",
+                "tool_name": "Write",
+                "tool_input": {"file_path": "app.py"},
+            },
+            enabled=True,
+        )
+
+        self.assertEqual("policy-unavailable", result.status)
+        self.assertTrue(result.denied)
+        self.assertIn("policy digest", result.context)
+
+    def test_manifest_digest_mismatch_blocks_mutation(self) -> None:
+        manifest_path = self.project / ".architecture" / "manifest.yaml"
+        manifest_path.write_text(MANIFEST + "# changed\n", encoding="utf-8")
+
+        result = self._hook().evaluate(
+            {
+                "hook_event_name": "PreToolUse",
+                "session_id": "manifest-digest-session",
+                "tool_name": "Write",
+                "tool_input": {"file_path": "app.py"},
+            },
+            enabled=True,
+        )
+
+        self.assertEqual("policy-unavailable", result.status)
+        self.assertTrue(result.denied)
+        self.assertIn("manifest digest", result.context)
 
     def test_missing_selected_rule_source_is_policy_unavailable_and_denies_write(
         self,
@@ -575,6 +668,28 @@ class PolicyLoopTest(unittest.TestCase):
         self.assertEqual(3, result.returncode)
         self.assertEqual("", result.stdout)
         self.assertIn("spec-it runner error", result.stderr)
+
+    def test_example_settings_use_exec_form_without_shell_interpolation(self) -> None:
+        settings_path = (
+            Path(__file__).parents[1]
+            / "examples"
+            / "claude-hook-pilot"
+            / "settings.local.json"
+        )
+        settings = json.loads(settings_path.read_text(encoding="utf-8"))
+        handlers = [
+            handler
+            for groups in settings["hooks"].values()
+            for group in groups
+            for handler in group["hooks"]
+        ]
+
+        self.assertGreater(len(handlers), 0)
+        for handler in handlers:
+            self.assertEqual("python3", handler["command"])
+            self.assertIsInstance(handler["args"], list)
+            self.assertIn("${CLAUDE_PROJECT_DIR}", handler["args"])
+            self.assertNotIn("SPEC_IT_ROOT", json.dumps(handler))
 
 
 if __name__ == "__main__":

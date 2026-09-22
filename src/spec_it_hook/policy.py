@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import re
 import subprocess
 from pathlib import Path
@@ -19,6 +20,53 @@ def _policy_field(text: str, key: str) -> str:
     if not field:
         raise PolicyUnavailable(f"policy.{key} is missing")
     return field.group(1).strip().strip("'\"")
+
+
+def _top_level_field(text: str, key: str) -> str:
+    field = re.search(rf"(?m)^{re.escape(key)}:\s*(.+?)\s*$", text)
+    if not field:
+        raise PolicyUnavailable(f"{key} is missing")
+    return field.group(1).strip().strip("'\"")
+
+
+def _policy_digest(policy_root: Path, tag: str) -> str:
+    listed = subprocess.run(
+        [
+            "git",
+            "ls-tree",
+            "-r",
+            "--name-only",
+            tag,
+            "--",
+            "VERSION",
+            "rules",
+            "profiles",
+            "schemas",
+        ],
+        cwd=policy_root,
+        capture_output=True,
+        text=True,
+    )
+    if listed.returncode != 0:
+        raise PolicyUnavailable(f"cannot enumerate policy source at {tag}")
+    paths = sorted(path for path in listed.stdout.splitlines() if path)
+    if "VERSION" not in paths:
+        raise PolicyUnavailable(f"VERSION is unavailable at {tag}")
+
+    digest = hashlib.sha256()
+    for path in paths:
+        content = subprocess.run(
+            ["git", "show", f"{tag}:{path}"],
+            cwd=policy_root,
+            capture_output=True,
+        )
+        if content.returncode != 0:
+            raise PolicyUnavailable(f"cannot read {path} at {tag}")
+        digest.update(path.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(content.stdout)
+        digest.update(b"\0")
+    return f"sha256:{digest.hexdigest()}"
 
 
 def _lock_rules(text: str) -> tuple[RuleRef, ...]:
@@ -68,6 +116,16 @@ def load_policy_view(project_root: Path, policy_root: Path) -> PolicyView:
     )
     if result.returncode != 0:
         raise PolicyUnavailable(f"pinned policy tag {tag} is unavailable locally")
+
+    expected_manifest_digest = _top_level_field(lock, "manifest_digest")
+    actual_manifest_digest = f"sha256:{hashlib.sha256(manifest.encode()).hexdigest()}"
+    if expected_manifest_digest != actual_manifest_digest:
+        raise PolicyUnavailable("manifest digest differs from the lock")
+
+    expected_policy_digest = _top_level_field(lock, "policy_digest")
+    actual_policy_digest = _policy_digest(policy_root, tag)
+    if expected_policy_digest != actual_policy_digest:
+        raise PolicyUnavailable("pinned policy digest differs from the lock")
 
     return PolicyView(
         source=lock_source,

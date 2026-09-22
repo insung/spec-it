@@ -5,7 +5,15 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$SPEC_IT_ROOT/tools/spec_it_hook.py\" --enabled --project-root \"$CLAUDE_PROJECT_DIR\" --policy-root \"$SPEC_IT_ROOT\"",
+            "command": "python3",
+            "args": [
+              "/absolute/path/to/spec-it/tools/spec_it_hook.py",
+              "--enabled",
+              "--project-root",
+              "${CLAUDE_PROJECT_DIR}",
+              "--policy-root",
+              "/absolute/path/to/spec-it"
+            ],
             "timeout": 5
           }
         ]
@@ -16,7 +24,15 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$SPEC_IT_ROOT/tools/spec_it_hook.py\" --enabled --project-root \"$CLAUDE_PROJECT_DIR\" --policy-root \"$SPEC_IT_ROOT\"",
+            "command": "python3",
+            "args": [
+              "/absolute/path/to/spec-it/tools/spec_it_hook.py",
+              "--enabled",
+              "--project-root",
+              "${CLAUDE_PROJECT_DIR}",
+              "--policy-root",
+              "/absolute/path/to/spec-it"
+            ],
             "timeout": 5
           }
         ]
@@ -28,7 +44,15 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$SPEC_IT_ROOT/tools/spec_it_hook.py\" --enabled --project-root \"$CLAUDE_PROJECT_DIR\" --policy-root \"$SPEC_IT_ROOT\"",
+            "command": "python3",
+            "args": [
+              "/absolute/path/to/spec-it/tools/spec_it_hook.py",
+              "--enabled",
+              "--project-root",
+              "${CLAUDE_PROJECT_DIR}",
+              "--policy-root",
+              "/absolute/path/to/spec-it"
+            ],
             "timeout": 5
           }
         ]
@@ -40,7 +64,15 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$SPEC_IT_ROOT/tools/spec_it_hook.py\" --enabled --project-root \"$CLAUDE_PROJECT_DIR\" --policy-root \"$SPEC_IT_ROOT\"",
+            "command": "python3",
+            "args": [
+              "/absolute/path/to/spec-it/tools/spec_it_hook.py",
+              "--enabled",
+              "--project-root",
+              "${CLAUDE_PROJECT_DIR}",
+              "--policy-root",
+              "/absolute/path/to/spec-it"
+            ],
             "timeout": 5
           }
         ]
@@ -51,7 +83,15 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$SPEC_IT_ROOT/tools/spec_it_hook.py\" --enabled --project-root \"$CLAUDE_PROJECT_DIR\" --policy-root \"$SPEC_IT_ROOT\"",
+            "command": "python3",
+            "args": [
+              "/absolute/path/to/spec-it/tools/spec_it_hook.py",
+              "--enabled",
+              "--project-root",
+              "${CLAUDE_PROJECT_DIR}",
+              "--policy-root",
+              "/absolute/path/to/spec-it"
+            ],
             "timeout": 5
           }
         ]

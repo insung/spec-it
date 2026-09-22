@@ -113,7 +113,7 @@ API·message·DB·security·dependency·infrastructure·configuration·material 
 manifest와 lock은 프로젝트가 spec-it 정책을 채택할 자격을 뜻한다. 실행 활성화는 별개이며 Claude Code의 project-local `.claude/settings.local.json`에 hook을 넣어 명시한다. manifest schema에 vendor별 opt-in을 추가하지 않는다.
 
 1. [example settings](../examples/claude-hook-pilot/settings.local.json)을 프로젝트의 `.claude/settings.local.json`에 맞게 복사한다.
-2. `/absolute/path/to/spec-it`을 실제 checkout으로 바꾸거나 `SPEC_IT_ROOT`를 절대 경로로 설정한다.
+2. `/absolute/path/to/spec-it`을 실제 checkout 절대 경로로 바꾼다. 예제는 command와 args를 분리한 exec form을 사용하므로 shell interpolation에 의존하지 않는다.
 3. `.claude/settings.local.json`이 source control에 들어가지 않도록 확인한다.
 4. 프로젝트 manifest/lock이 고정한 tag가 policy checkout에 존재하는지 확인한다.
 

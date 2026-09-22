@@ -26,4 +26,4 @@
 
 [intent-verification](intent-verification/README.md)은 기획·디자인·구현·별도 QA의 Case/Run revision과 영향 재검토를 연결하는 합성 예제입니다. 실제 QA 실행 결과가 아니며 특정 도구나 QA 폴더를 강제하지 않습니다.
 
-[claude-hook-pilot](claude-hook-pilot/settings.local.json)은 개발 브랜치의 Claude-first runner를 프로젝트 로컬에서 켜는 설정 예제입니다. `SPEC_IT_ROOT`를 실제 절대 경로로 제공해야 하며 팀 shared setting이나 hard enforcement를 뜻하지 않습니다.
+[claude-hook-pilot](claude-hook-pilot/settings.local.json)은 Claude-first runner를 프로젝트 로컬에서 켜는 설정 예제입니다. `/absolute/path/to/spec-it`을 실제 checkout 절대 경로로 바꿔야 하며 팀 shared setting이나 hard enforcement를 뜻하지 않습니다. command와 args를 분리한 exec form으로 경로가 shell에서 재해석되지 않게 합니다.
