@@ -2,22 +2,22 @@
 
 이 프로젝트는 [Semantic Versioning](https://semver.org/)을 사용합니다. 프로젝트는 정확한 정책 버전을 고정하며 자동 업그레이드하지 않습니다.
 
-## 0.6.0 - Unreleased
+## 0.6.0 - 2026-09-22
 
 ### Added
 
 - 설정 loader 내부의 raw map과 runtime consumer 경계의 이름 있는 typed configuration contract를 구분하는 `CODE-005`.
 - 외부 정본의 독립적으로 변하는 사실을 주석에 손으로 복제하지 않도록 하는 `CODE-006`.
-- 0.5.0 프로젝트의 명시적 재수렴과 human-review 한계를 설명하는 candidate migration guide.
+- 0.5.0 프로젝트의 명시적 재수렴과 human-review 한계를 설명하는 migration guide.
 
 ### Changed
 
-- `backend-service`, `serverless-function`, `python` profile이 두 언어 중립 code 규칙을 연결하도록 후보 version을 `0.6.0`으로 올림.
+- `backend-service`, `serverless-function`, `python` profile이 두 언어 중립 code 규칙을 연결하도록 version을 `0.6.0`으로 올림.
 - code convention, comment, configuration 설명이 raw parsing map의 허용 경계와 외부 사실 사본의 예외를 구분하도록 보완.
 
 ### Compatibility and enforcement
 
-- 기존 프로젝트에 새 의무를 추가하는 pre-1.0 minor 후보이며 0.5.0 이하 manifest와 lock을 자동 업그레이드하지 않는다.
+- 기존 프로젝트에 새 의무를 추가하는 pre-1.0 minor release이며 0.5.0 이하 manifest와 lock을 자동 업그레이드하지 않는다.
 - 관측은 한 저장소의 한 작업에서 나왔으므로 두 규칙은 `manual/implemented` human review이며 validator·Ruff rule·CI action으로 승격하지 않는다.
 - 한 번 쓰는 환경변수 key의 상수화는 공개 core나 Python profile parameter로 채택하지 않으며 필요하면 private overlay 또는 프로젝트 lint 설정이 소유한다.
 

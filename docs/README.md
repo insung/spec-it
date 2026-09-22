@@ -44,4 +44,5 @@
 38. [의도·영향·검증의 연결](intent-and-verification.md)
 39. [0.4.0 → 0.5.0 migration](migrations/0.4.0-to-0.5.0.md)
 40. [0.5.0 release checklist](releases/0.5.0-checklist.md)
-41. [0.5.0 → 0.6.0 candidate migration](migrations/0.5.0-to-0.6.0.md)
+41. [0.5.0 → 0.6.0 migration](migrations/0.5.0-to-0.6.0.md)
+42. [0.6.0 release checklist](releases/0.6.0-checklist.md)
