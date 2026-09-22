@@ -19,9 +19,9 @@
 
 ## Boundaries
 
-- Phase 0: 문서, 규칙, 프로필, 스키마, 템플릿, 예제, instruction-only 스킬.
-- Phase 0 밖: 애플리케이션 코드, 실행 validator, CI 강제, package/plugin 배포, 회사 overlay.
+- Phase 1 진입: Phase 0 정책 source와 instruction-only 스킬에 더해, 명시적으로 활성화한 Claude 프로젝트에서만 동작하는 active policy loop를 제공한다.
+- 현재 범위 밖: 범용 schema validator, deterministic lock generator, CI 강제, package/plugin 배포, Codex adapter, 회사 overlay.
 
 ## Owners
 
-한 maintainer가 Phase 0의 `intent-owner`, `architecture-owner`, `security-owner`, `data-owner`, `operations-owner` 역할을 겸할 수 있다.
+한 maintainer가 현재 단계의 `intent-owner`, `architecture-owner`, `security-owner`, `data-owner`, `operations-owner` 역할을 겸할 수 있다.

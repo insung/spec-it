@@ -16,9 +16,9 @@ affects:
 
 이 파일은 hook 기반 능동형 policy loop의 유일한 의도 명세다. [실행 계획](implementation.md)은 이 명세를 구현 순서와 gate로 투영한 문서이며 공통 정책이나 구현 완료 증거가 아니다.
 
-현재 공개 기준선은 `0.5.0`이다. 작업 트리에는 별도의 `0.6.0` code-rule 후보가 이미 있으므로 이 변경은 그 후보를 덮어쓰지 않으며, 구현 릴리스는 다음 사용 가능한 minor인 `0.7.0`을 목표로 한다. `0.6.0` 후보가 취소되어 번호가 달라져도 아래 행동 계약은 바뀌지 않는다.
+작성 당시 공개 기준선은 `0.5.0`이었고 작업 트리에는 별도의 `0.6.0` code-rule 후보가 있었다. 이 변경은 그 후보를 덮어쓰지 않고 다음 minor인 `0.7.0`을 목표로 격리했다. 이후 `0.6.0`을 먼저 릴리스하고 이 구현을 병합해 `0.7.0`으로 재수렴했으며, 아래 행동 계약은 그대로 유지한다.
 
-이 변경은 Phase 0 문서 절차를 실행 도구로 옮기는 Phase 1 진입 후보다. 계획 작성만으로 현재 단계를 Phase 1이라고 선언하지 않으며, 실행 가능한 runner와 검증 증거가 생긴 뒤 roadmap과 enforcement 상태를 갱신한다.
+이 변경은 Phase 0 문서 절차를 실행 도구로 옮기는 Phase 1 진입이다. 실행 가능한 runner와 저장소 검증 증거가 생긴 뒤에만 roadmap과 self projection을 Phase 1로 갱신했다.
 
 ## 왜 필요한가
 
@@ -37,7 +37,7 @@ Claude Code에서 명시적으로 파일럿을 켠 프로젝트는 다음처럼 
 5. 파일럿의 규칙 판정은 advisory다. 다만 runner가 승인된 policy state를 읽을 수 없거나 material human decision이 미해결임을 확정했고, 다음 도구가 mutation을 수행하려는 경우에는 그 도구 호출만 거부한다. 읽기·조사·복구 작업은 계속 가능하다.
 6. 완료 시 실제 diff 기반 결과가 사람에게 보이지만 Stop hook이 AI를 반복 실행시키지는 않는다. 최종 승인과 다음 행동은 사람이 결정한다.
 
-## 0.5.0 기준선과 목표 상태의 차이
+## 작성 당시 0.5.0 기준선과 목표 상태의 차이
 
 | 관점 | `0.5.0` 현재 | 이 변경 이후 목표 |
 | --- | --- | --- |
@@ -140,4 +140,4 @@ Claude Code에서 명시적으로 파일럿을 켠 프로젝트는 다음처럼 
 
 ## 수렴 상태
 
-material open decision은 없다. 실행 중 Claude Code 버전 차이, hook 입력 schema 차이, target repository의 기존 local setting 충돌이 발견되면 구현 결함이나 새 decision으로 분류하고, 추측으로 우회하지 않는다. 현재 self manifest·lock·AGENTS 투영은 공개 `0.5.0`을 계속 가리키며 이 계획만으로 변경하지 않는다.
+material open decision은 없다. 실행 중 Claude Code 버전 차이, hook 입력 schema 차이, target repository의 기존 local setting 충돌이 발견되면 구현 결함이나 새 decision으로 분류하고, 추측으로 우회하지 않는다. `0.7.0` 릴리스 수렴에서 self manifest·lock·AGENTS를 함께 갱신했으며, 기존 프로젝트의 pin은 자동 변경하지 않는다.

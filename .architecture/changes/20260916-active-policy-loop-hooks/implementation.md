@@ -1,8 +1,8 @@
 # 능동형 policy loop 실행 계획
 
-상태: 2026-09-21 기준 core/Claude adapter와 약식 target 파일럿까지 실행했다. 공개 release·self manifest/lock upgrade·독립 승격 결정은 아직 하지 않았다.
+상태: 2026-09-22 기준 core/Claude adapter, 약식 target 파일럿, 저장소 검증과 `0.7.0` self projection 수렴을 완료했다. 원격 publication은 인증된 push와 remote identity 확인 전까지 별도 gate로 남는다.
 
-현재 증거는 unit/contract test 19개, 대상 application baseline 164 tests와 Ruff, 9개 분류 scenario의 지연·context 측정이다. 실제 Claude prompt hook 연결은 확인했지만 실행 환경의 미로그인과 session-directory 제한 때문에 model 과금 및 모든 lifecycle end-to-end는 미검증이다. 상세 수치는 [initial pilot](../../../docs/pilots/active-policy-loop-initial.md)에 있다.
+현재 증거는 unit/contract test 22개, 대상 application baseline 164 tests와 Ruff, 9개 분류 scenario의 지연·context 측정이다. 릴리스 검토에서 exec-form 설정과 lock digest 검증을 보완했다. 실제 Claude prompt hook 연결은 확인했지만 실행 환경의 미로그인과 session-directory 제한 때문에 model 과금 및 모든 lifecycle end-to-end는 미검증이다. 상세 수치는 [initial pilot](../../../docs/pilots/active-policy-loop-initial.md)과 [0.7.0 release checklist](../../../docs/releases/0.7.0-checklist.md)에 있다.
 
 ## 한눈에 보는 실행 흐름
 

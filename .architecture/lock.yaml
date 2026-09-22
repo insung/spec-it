@@ -1,12 +1,12 @@
-# Generated self-view for policy version 0.6.0. Release identity is the annotated Git tag v0.6.0.
-# Phase 0 deterministic generation evidence: human-review.
+# Generated self-view for policy version 0.7.0. Release identity is the annotated Git tag v0.7.0.
+# Deterministic lock generation remains human-review; the active policy loop does not generate locks.
 schema_version: 0.2.0
 generated: true
 policy:
   source: .
-  version: 0.6.0
-policy_digest: sha256:e5eb3ef0d2efacb6387e918c716a375e26103fea6b9347d5e2e8ef26a4661885
-manifest_digest: sha256:8002d5807a1ce7d1399fbfce31b1d427d7a9ef4064a2e9db831556d1a3d56b94
+  version: 0.7.0
+policy_digest: sha256:1f55ee3d47398333eaad2b3dcf2af84ca42deb7e8f876f16d154dc39df2de9b0
+manifest_digest: sha256:1f3466f3d972f0851a3bfe6452a5a7606cf460ae6efd87758e21c0f5be1614eb
 profiles:
   - risk/standard
 rules:

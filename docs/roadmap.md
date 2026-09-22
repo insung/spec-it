@@ -7,7 +7,7 @@
 - 공개 운영 문서와 저장소 자체 투영
 - 애플리케이션 코드와 실행 validator는 없음
 
-`0.1.0` 완료 판정은 [phase-0 checklist](phase-0-checklist.md), 이후 릴리스의 증분 판정은 각 release checklist([0.2.0](releases/0.2.0-checklist.md), [0.3.0](releases/0.3.0-checklist.md), [0.4.0](releases/0.4.0-checklist.md), [0.5.0](releases/0.5.0-checklist.md), [0.6.0](releases/0.6.0-checklist.md))를 사용합니다.
+`0.1.0` 완료 판정은 [phase-0 checklist](phase-0-checklist.md), 이후 릴리스의 증분 판정은 각 release checklist([0.2.0](releases/0.2.0-checklist.md), [0.3.0](releases/0.3.0-checklist.md), [0.4.0](releases/0.4.0-checklist.md), [0.5.0](releases/0.5.0-checklist.md), [0.6.0](releases/0.6.0-checklist.md), [0.7.0](releases/0.7.0-checklist.md))를 사용합니다.
 
 ## Phase 1 — minimal tooling
 
@@ -15,7 +15,7 @@
 - quick/full/release check와 JSON report
 - secret redaction과 종료 코드
 
-개발 중인 active policy loop 후보는 Phase 1의 첫 실행 실험이다. vendor-neutral core와 Claude adapter, Light/Hard 분류, 관련 rule card, ephemeral metric을 제공하지만 범용 schema validator·lock generator·CI enforcement를 구현한 것은 아니다. 따라서 공개 `0.6.0`의 Phase 0 상태를 소급 변경하지 않는다.
+`0.7.0`의 active policy loop는 Phase 1의 첫 실행 실험이다. vendor-neutral core와 Claude adapter, Light/Hard 분류, 관련 rule card, digest 검증과 ephemeral metric을 제공한다. 다만 범용 schema validator·lock generator·CI enforcement를 구현한 것은 아니며, 기존 규칙의 planned enforcement를 implemented로 바꾸지 않는다.
 
 ## Phase 2 — project pilot
 

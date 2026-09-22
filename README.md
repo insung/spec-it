@@ -8,18 +8,22 @@
 
 ## 현재 상태
 
-- 버전: `0.6.0`
-- 단계: Phase 0 — 문서·정책·프로필·스키마·템플릿·instruction-only 스킬
+- 버전: `0.7.0`
+- 단계: Phase 1 진입 — Phase 0 정책 source + local opt-in active policy loop
 - 배포: 공개 Git 저장소용 소스만 제공
-- 미구현: validator/CLI, CI 강제, runtime enforcement, 패키지·플러그인 배포
+- 미구현: 범용 validator/CLI, CI 강제, fail-close runtime enforcement, 패키지·플러그인 배포
 
-현재 스킬은 판단 절차를 안내하고 `human-review` 또는 `not-implemented`를 정직하게 보고합니다. 결정적 검사를 수행한다고 주장하지 않습니다.
+현재 스킬은 판단 절차를 안내하고 `human-review` 또는 `not-implemented`를 정직하게 보고합니다. Claude-first active policy loop는 고정 policy identity와 material signal을 결정적으로 확인하지만, 일반 규칙 준수를 판정하는 범용 validator라고 주장하지 않습니다.
+
+### 0.7.0 공개 기준선
+
+`0.7.0`은 vendor-neutral core와 Claude Code adapter로 구성된 local opt-in active policy loop를 추가합니다. Light/Hard 분류, 고정된 tag의 rule card, fingerprint dedup, redacted ephemeral metric을 제공하며, policy state가 유효하지 않거나 material human decision이 열린 뒤의 mutation만 좁게 거부합니다. 일반 finding은 advisory이고 command hook 자체의 누락·오류·timeout은 fail-open일 수 있습니다.
+
+기존 프로젝트는 자동 업그레이드하거나 자동 활성화하지 않습니다. [0.6.0 → 0.7.0 migration guide](docs/migrations/0.6.0-to-0.7.0.md)에 따라 정확한 tag와 digest로 재수렴한 뒤 프로젝트 로컬 설정에서 별도로 켭니다. 사용법과 실패 경계는 [active policy loop](docs/active-policy-loop.md), 최초 약식 측정은 [initial pilot](docs/pilots/active-policy-loop-initial.md), 릴리스 증거는 [0.7.0 release checklist](docs/releases/0.7.0-checklist.md)를 참고합니다.
 
 ### 0.6.0 공개 기준선
 
 `0.6.0`은 설정 loader 밖의 경계에 이름 있고 typed된 설정 계약을 요구하는 `CODE-005`와 외부 정본의 변동 사실을 주석에 독립 사본으로 두지 않는 `CODE-006`을 추가합니다. 두 규칙은 manual human review이며 validator, Ruff rule 또는 CI action을 추가하지 않습니다. 공개 기준선은 annotated tag `v0.6.0`으로 식별하며, 기존 프로젝트는 [migration guide](docs/migrations/0.5.0-to-0.6.0.md)에 따라 별도로 재수렴해야 합니다. 릴리스 증거와 한계는 [0.6.0 release checklist](docs/releases/0.6.0-checklist.md)에 기록합니다.
-
-현재 개발 브랜치에는 공개 `0.6.0` 기준선과 분리된 **실험적 Phase 1 능동형 policy loop 후보**가 있습니다. 이 후보는 local opt-in한 Claude Code 프로젝트에서 Light/Hard 평가를 실행하지만, 아직 공개 릴리스·범용 validator·CI gate가 아닙니다. 사용법과 실패 경계는 [active policy loop](docs/active-policy-loop.md), 최초 약식 측정은 [initial pilot](docs/pilots/active-policy-loop-initial.md)을 참고합니다.
 
 ### 0.5.0 공개 기준선
 
@@ -78,7 +82,7 @@ spec-it은 AI의 기억이나 긴 프롬프트에 의존하지 않습니다. 프
 
 예를 들어 사용자가 단순히 “가입 승인 API 엔드포인트를 만들어줘”라고 요청해도 AI는 router/controller, 전송 DTO, OpenAPI 같은 공개 계약의 추가를 `change` 범위 trigger로 판정해야 합니다. 구현 전에 잠긴 `http-api` 관련 규칙을 읽고, 승인이라는 동작의 의미·접근 권한·멱등성·공개 범위처럼 코드에서 발견할 수 없는 결정만 `spec-it:clarify`로 돌려보냅니다. 결정이 수렴한 뒤 path·method·DTO 경계·계약 테스트를 구현하고, `spec-it:check`에서 실제 변경과 규칙을 대조합니다.
 
-`AGENTS.md`를 자동으로 읽지 않는 AI 도구에는 해당 파일부터 읽으라는 adapter 또는 시작 요청이 필요합니다. 공개 `0.6.0`은 이 절차를 문서와 instruction-only 스킬로 제공할 뿐 자동 차단하지 않습니다. 개발 브랜치의 Claude-first 후보는 local opt-in에서만 이 checkpoint를 자동 호출하며, 일반 규칙 위반은 advisory로 남기고 policy state 불능 또는 열린 material 결정 뒤 mutation만 좁게 거부합니다.
+`AGENTS.md`를 자동으로 읽지 않는 AI 도구에는 해당 파일부터 읽으라는 adapter 또는 시작 요청이 필요합니다. `0.7.0`의 Claude-first active policy loop는 local opt-in에서만 이 checkpoint를 자동 호출하며, 일반 규칙 위반은 advisory로 남기고 policy state 불능 또는 열린 material 결정 뒤 mutation만 좁게 거부합니다. 다른 AI 도구와 hook을 켜지 않은 프로젝트에는 기존 instruction-only 절차가 그대로 적용됩니다.
 
 AI에게는 “이 프로젝트의 `AGENTS.md`와 연결된 spec-it 정책을 먼저 읽고, 적용 규칙과 필요한 인간 결정을 알려준 뒤 작업하며, 완료 전 `spec-it:check` 기준으로 검사해줘” 정도면 충분합니다. 프로젝트가 아직 정책을 채택하지 않았다면 먼저 읽기 전용 shadow assessment를 수행합니다. 자세한 checkpoint는 [agent work cycle](docs/agent-work-cycle.md)에 있습니다.
 

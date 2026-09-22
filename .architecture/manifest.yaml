@@ -1,7 +1,7 @@
 schema_version: 0.1.0
 policy:
   source: .
-  version: 0.6.0
+  version: 0.7.0
 project:
   id: spec-it
   name: spec-it
@@ -16,8 +16,9 @@ owners:
   data-owner: maintainer
   operations-owner: maintainer
 parameters:
-  phase: 0
+  phase: 1
   distribution: git-source-only
   validator: not-implemented
+  active_policy_loop: claude-local-opt-in
 exceptions: []
 units: []

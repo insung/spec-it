@@ -4,7 +4,7 @@
 
 active policy loop는 모든 규칙과 스킬을 매번 읽는 장치가 아니다. 명시적으로 활성화된 프로젝트에서 lifecycle event를 저비용으로 분류하고, material signal이 있을 때만 pinned lock이 가리키는 관련 규칙을 현재 AI turn에 제공하는 실험적 실행 장치다.
 
-공개 `0.5.0`의 규범 정본은 계속 `rules/`, `profiles/`, project manifest와 lock이다. runner는 새 정책을 만들거나 최신 버전으로 자동 업그레이드하지 않는다.
+공개 `0.7.0`에서도 규범 정본은 계속 `rules/`, `profiles/`, project manifest와 lock이다. runner는 새 정책을 만들거나 최신 버전으로 자동 업그레이드하지 않는다.
 
 ## 동작 메커니즘
 
@@ -143,4 +143,4 @@ Stop은 `systemMessage`만 반환한다. 첫 파일럿에서는 continuation이�
 
 ## 범위
 
-현재 후보는 Python 표준 라이브러리만 사용한 Claude-first adapter다. Codex adapter, Medium/Deep mode, shared team settings, CI/release gate, 정책 자동 수정, lock 재생성은 포함하지 않는다.
+`0.7.0` 구현은 Python 표준 라이브러리만 사용한 Claude-first adapter다. Codex adapter, Medium/Deep mode, shared team settings, CI/release gate, 정책 자동 수정, lock 재생성은 포함하지 않는다.

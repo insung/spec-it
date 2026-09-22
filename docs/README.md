@@ -46,3 +46,7 @@
 40. [0.5.0 release checklist](releases/0.5.0-checklist.md)
 41. [0.5.0 → 0.6.0 migration](migrations/0.5.0-to-0.6.0.md)
 42. [0.6.0 release checklist](releases/0.6.0-checklist.md)
+43. [Active policy loop](active-policy-loop.md)
+44. [Active policy loop initial pilot](pilots/active-policy-loop-initial.md)
+45. [0.6.0 → 0.7.0 migration](migrations/0.6.0-to-0.7.0.md)
+46. [0.7.0 release checklist](releases/0.7.0-checklist.md)
