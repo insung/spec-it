@@ -19,6 +19,8 @@
 
 `0.6.0`은 설정 loader 밖의 경계에 이름 있고 typed된 설정 계약을 요구하는 `CODE-005`와 외부 정본의 변동 사실을 주석에 독립 사본으로 두지 않는 `CODE-006`을 추가합니다. 두 규칙은 manual human review이며 validator, Ruff rule 또는 CI action을 추가하지 않습니다. 공개 기준선은 annotated tag `v0.6.0`으로 식별하며, 기존 프로젝트는 [migration guide](docs/migrations/0.5.0-to-0.6.0.md)에 따라 별도로 재수렴해야 합니다. 릴리스 증거와 한계는 [0.6.0 release checklist](docs/releases/0.6.0-checklist.md)에 기록합니다.
 
+현재 개발 브랜치에는 공개 `0.6.0` 기준선과 분리된 **실험적 Phase 1 능동형 policy loop 후보**가 있습니다. 이 후보는 local opt-in한 Claude Code 프로젝트에서 Light/Hard 평가를 실행하지만, 아직 공개 릴리스·범용 validator·CI gate가 아닙니다. 사용법과 실패 경계는 [active policy loop](docs/active-policy-loop.md), 최초 약식 측정은 [initial pilot](docs/pilots/active-policy-loop-initial.md)을 참고합니다.
+
 ### 0.5.0 공개 기준선
 
 `0.5.0`은 사람의 원문 의도에서 영향 경로와 검증 증거까지 연결하는 instruction-only 절차를 추가합니다. 새 read-only `spec-it-impact`, 기존 스킬의 되읽기·정정·신선도 인계, 선택적 영향/Case/Run 템플릿과 합성 예제를 제공합니다. 새 규칙·risk profile·공개 schema나 통합 QA 도구를 강제하지 않습니다.
@@ -76,7 +78,7 @@ spec-it은 AI의 기억이나 긴 프롬프트에 의존하지 않습니다. 프
 
 예를 들어 사용자가 단순히 “가입 승인 API 엔드포인트를 만들어줘”라고 요청해도 AI는 router/controller, 전송 DTO, OpenAPI 같은 공개 계약의 추가를 `change` 범위 trigger로 판정해야 합니다. 구현 전에 잠긴 `http-api` 관련 규칙을 읽고, 승인이라는 동작의 의미·접근 권한·멱등성·공개 범위처럼 코드에서 발견할 수 없는 결정만 `spec-it:clarify`로 돌려보냅니다. 결정이 수렴한 뒤 path·method·DTO 경계·계약 테스트를 구현하고, `spec-it:check`에서 실제 변경과 규칙을 대조합니다.
 
-`AGENTS.md`를 자동으로 읽지 않는 AI 도구에는 해당 파일부터 읽으라는 adapter 또는 시작 요청이 필요합니다. Phase 0은 이 절차를 문서와 instruction-only 스킬로 제공할 뿐 자동 차단하지 않습니다. validator와 CI가 구현되는 다음 단계부터 위반을 기계적으로 막을 수 있습니다.
+`AGENTS.md`를 자동으로 읽지 않는 AI 도구에는 해당 파일부터 읽으라는 adapter 또는 시작 요청이 필요합니다. 공개 `0.6.0`은 이 절차를 문서와 instruction-only 스킬로 제공할 뿐 자동 차단하지 않습니다. 개발 브랜치의 Claude-first 후보는 local opt-in에서만 이 checkpoint를 자동 호출하며, 일반 규칙 위반은 advisory로 남기고 policy state 불능 또는 열린 material 결정 뒤 mutation만 좁게 거부합니다.
 
 AI에게는 “이 프로젝트의 `AGENTS.md`와 연결된 spec-it 정책을 먼저 읽고, 적용 규칙과 필요한 인간 결정을 알려준 뒤 작업하며, 완료 전 `spec-it:check` 기준으로 검사해줘” 정도면 충분합니다. 프로젝트가 아직 정책을 채택하지 않았다면 먼저 읽기 전용 shadow assessment를 수행합니다. 자세한 checkpoint는 [agent work cycle](docs/agent-work-cycle.md)에 있습니다.
 

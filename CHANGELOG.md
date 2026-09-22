@@ -2,6 +2,14 @@
 
 이 프로젝트는 [Semantic Versioning](https://semver.org/)을 사용합니다. 프로젝트는 정확한 정책 버전을 고정하며 자동 업그레이드하지 않습니다.
 
+## Unreleased — active policy loop candidate
+
+- vendor-neutral policy loop core와 Claude Code adapter의 local opt-in 후보.
+- Light/Hard 자동 분류, pinned rule card, fingerprint dedup, ephemeral redacted metric.
+- 일반 finding은 advisory로 유지하고 policy-unavailable 또는 material open decision 뒤 mutation만 구조화 deny.
+- 고위험 Python HTTP API의 격리 worktree 약식 파일럿에서 초기 no-change 오탐을 수정하고 9개 분류 scenario와 기존 164 tests/Ruff 기준선을 재검증.
+- 공개 release, VERSION/tag, self manifest/lock upgrade, Codex adapter, CI/release enforcement는 아직 수행하지 않음.
+
 ## 0.6.0 - 2026-09-22
 
 ### Added
