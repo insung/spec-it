@@ -1,5 +1,7 @@
 # Active policy loop
 
+전체 흐름은 [능동형 정책 루프 다이어그램](diagrams/active-policy-loop.html)에서 한 화면으로 확인할 수 있다.
+
 active policy loop는 모든 규칙과 스킬을 매번 읽는 장치가 아니다. 명시적으로 활성화된 프로젝트에서 lifecycle event를 저비용으로 분류하고, material signal이 있을 때만 pinned lock이 가리키는 관련 규칙을 현재 AI turn에 제공하는 실험적 실행 장치다.
 
 공개 `0.5.0`의 규범 정본은 계속 `rules/`, `profiles/`, project manifest와 lock이다. runner는 새 정책을 만들거나 최신 버전으로 자동 업그레이드하지 않는다.
