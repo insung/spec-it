@@ -12,6 +12,7 @@
 - Active changes: [`.architecture/changes/`](.architecture/changes/)
 - Check state: Phase 0 instruction-only; unimplemented checks remain `human-review`.
 - Before work: map the request and expected changes to the rules in the resolved lock.
+- For a project-specific design or infrastructure question: answer from observed project facts and applicable locked rules, distinguish unknowns and human-owned choices, and propose one bounded next check or step. Answer general knowledge questions directly.
 - During work: re-evaluate only when a material dependency, infrastructure, data, security, or public-contract signal appears.
 - Before completion: map the actual diff to applicable rules and run the repository-declared checks.
 - For material intent: read back concrete examples, counterexamples, and unchanged behavior; ask only unresolved material differences.

@@ -1,6 +1,6 @@
 # Skills
 
-Phase 0는 다음 instruction-only 스킬을 제공합니다.
+현재 source에는 다음 instruction-only 스킬이 있다. 미발행 후보는 별도로 표시한다.
 
 | 논리 이름 | 설치 가능한 폴더 | 역할 |
 | --- | --- | --- |
@@ -10,6 +10,7 @@ Phase 0는 다음 instruction-only 스킬을 제공합니다.
 | `spec-it:check` | `spec-it-check` | 읽기 전용 정책 판정 |
 | `spec-it:evolve` | `spec-it-evolve` | 공통 SSOT 진화 |
 | `spec-it:impact` | `spec-it-impact` | revision·관계·신선도 한계를 남기는 읽기 전용 영향 조사 (미발행 후보) |
+| `spec-it:pair` | `spec-it-pair` | 프로젝트별 질문에서 함께 조사·결정·구현·검증하는 선택적 대화 절차 (미발행 후보) |
 
 `spec-it:*` namespace는 향후 plugin packaging에서 사용할 논리 이름입니다. Phase 0는 plugin을 배포하지 않으므로 개별 설치 시 실제 skill name은 하이픈 형식입니다.
 
@@ -22,6 +23,8 @@ Phase 0는 다음 instruction-only 스킬을 제공합니다.
 `spec-it:evolve`는 대화를 곧바로 한 문서로 옮기지 않습니다. [conversation routing procedure](spec-it-evolve/references/document-routing.md)에 따라 질문·제안·확정 결정과 공개 공통·조건부 profile·project-local·private context를 먼저 나눈 뒤 기존 정본을 갱신합니다.
 
 구현 작업에서는 `spec-it:specify`가 task-start profile preflight를 수행하고, material dependency·infrastructure·data·contract signal만 `spec-it:clarify`로 보냅니다. `spec-it:converge`는 승인된 lint contract와 infrastructure threshold를 투영하고, `spec-it:check`는 완료 전 실제 diff와 brownfield legacy finding을 구분해 읽기 전용으로 보고합니다. 상세 checkpoint는 [agent work cycle](../docs/agent-work-cycle.md)에 있습니다.
+
+기본 진입점은 프로젝트의 `AGENTS.md`와 고정된 manifest·lock이다. 기존 안내와 필요한 스킬로 질문을 처리할 수 있으며 별도 pair 설치는 필수 조건이 아니다. 미발행 후보 [pair 절차](spec-it-pair/SKILL.md)는 기존 규칙과 스킬을 필요한 만큼 연결한다. 일반 지식 질문에는 별도 절차를 강제하지 않는다. [작업 예시와 규칙 연결](../docs/pair-work-cycle.md)은 이 선택적 방법을 설명하며 새 정책 의무를 만들지 않는다.
 
 ## 미발행 후보의 인계
 
