@@ -50,3 +50,6 @@
 44. [Active policy loop initial pilot](pilots/active-policy-loop-initial.md)
 45. [0.6.0 → 0.7.0 migration](migrations/0.6.0-to-0.7.0.md)
 46. [0.7.0 release checklist](releases/0.7.0-checklist.md)
+47. [S3 기능 추가를 함께 판단하는 흐름](s3-shared-library-pairing.md)
+48. [함께 판단하고 구현하기: 선택적 미발행 후보](pair-work-cycle.md)
+49. [페어 작업 후보 수용 사례와 검증 상태](pilots/pair-workflow-acceptance.md)

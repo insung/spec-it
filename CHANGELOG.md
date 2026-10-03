@@ -2,6 +2,10 @@
 
 이 프로젝트는 [Semantic Versioning](https://semver.org/)을 사용합니다. 프로젝트는 정확한 정책 버전을 고정하며 자동 업그레이드하지 않습니다.
 
+## Unreleased
+
+- AGENTS 기본 진입점과 기존 규칙을 프로젝트별 질문에 연결하는 선택적·미발행 `spec-it:pair` 지침 후보 및 S3 공통화 판단 설명. 새 규칙·profile·schema·정책 버전은 변경하지 않았으며 실제 모델의 자동 선택과 실사용 효과는 아직 검증하지 않음.
+
 ## 0.7.0 - 2026-09-22
 
 - vendor-neutral policy loop core와 Claude Code adapter의 local opt-in 실행 장치.
