@@ -1,6 +1,6 @@
 ---
 issue: "https://github.com/insung/spec-it/issues/3"
-status: ready
+status: review-pending
 branch: "docs/pair-workflow"
 base: "main"
 created: "2026-10-03"
