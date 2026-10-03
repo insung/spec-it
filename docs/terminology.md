@@ -46,14 +46,10 @@
 
 ```mermaid
 flowchart TD
-    A[구체적인 관찰 finding] --> B[적용 기준과 증거에 대조]
-    B --> C[pass 또는 warn 또는 fail]
-    B --> D[증거 또는 결정 부족이면 human-review]
-    A --> E[전달과 집행 방식 판단]
-    E --> F[일반 hook finding은 advisory]
-    E --> G[좁은 PreToolUse mutation 조건이면 deny]
-    D --> H[필요한 인간 결정과 증거 요청]
-    F --> H
+    A[관찰 finding] --> B[규칙과 증거 대조]
+    B --> C[검토 결과]
+    A --> D[전달과 집행 판단]
+    D --> E[advisory 또는 좁은 deny]
 ```
 
 **finding과 advisory**: 선택된 규칙에 필요한 테스트 증거가 없다는 관찰이 finding이다. 이 관찰을 현재 turn에 경고만 제공하는 것은 advisory라는 처리 효과다. finding은 발견한 내용, advisory는 강제하지 않는 방식이므로 서로 대체어가 아니다. 적용 의무가 없는 “이름을 더 알아보기 쉽게 하자”는 제안은 규칙 위반을 만들지 않고 advisory observation으로 남긴다.
