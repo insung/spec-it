@@ -1,0 +1,18 @@
+{
+  "name": "spec-it",
+  "version": "0.1.0",
+  "description": "Pinned architecture policy skills with human-owned decisions and evidence boundaries.",
+  "author": {
+    "name": "insung"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Spec It",
+    "shortDescription": "Pinned policy with human approval.",
+    "longDescription": "Pinned architecture policy skills with human-owned decisions and evidence boundaries.",
+    "developerName": "insung",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Inspect this project using $spec-it-check without changing files."
+  }
+}

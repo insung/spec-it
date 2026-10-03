@@ -1,0 +1,16 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "spec-it",
+  "version": "0.1.0",
+  "description": "Pinned architecture policy skills with human-owned decisions and evidence boundaries.",
+  "author": {
+    "name": "insung",
+    "url": "https://github.com/insung"
+  },
+  "repository": "https://github.com/insung/spec-it",
+  "license": "MIT",
+  "keywords": [
+    "agent-skills",
+    "architecture-policy"
+  ]
+}
