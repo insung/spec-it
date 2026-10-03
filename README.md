@@ -92,6 +92,8 @@ AI에게는 “이 프로젝트의 `AGENTS.md`와 연결된 spec-it 정책을 �
 
 ## 시작점
 
+처음 읽는다면 [spec-it 사용 흐름](docs/workflow-guide.md)에서 요청별 진입점·파일·스킬·실행 경계를, [용어 안내](docs/terminology.md)에서 검토 결과와 협업 용어의 차이를 확인합니다.
+
 1. [헌법](docs/constitution.md)에서 권한과 우선순위를 읽습니다.
 2. [프로젝트 투영](docs/project-projection.md)에서 프로젝트가 보유할 최소 파일을 확인합니다.
 3. [프로필](docs/profiles.md)에서 평평한 합성 모델을 선택합니다.

@@ -2,6 +2,8 @@
 
 이 디렉터리는 규칙 사이의 관계와 선택 절차를 설명합니다. 새로운 의무는 [규칙 정본](../rules/README.md)에만 추가됩니다.
 
+처음 읽는다면 [사용 흐름](workflow-guide.md)과 [용어 안내](terminology.md)에서 시작합니다.
+
 ## 목차
 
 1. [헌법](constitution.md)
