@@ -34,7 +34,7 @@
 | TC-01 / AC-01~04 | 기준 파일·6개 SKILL·policy reader 대조 | 역할·권한·identity 일치 | 자기 정적 대조 통과 | 해당 baseline 파일 `cat`, `sed`, `rg`; 저장소 루트 | 최종 제품 `2bda880`, 2026-10-03 KST |
 | TC-02 / AC-05~07 | 용어·후보·hook 원문 대조 | 허위 발행/실행/자동화 없음 | 자기 정적 대조 통과, 후보 실행 없음 | baseline active-policy-loop·src/spec_it_hook/policy.py 및 허용 후보 파일 읽기; 각 source 루트 | 최종 제품 `2bda880`, 2026-10-03 KST |
 | TC-03 / AC-08 | 두 안내와 두 색인 local 링크 및 fragment | 존재와 heading 일치 | 125개 통과 | Python 표준 라이브러리로 Markdown 링크 추출, Path.exists 및 heading/HTML id 대조; 저장소 루트 | 최종 제품 `2bda880`, 2026-10-03 KST |
-| TC-F02 / 전체 | whitespace 및 범위 | 문서만 변경·공백 오류 없음 | 통과 | `git diff --check`; `git diff --check d0b8a8f HEAD`; `git diff d0b8a8f HEAD --name-only`; 저장소 루트 | 최종 제품 `2bda880`, 2026-10-03T21:01:29+09:00 |
+| TC-F02 / 전체 | whitespace 및 범위 | 문서만 변경·공백 오류 없음 | 통과 | `git diff --check`; `git diff --check d0b8a8f HEAD`; `git diff d0b8a8f HEAD --name-only`; 저장소 루트 | 최종 제품 `2bda880`, 2026-10-03 KST (최종 제품 및 기록 HEAD에서 재확인) |
 | TC-F01 / AC-01·08 | Mermaid 3개 화면 렌더링 | 오류·잘림·겹침 없음 | parent 렌더링 통과 및 선택 화면 검사 확인 | Mermaid 11.16.1 + Chromium/Playwright; 3개 도식 × 1000/736/360px (9 screenshots) | 최종 제품 `2bda880`, 2026-10-03 KST |
 
 parent는 최종 workflow 도식을 736px, compact 용어 도식을 360px에서 시각 확인했다. 두 번째 도식은 내용이 그대로이며 앞서 736px에서 확인했다. 이 화면들에서 잘림·겹침이 없었고 9개 렌더링은 모두 성공했다. 모든 screenshot의 pixel-level 검사를 주장하지 않는다. 첫 흐름은 길어 좁은 화면에서 viewer zoom이 필요할 수 있다. 초기 렌더링은 당시 관찰로 남기고 최종 렌더링은 `2bda880`에 묶는다.
