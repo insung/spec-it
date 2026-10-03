@@ -1,6 +1,6 @@
 ---
 issue: "#1"
-status: ready
+status: review-pending
 branch: "feat/plugin-install"
 base: "main"
 created: "2026-10-03"
@@ -42,8 +42,8 @@ created: "2026-10-03"
 
 | 단계 | 제목 | 설명 | 검증 사례 | 완료 |
 | --- | --- | --- | --- | --- |
-| [01](task-01-plugin-package.md) | 패키지 구조 | manifest와 marketplace, 자료 경로 및 구조 검사 | [TC-01](task-01-plugin-package.md#tc-01), [TC-02](task-01-plugin-package.md#tc-02) | [ ] |
-| [02](task-02-installation-guide.md) | 설치·전환 안내 | 이름 대응, 수명 주기, 정책 경계 | [TC-03](task-02-installation-guide.md#tc-03), [TC-04](task-02-installation-guide.md#tc-04) | [ ] |
+| [01](task-01-plugin-package.md) | 패키지 구조 | manifest와 marketplace, 자료 경로 및 구조 검사 | [TC-01](task-01-plugin-package.md#tc-01), [TC-02](task-01-plugin-package.md#tc-02) | [x] |
+| [02](task-02-installation-guide.md) | 설치·전환 안내 | 이름 대응, 수명 주기, 정책 경계 | [TC-03](task-02-installation-guide.md#tc-03), [TC-04](task-02-installation-guide.md#tc-04) | [x] |
 | [03](task-03-host-verification.md) | 호스트 검증과 인계 | 격리 설치·발견·호출 증거, 회귀 검사 | [TC-05](task-03-host-verification.md#tc-05), [TC-06](task-03-host-verification.md#tc-06) | [ ] |
 
 실행 순서: 01 → 02 → 03. 실패하면 해당 단계에서 보완한다. 검토 기준은 plan 커밋에서 분기한 `review/issue-1`에 먼저 고정하고 구현 세션은 읽지 않는다.
@@ -52,9 +52,9 @@ created: "2026-10-03"
 
 | 사례 | AC | 명령·작업 디렉토리 | 기대 결과 | 필요 승인 | 결과 |
 | --- | --- | --- | --- | --- | --- |
-| <a id="tc-f01"></a>TC-F01 | AC-01, AC-03, AC-06 | `node scripts/check-package.mjs`, 리포 루트; Git archive export에서도 재검사 | 6개 스킬·동봉 참조·manifest·상대 링크 일치, 구조 검사와 호스트 실행 구분 | 없음 | 미실행 |
-| <a id="tc-f02"></a>TC-F02 | AC-02, AC-04, AC-05 | 격리 subprocess env의 Claude/Codex marketplace 설치·신규 discovery; 전후 policy/project/settings digest 비교 | 호스트별 실제 설치/발견/호출 단계 결과와 설정 보존 증거, 미실행은 human-review | 유료 호출은 별도 승인 필요, 이번 범위 제외 | 미실행 |
-| <a id="tc-f03"></a>TC-F03 | AC-05, AC-06 | `python3 -m unittest discover -s tests -v`; `git diff --check`, 리포 루트 | 기존 정책 루프 회귀 없음, 규칙·pin·hook 자동 변경 없음 | 없음 | 미실행 |
+| <a id="tc-f01"></a>TC-F01 | AC-01, AC-03, AC-06 | `node scripts/check-package.mjs`, 리포 루트; Git archive export에서도 재검사 | 6개 스킬·동봉 참조·manifest·상대 링크 일치, 구조 검사와 호스트 실행 구분 | 없음 | 통과: `934236c`, 6개 inventory·negative 9건·Git archive와 양 host 캐시 |
+| <a id="tc-f02"></a>TC-F02 | AC-02, AC-04, AC-05 | 격리 subprocess env의 Claude/Codex marketplace 설치·신규 discovery; 전후 policy/project/settings digest 비교 | 호스트별 실제 설치/발견/호출 단계 결과와 설정 보존 증거, 미실행은 human-review | 유료 호출은 별도 승인 필요, 이번 범위 제외 | 설치·신규 발견·캐시 자료·보존 통과: `934236c`; 대표 호출 미실행 human-review |
+| <a id="tc-f03"></a>TC-F03 | AC-05, AC-06 | `PYTHONPATH=src python3 -m unittest discover -s tests -v`; `git diff --check`, 리포 루트 | 기존 정책 루프 회귀 없음, 규칙·pin·hook 자동 변경 없음 | 없음 | 통과: `934236c`, 회귀 22/22·diff check·policy/skill base diff 0 |
 
 패키지 검사에는 정상 구조뿐 아니라 잘못된 버전·누락 참조·범위 외 스킬·깨진 링크를 거부하는 의미 있는 사례를 포함한다. 단순 문서 문구를 그대로 모방하는 테스트는 추가하지 않는다.
 
@@ -76,3 +76,7 @@ created: "2026-10-03"
 | 2026-10-03 | 결정 | 기존 하이픈 name/폴더 보존, 실제 호출과 논리 이름의 대응 안내 | AC-02, AC-04·02 | 승인 |
 | 2026-10-03 | 결정 | 패키지 0.1.0과 정책 0.7.0 분리, 고정 자체 manifest/lock 보존 | AC-01, AC-04, AC-05·01/02 | 승인 |
 | 2026-10-03 | 결정 | 두 호스트 격리 설치/발견은 모델 없이 시도, 대표 호출 증거 부족 시 human-review | AC-02, AC-06·03 | 승인 |
+
+| 2026-10-03 | 계획 이탈 | 회귀 명령에 PYTHONPATH=src 보정; 재현 가능한 격리 smoke helper 추가; Codex namespace 포함 실제 이름 반영 | AC-02, AC-05, AC-06·03 | 구현·검증 |
+
+03 단계의 작업은 완료했으나 대표 모델 호출 검증이 미실행이므로 단계 전체를 완료 표시하지 않습니다. 독립 검토와 추가 호출 증거는 별도 인계합니다.

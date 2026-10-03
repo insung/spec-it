@@ -27,7 +27,7 @@ codex plugin list --json
 
 로컬 clone도 `codex plugin marketplace add <clone-path>`로 등록합니다. 설치 뒤 새 chat을 열어 스킬 목록과 `$spec-it:spec-it-check`를 확인하고 `이 프로젝트를 변경 없이 점검해줘`라는 요청과 함께 호출합니다. 앱의 목록은 현재 chat의 스킬 발견과 다를 수 있으므로 새 세션의 발견 출력을 확인합니다.
 
-갱신은 `codex plugin marketplace upgrade spec-it` 후 `codex plugin add spec-it@spec-it`, 제거는 `codex plugin remove spec-it@spec-it`입니다. marketplace 등록까지 지우려면 `codex plugin marketplace remove spec-it`를 별도로 실행합니다. 설치된 CLI 버전에 따라 명령 지원이 다르면 `--help`를 기준으로 확인합니다.
+갱신은 `codex plugin marketplace upgrade spec-it` 후 `codex plugin remove spec-it@spec-it`와 `codex plugin add spec-it@spec-it`로 재설치, 제거는 `codex plugin remove spec-it@spec-it`입니다. marketplace 등록까지 지우려면 `codex plugin marketplace remove spec-it`를 별도로 실행합니다. 설치된 CLI 버전에 따라 명령 지원이 다르면 `--help`를 기준으로 확인합니다.
 
 ## 이름 대응
 
@@ -64,6 +64,8 @@ Claude는 앞에 `/`, Codex는 발견 이름 앞에 `$`를 붙여 호출합니�
 ## 검증 범위
 
 `node scripts/check-package.mjs`는 manifest·버전·발행 목록·필수 자료·상대 링크를 검사합니다. `node --test scripts/check-package.test.mjs`는 정상 구조와 잘못된 버전·누락 자료·범위 외 스킬·깨진 링크·부수실행 metadata를 검증합니다. 템플릿 AGENTS의 생성 대상 `.architecture/` 링크는 채택 후 생성되는 경로로 구분합니다. 정적 성공은 호스트 실행 성공을 증명하지 않습니다.
+
+`python3 scripts/smoke-plugin-install.py`는 현재 HEAD를 Git archive로 내보내 임시 HOME/config 환경에서 두 호스트에 설치하고 새 프로세스 발견·캐시 참조·원본 파일 보존을 검사합니다. CLI가 설치된 환경에서 실행하며 모델 호출은 하지 않습니다.
 
 실제 설치·신규 프로세스 발견·대표 모델 호출은 따로 기록합니다. 모델 호출이 미실행이면 `human-review`이며 발견 결과만으로 AC-02 전체를 pass로 보고하지 않습니다. 이번 구현의 [검증 인계](git-workflows/2026-10/03_1_plugin-install/handoff.md)를 참고합니다.
 

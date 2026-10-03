@@ -1,0 +1,122 @@
+{
+  "time": "2026-10-03T05:45:05.688907+00:00",
+  "source": "934236c14c7266e00f0dc337e9d70ff7958b3610",
+  "commands": [
+    {
+      "command": [
+        "claude",
+        "--version"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "codex",
+        "--version"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "node",
+        "--version"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "node",
+        "<temporary>/package/scripts/check-package.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "claude",
+        "plugin",
+        "marketplace",
+        "add",
+        "<temporary>/package"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "claude",
+        "plugin",
+        "install",
+        "spec-it@spec-it"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "claude",
+        "plugin",
+        "details",
+        "spec-it@spec-it"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "marketplace",
+        "add",
+        "<temporary>/package",
+        "--json"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "add",
+        "spec-it@spec-it",
+        "--json"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "node",
+        "<temporary>/codex/plugins/cache/spec-it/spec-it/0.1.0/scripts/check-package.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "node",
+        "<temporary>/claude/plugins/cache/spec-it/spec-it/0.1.0/scripts/check-package.mjs"
+      ],
+      "exit": 0
+    }
+  ],
+  "representativeInvocation": "human-review: model execution not run",
+  "versions": {
+    "claude": "2.1.282 (Claude Code)",
+    "codex": "codex-cli 0.157.1",
+    "node": "v23.11.0"
+  },
+  "claudeSkills": [
+    "spec-it-check",
+    "spec-it-clarify",
+    "spec-it-converge",
+    "spec-it-evolve",
+    "spec-it-impact",
+    "spec-it-specify"
+  ],
+  "codexSkills": [
+    "spec-it:spec-it-check",
+    "spec-it:spec-it-clarify",
+    "spec-it:spec-it-converge",
+    "spec-it:spec-it-evolve",
+    "spec-it:spec-it-impact",
+    "spec-it:spec-it-specify"
+  ],
+  "cachedReferences": "pass: both cached repository-root packages checked",
+  "preservedFiles": true,
+  "temporaryEnvironmentRemoved": true
+}

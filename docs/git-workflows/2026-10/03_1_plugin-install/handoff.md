@@ -29,7 +29,7 @@
 
 ## 검증 요약과 증거
 
-현재 결과는 첫 설치 probe 기준이며 최종 exact-commit 결과를 후속 기록합니다.
+최종 소스 검증 대상은 `934236c14c7266e00f0dc337e9d70ff7958b3610`입니다. 아래 후속 문서 기록·전환 설명 보완은 구현 코드와 구분합니다.
 
 - 환경: macOS arm64, Claude Code 2.1.282, Codex CLI 0.157.1; 2026-10-03 UTC.
 - `node --test scripts/check-package.test.mjs`: 정상 1 + negative 8 = 9/9 통과 (`1b2fa8d` 작업본, commit 이전).
@@ -45,3 +45,20 @@
 - 구현 자기 검증이며 최종 독립 리뷰 판정이 아닙니다. root가 별도 검토 후 push/PR 게시를 담당합니다.
 - 원격 설치는 PR merge 전 기본 브랜치에 이 구성이 없어 검증하지 않았습니다. 공개 문서의 원격 명령은 구성이 해당 ref에 있을 때 사용합니다.
 - 임시 설치 제거와 scoped commit revert로 롤백합니다. 채택 프로젝트 파일과 사용자 설치는 보존합니다.
+
+## 최종 재현 결과
+
+| 명령 / 사례 | 실제 결과 | 대상·환경·시각 |
+| --- | --- | --- |
+| `python3 scripts/smoke-plugin-install.py` | exit 0. HEAD archive export 검사, Claude/Codex install, 신규 discovery 6개, 양 cache checker 모두 통과 | `934236c14c7266e00f0dc337e9d70ff7958b3610`, 리포 루트, 2026-10-03T05:45:05Z |
+| `node --test scripts/check-package.test.mjs` | 9/9 pass | 같은 clean HEAD, Node v23.11.0, 2026-10-03T05:45 UTC |
+| `PYTHONPATH=src python3 -m unittest discover -s tests -v` | 22/22 pass | 같은 HEAD, Python 3.14.2, 2026-10-03T05:45 UTC |
+| Claude manifest 및 marketplace `validate --strict --json` | 각각 exit 0, errors/warnings 0 | 같은 HEAD, Claude 2.1.282, 2026-10-03T05:45 UTC |
+| base diff: VERSION·AGENTS·manifest·lock·rules·SKILL 지시 | 출력 없음, 정책 pin·digest 입력·행동 지시 보존 | plan baseline `1e880c54` 대비, 2026-10-03T05:45 UTC |
+| smoke 전후 설정·정책 파일 SHA-256 비교 | 동일; 임시 HOME/config 제거 완료 | [비밀 없는 실행 결과](verification.json) |
+
+smoke가 대조하는 전역 경로는 원래 사용자 Codex config 및 plugin install/marketplace records, Claude settings 및 plugin records, `.claude.json`입니다. 정책 파일은 VERSION·AGENTS·manifest·lock·rules 전체를 비교합니다. 원시 설정·credential을 복사하거나 출력하지 않습니다. 테스트 설치는 subprocess env allowlist와 임시 config에만 기록합니다.
+
+대표 호출은 두 호스트 모두 human-review이며 필수 AC-02 전체 pass 또는 최종 독립 리뷰 pass를 주장하지 않습니다. 두 호스트 설치/발견과 실제 캐시 자료 접근은 별도 완료입니다. 계획 단계 03은 이 미실행 필수 증거 때문에 [ ]로 남깁니다.
+
+검토자는 source HEAD 이후의 문서 기록만 달라졌는지 확인하고 동일 명령을 재실행할 수 있습니다. Source 이후 보완은 Codex 갱신의 marketplace refresh → remove → add 재설치 안내와 smoke 재현 명령 안내입니다. 원격 기본 branch 설치는 merge 전 검증하지 않았고 유료 모델 실행도 하지 않았습니다.
