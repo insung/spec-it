@@ -8,12 +8,16 @@
 
 ## 현재 상태
 
-- 버전: `0.7.0`
+- 정책 버전: `0.7.0` / 플러그인 패키지 버전: `0.1.0`
 - 단계: Phase 1 진입 — Phase 0 정책 source + local opt-in active policy loop
-- 배포: 공개 Git 저장소용 소스만 제공
-- 미구현: 범용 validator/CLI, CI 강제, fail-close runtime enforcement, 패키지·플러그인 배포
+- 배포: 공개 Git 소스와 Claude Code·Codex 플러그인 설치 지원
+- 미구현: 범용 validator/CLI, CI 강제, fail-close runtime enforcement
 
 현재 스킬은 판단 절차를 안내하고 `human-review` 또는 `not-implemented`를 정직하게 보고합니다. Claude-first active policy loop는 고정 policy identity와 material signal을 결정적으로 확인하지만, 일반 규칙 준수를 판정하는 범용 validator라고 주장하지 않습니다.
+
+[플러그인 설치·전환 안내](docs/plugin-installation.md)에서 두 호스트의 설치, 실제 스킬 이름, 갱신과 제거 절차를 확인합니다. 설치는 정책 채택이나 훅 활성화를 수행하지 않습니다.
+
+이 저장소의 `.architecture/manifest.yaml`에 남아 있는 `distribution: git-source-only`는 정책 0.7.0 자체 투영 당시 승인된 입력입니다. 현재 패키징 상태를 나타내는 필드가 아니며, 이번 변경은 manifest·lock·정책 pin을 재수렴하지 않습니다.
 
 ### 0.7.0 공개 기준선
 
