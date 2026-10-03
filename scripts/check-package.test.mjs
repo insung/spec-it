@@ -1,12 +1,32 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { cpSync, mkdtempSync, rmSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { cpSync, mkdtempSync, rmSync, readFileSync, writeFileSync, mkdirSync, symlinkSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { resolve, join } from 'node:path';
 import { checkPackage } from './check-package.mjs';
 
 const root = resolve(import.meta.dirname, '..');
 test('repository package passes without Git-dependent checks', () => assert.deepEqual(checkPackage(root), []));
+test('published manifests preserve the Apache-2.0 repository license', () => {
+  assert.match(readFileSync(join(root, 'LICENSE'), 'utf8'), /Apache License\s+Version 2\.0/);
+  for (const path of ['plugin.json', '.claude-plugin/plugin.json']) assert.equal(JSON.parse(readFileSync(join(root, path))).license, 'Apache-2.0');
+});
+for (const broken of [false, true]) {
+  test(`CLI through filesystem alias ${broken ? 'rejects missing material' : 'executes and prints success'}`, () => {
+    const dir = mkdtempSync(join(tmpdir(), 'spec-it-cli-'));
+    try {
+      const canonical = join(dir, 'package');
+      cpSync(root, canonical, { recursive: true, filter: path => !['.git', '.worktree', '__pycache__'].includes(path.split('/').at(-1)) });
+      const alias = join(dir, 'alias');
+      symlinkSync(canonical, alias, 'dir');
+      if (broken) rmSync(join(canonical, 'rules'), { recursive: true });
+      const result = spawnSync(process.execPath, [join(alias, 'scripts/check-package.mjs')], { encoding: 'utf8' });
+      assert.equal(result.status, broken ? 1 : 0);
+      assert.match(broken ? result.stderr : result.stdout, broken ? /missing: rules/ : /^Package structure OK: 6 skills/);
+    } finally { rmSync(dir, { recursive: true, force: true }); }
+  });
+}
 function fixture(name, mutate, expected) {
   test(name, () => {
     const dir = mkdtempSync(join(tmpdir(), 'spec-it-package-'));

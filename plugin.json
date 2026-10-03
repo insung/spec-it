@@ -8,7 +8,7 @@
     "url": "https://github.com/insung"
   },
   "repository": "https://github.com/insung/spec-it",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "keywords": [
     "agent-skills",
     "architecture-policy"

@@ -103,7 +103,13 @@ def main():
             return result.stdout
 
         report['versions'] = {'claude': run(['claude', '--version']).strip(), 'codex': run(['codex', '--version']).strip(), 'node': run(['node', '--version']).strip()}
-        run(['node', str(package / 'scripts/check-package.mjs')])
+        def check_package(path):
+            output = run(['node', str(path / 'scripts/check-package.mjs')])
+            if not output.startswith('Package structure OK: 6 skills, package 0.1.0, policy 0.7.0.'):
+                raise RuntimeError('checker did not confirm execution')
+            return output.strip()
+
+        report['archiveCheckerOutput'] = check_package(package)
         run(['claude', 'plugin', 'marketplace', 'add', str(package)])
         run(['claude', 'plugin', 'install', 'spec-it@spec-it'])
         details = run(['claude', 'plugin', 'details', 'spec-it@spec-it'])
@@ -119,8 +125,9 @@ def main():
         # Check actual cached packages, including mandatory skill references and resources.
         claude_manifests = list((tmp / 'claude/plugins/cache/spec-it').rglob('.claude-plugin/plugin.json'))
         assert len(claude_manifests) == 1
+        report['cachedCheckerOutputs'] = []
         for cached in (Path(installed['installedPath']), claude_manifests[0].parent.parent):
-            run(['node', str(cached / 'scripts/check-package.mjs')])
+            report['cachedCheckerOutputs'].append(check_package(cached))
         report['cachedReferences'] = 'pass: both cached repository-root packages checked'
     report['preservedFiles'] = before == fingerprints()
     assert report['preservedFiles'], 'user settings or policy files changed'

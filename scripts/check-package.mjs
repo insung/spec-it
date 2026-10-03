@@ -68,7 +68,7 @@ export function checkPackage(root) {
   return errors;
 }
 
-if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (process.argv[1] && realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url))) {
   const errors = checkPackage(process.argv[2] || resolve(dirname(fileURLToPath(import.meta.url)), '..'));
   if (errors.length) { console.error(errors.join('\n')); process.exitCode = 1; }
   else console.log('Package structure OK: 6 skills, package 0.1.0, policy 0.7.0. Host execution is not verified by this check.');
