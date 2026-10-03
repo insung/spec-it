@@ -20,7 +20,10 @@
 ## Boundaries
 
 - Phase 1 진입: Phase 0 정책 source와 instruction-only 스킬에 더해, 명시적으로 활성화한 Claude 프로젝트에서만 동작하는 active policy loop를 제공한다.
-- 현재 범위 밖: 범용 schema validator, deterministic lock generator, CI 강제, package/plugin 배포, Codex adapter, 회사 overlay.
+- 현재 범위 밖: 범용 schema validator, deterministic lock generator, CI 강제, Codex 정책 루프 adapter, 회사 overlay.
+
+- 현재 배포: 별도 패키지 0.1.0으로 Claude Code·Codex에 6개 스킬과 정책 자료를 제공합니다. 설치는 채택·pin 업그레이드·훅 활성화를 수행하지 않습니다.
+- manifest/lock의 git-source-only는 정책 0.7.0 자체 투영 당시 입력으로 보존합니다. [설치 안내](../docs/plugin-installation.md)를 참고합니다.
 
 ## Owners
 
